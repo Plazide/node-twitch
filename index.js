@@ -23,6 +23,10 @@ class TwitchApi{
 	/*****************
 	PRIVATE METHODS
 	*****************/
+	_error(err){
+		throw new Error(err);
+	}
+
 	/**
 	 * Send a GET request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to get.
@@ -42,7 +46,7 @@ class TwitchApi{
 			if(err) throw new Error(err);
 
 			if(response.statusCode >= 400){
-				console.log(`\nGet request to ${options.url} failed:\n`+
+				console.error(`\nGet request to ${options.url} failed:\n`+
 				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
 			}
 
@@ -60,10 +64,8 @@ class TwitchApi{
 	 * @param {object} options - A request options object not including url key
 	 */
 	customRequest(endpoint, options, callback){
-		if(typeof endpoint !== "string"){
-			console.log();
-			console.error("No endpoint was provided, cannot perform custom request.");
-			console.log();
+		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
+			this._error("No endpoint was provided, cannot perform custom request.");
 			return 0;
 		}
 			
