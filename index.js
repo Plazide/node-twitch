@@ -55,6 +55,27 @@ class TwitchApi{
 	PUBLIC METHODS
 	*****************/
 	/**
+	 * Make a request to an endpoint that doesn't have a function.
+	 * @param {string} endpoint - The endpoint to call eg. "/games?id=493057"
+	 * @param {object} options - A request options object not including url key
+	 */
+	customRequest(endpoint, options, callback){
+		const headers = {
+			"Client-ID": this.client_id,
+			"Authorization": "Bearer "+this.access_token
+		};
+
+		options.url = this.base+endpoint;
+		options.headers = Object.assign(headers, options.headers);
+
+		request(options, (err, response, body) => {
+			if(err) throw new Error(err);
+
+			callback(response, JSON.parse(body));
+		});
+	}
+
+	/**
 	 * Get one or more users by their login names or twitch ids. If only one user is needed, a single string will suffice.
 	 * @param {array | string} ids - A list of ids and/or login names for the users to get. 
 	 * @param {function} callback - The function that will be called when execution is finished.
