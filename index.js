@@ -73,6 +73,11 @@ class TwitchApi{
 		this.get(endpoint, callback);
 	}
 
+	/**
+	 * Get follows to or from a channel.
+	 * @param {object} options - The options to customize the request.
+	 * @param {function} callback - The callback function.
+	 */
 	getFollows(options, callback){
 		let query = "?";
 		query += methods.parseOptions(options);
