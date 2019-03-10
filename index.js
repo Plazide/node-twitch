@@ -149,6 +149,11 @@ class TwitchApi{
 		this._get(endpoint, callback);
 	}
 
+	/**
+	 * Get subscriptions status of users to a broadcaster.
+	 * @param {object} options - An object containing a broadcaster_id and one or more user_ids.
+	 * @param {function} callback - The callback function.
+	 */
 	getSubsStatus(options, callback){
 		let query = "?";
 
