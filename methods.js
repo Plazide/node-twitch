@@ -13,20 +13,13 @@ function getLocalRefreshToken(){
 	return data.refresh_token;
 }
 
-function setApiUser(access_token, refresh_token, client_id, client_secret){
-	const data = JSON.stringify({
-		access_token,
-		refresh_token,
-		client_id,
-		client_secret
-	});
-
-	fs.writeFile(userFile, data, err => {
+function setApiUser(config){
+	fs.writeFile(userFile, config, err => {
 		if(err && err.code === "ENOENT"){
 			fs.mkdir("./data", err => {
 				if(err) throw new Error(err);
 
-				setApiUser(access_token, refresh_token, client_id, client_secret);
+				setApiUser(config);
 				return 0;
 			});
 		}

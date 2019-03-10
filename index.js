@@ -12,14 +12,14 @@ class TwitchApi{
 	 * @param {string} client_id - Your client id
 	 * @param {string} client_secret - Your client secret
 	 */
-	constructor(access_token, refresh_token, client_id, client_secret){
-		this.access_token = access_token || methods.getLocalAccessToken();
-		this.refresh_token = refresh_token || methods.getLocalRefreshToken();
-		this.client_id = client_id || methods.getLocalClientId();
-		this.client_secret = client_secret || methods.getLocalClientSecret();
+	constructor(config){
+		this.access_token = config.access_token || methods.getLocalAccessToken();
+		this.refresh_token = config.refresh_token || methods.getLocalRefreshToken();
+		this.client_id = config.client_id || methods.getLocalClientId();
+		this.client_secret = config.client_secret || methods.getLocalClientSecret();
 		this.base = "https://api.twitch.tv/helix";
 
-		methods.setApiUser(access_token, refresh_token, client_id, client_secret);
+		methods.setApiUser(config);
 	}
 
 	/**
