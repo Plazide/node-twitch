@@ -60,6 +60,16 @@ class TwitchApi{
 	 * @param {object} options - A request options object not including url key
 	 */
 	customRequest(endpoint, options, callback){
+		if(typeof endpoint !== "string"){
+			console.log();
+			console.error("No endpoint was provided, cannot perform custom request.");
+			console.log();
+			return 0;
+		}
+			
+		if(endpoint[0] !== "/")
+			endpoint = "/"+endpoint;
+
 		const headers = {
 			"Client-ID": this.client_id,
 			"Authorization": "Bearer "+this.access_token
@@ -70,6 +80,11 @@ class TwitchApi{
 
 		request(options, (err, response, body) => {
 			if(err) throw new Error(err);
+
+			if(response.statusCode >= 400){
+				console.log(`\Custom request to ${options.url} failed:\n`+
+				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+			}
 
 			callback(response, JSON.parse(body));
 		});
