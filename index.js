@@ -29,7 +29,7 @@ class TwitchApi{
 	 */
 	get(endpoint, callback){
 		const options = {
-			url: endpoint,
+			url: this.base+endpoint,
 			method: "GET",
 			headers: {
 				"Client-ID": this.client_id,
@@ -39,6 +39,11 @@ class TwitchApi{
 
 		request(options, (err, response, body) => {
 			if(err) throw new Error(err);
+
+			if(response.statusCode >= 400){
+				console.log(`\nGet request to ${options.url} failed:\n`+
+				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+			}
 
 			callback(response, JSON.parse(body));
 		});
@@ -68,7 +73,7 @@ class TwitchApi{
 			}
 		}
 
-		const endpoint = this.base+"/users"+query;
+		const endpoint = "/users"+query;
 
 		this.get(endpoint, callback);
 	}
@@ -82,7 +87,19 @@ class TwitchApi{
 		let query = "?";
 		query += methods.parseOptions(options);
 
-		const endpoint = this.base+"/users/follows"+query;
+		const endpoint = "/users/follows"+query;
+		this.get(endpoint, callback);
+	}
+
+	/**
+	 * Get subscribers from a channel/broadcaster id.
+	 * @param {string | number} broadcaster_id - The id of the twitch channel to get subscribers from.
+	 * @param {function} callback - The callback function.
+	 */
+	getSubs(broadcaster_id, callback){
+		const query = `?broadcaster_id=${broadcaster_id}`;
+		const endpoint = "/subscriptions"+query;
+
 		this.get(endpoint, callback);
 	}
 
@@ -112,7 +129,7 @@ class TwitchApi{
 			}
 		}
 
-		const endpoint = this.base+"/streams"+query;
+		const endpoint = "/streams"+query;
 		this.get(endpoint, callback);
 	}
 }
