@@ -7,10 +7,7 @@ const methods = require("./methods");
 class TwitchApi{
 	/**
 	 * Initialize the api.
-	 * @param {string} access_token - Your access token
-	 * @param {string} refresh_token - Your refresh token
-	 * @param {string} client_id - Your client id
-	 * @param {string} client_secret - Your client secret
+	 * @param {object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
 	 */
 	constructor(config){
 		this.access_token = config.access_token || methods.getLocalAccessToken();
