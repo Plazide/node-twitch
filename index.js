@@ -18,13 +18,17 @@ class TwitchApi{
 
 		methods.setApiUser(config);
 	}
+	
 
+	/*****************
+	PRIVATE METHODS
+	*****************/
 	/**
 	 * Send a GET request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to get.
 	 * @param {function} callback - The callback function containing results.
 	 */
-	get(endpoint, callback){
+	_get(endpoint, callback){
 		const options = {
 			url: this.base+endpoint,
 			method: "GET",
@@ -46,6 +50,10 @@ class TwitchApi{
 		});
 	}
 
+
+	/*****************
+	PUBLIC METHODS
+	*****************/
 	/**
 	 * Get one or more users by their login names or twitch ids. If only one user is needed, a single string will suffice.
 	 * @param {array | string} ids - A list of ids and/or login names for the users to get. 
@@ -72,7 +80,7 @@ class TwitchApi{
 
 		const endpoint = "/users"+query;
 
-		this.get(endpoint, callback);
+		this._get(endpoint, callback);
 	}
 
 	/**
@@ -85,7 +93,7 @@ class TwitchApi{
 		query += methods.parseOptions(options);
 
 		const endpoint = "/users/follows"+query;
-		this.get(endpoint, callback);
+		this._get(endpoint, callback);
 	}
 
 	/**
@@ -97,7 +105,7 @@ class TwitchApi{
 		const query = `?broadcaster_id=${broadcaster_id}`;
 		const endpoint = "/subscriptions"+query;
 
-		this.get(endpoint, callback);
+		this._get(endpoint, callback);
 	}
 
 	/**
@@ -127,7 +135,7 @@ class TwitchApi{
 		}
 
 		const endpoint = "/streams"+query;
-		this.get(endpoint, callback);
+		this._get(endpoint, callback);
 	}
 }
 
