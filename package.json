@@ -4,13 +4,20 @@
   "description": "A wrapper for the Helix twitch api in NodeJS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Plazide/node-twitch-api.git"
   },
-  "keywords": ["twitch", "api", "helix", "new"],
+  "keywords": [
+    "twitch",
+    "api",
+    "helix",
+    "new",
+    "server",
+    "node"
+  ],
   "author": "Carl Hallén",
   "license": "ISC",
   "bugs": {
@@ -19,5 +26,8 @@
   "homepage": "https://github.com/Plazide/node-twitch-api#readme",
   "dependencies": {
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
