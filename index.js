@@ -92,6 +92,9 @@ class TwitchApi{
 		});
 	}
 
+
+	// GET REQUESTS
+
 	/**
 	 * Get one or more users by their login names or twitch ids. If only one user is needed, a single string will suffice.
 	 * @param {array | string} ids - A list of ids and/or login names for the users to get. 
@@ -139,10 +142,27 @@ class TwitchApi{
 	 * @param {string | number} broadcaster_id - The id of the twitch channel to get subscribers from.
 	 * @param {function} callback - The callback function.
 	 */
-	getSubs(broadcaster_id, callback){
+	getSubsById(broadcaster_id, callback){
 		const query = `?broadcaster_id=${broadcaster_id}`;
 		const endpoint = "/subscriptions"+query;
 
+		this._get(endpoint, callback);
+	}
+
+	getSubsStatus(options, callback){
+		let query = "?";
+
+		query += `broadcaster_id=${options.broadcaster_id}`;
+
+		if(typeof options.user_ids === "string"){
+			query += "&user_id="+options.user_ids;
+		}else{
+			options.user_ids.forEach( id => {
+				query += "&user_id="+id;
+			});
+		}
+
+		const endpoint = "/subscriptions"+query;
 		this._get(endpoint, callback);
 	}
 
