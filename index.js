@@ -1,4 +1,5 @@
 const request = require("request");
+const events = require("events");
 const methods = require("./methods");
 
 /**
@@ -23,8 +24,45 @@ class TwitchApi{
 	/*****************
 	PRIVATE METHODS
 	*****************/
+	/**
+	 * Throw a new error.
+	 * @param {string} err - The error message. 
+	 */
 	_error(err){
 		throw new Error(err);
+	}
+
+	_refresh(callback){
+		const data = {
+			client_id: this.client_id,
+			client_secret: this.client_secret,
+			grant_type: "refresh_token",
+			refresh_token: encodeURIComponent(this.refresh_token)
+		}
+		const options = {
+			url: "https://id.twitch.tv/oauth2/token",
+			method: "POST",
+			json: true,
+			body: data,
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}
+
+		request(options, (err, response, body) => {
+			if(err) this._error(err);
+
+			const access_token = body.access_token;
+			const refresh_token = body.refresh_token;
+
+			if(access_token)
+				this.access_token = access_token;
+
+			if(refresh_token)
+				this.refresh_token = refresh_token;
+
+			callback();
+		});
 	}
 
 	/**
@@ -44,14 +82,35 @@ class TwitchApi{
 
 		request(options, (err, response, body) => {
 			if(err) throw new Error(err);
+			const status = response.statusCode;
 
-			if(response.statusCode >= 400){
+			if(status >= 400){
 				console.error(`\nGet request to ${options.url} failed:\n`+
-				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+				`${status} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+			}
+
+			if(status === 401){
+				this._refresh( () => {
+					this._get(endpoint, callback);
+				});
+
+				return;
 			}
 
 			callback(response, JSON.parse(body));
 		});
+	}
+
+	_post(params, callback){
+		const options = {
+			method: "POST",
+			json: true,
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": "Bearer "+this.access_token,
+				"Client-ID": this.client_id
+			}
+		}
 	}
 
 
