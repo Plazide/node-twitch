@@ -1,5 +1,5 @@
 const request = require("request");
-const events = require("events");
+const { EventEmitter } = require("events");
 const methods = require("./methods");
 
 /**
@@ -15,7 +15,9 @@ class TwitchApi{
 		this.refresh_token = config.refresh_token || methods.getLocalRefreshToken();
 		this.client_id = config.client_id || methods.getLocalClientId();
 		this.client_secret = config.client_secret || methods.getLocalClientSecret();
+
 		this.base = "https://api.twitch.tv/helix";
+		this.events = new EventEmitter();
 
 		methods.setApiUser(config);
 	}
@@ -61,6 +63,7 @@ class TwitchApi{
 			if(refresh_token)
 				this.refresh_token = refresh_token;
 
+			this.events.emit("refresh", body);
 			callback();
 		});
 	}
