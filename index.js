@@ -70,7 +70,7 @@ class TwitchApi extends EventEmitter{
 				this.refresh_token = refresh_token;
 
 			/**
-			 * Refresh event fired when the access token is refreshed. Listening to this event lets you save new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
+			 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
 			 * @event TwitchApi#refresh
 			 * @type {object}
 			 * @property {string} access_token - The new access token.
@@ -165,41 +165,6 @@ class TwitchApi extends EventEmitter{
 	/*****************
 	PUBLIC METHODS
 	*****************/
-	/**
-	 * Make a request to an endpoint that doesn't have a function.
-	 * @param {string} endpoint - The endpoint to call eg. "/games?id=493057"
-	 * @param {object} options - A request options object not including url key
-	 */
-	customRequest(endpoint, options, callback){
-		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
-			this._error("No endpoint was provided, cannot perform custom request.");
-			return 0;
-		}
-			
-		if(endpoint[0] !== "/")
-			endpoint = "/"+endpoint;
-
-		const headers = {
-			"Client-ID": this.client_id,
-			"Authorization": "Bearer "+this.access_token
-		};
-
-		options.url = this.base+endpoint;
-		options.headers = Object.assign(headers, options.headers);
-
-		request(options, (err, response, body) => {
-			if(err) throw new Error(err);
-
-			if(response.statusCode >= 400){
-				console.log(`\Custom request to ${options.url} failed:\n`+
-				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
-			}
-
-			callback(response, JSON.parse(body));
-		});
-	}
-
-
 	// GET REQUESTS
 
 	/**
@@ -306,6 +271,40 @@ class TwitchApi extends EventEmitter{
 
 		const endpoint = "/streams"+query;
 		this._get(endpoint, callback);
+	}
+
+	/**
+	 * Make a request to an endpoint that doesn't have a function.
+	 * @param {string} endpoint - The endpoint to call eg. "/games?id=493057"
+	 * @param {object} options - A request options object not including url key
+	 */
+	customRequest(endpoint, options, callback){
+		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
+			this._error("No endpoint was provided, cannot perform custom request.");
+			return 0;
+		}
+			
+		if(endpoint[0] !== "/")
+			endpoint = "/"+endpoint;
+
+		const headers = {
+			"Client-ID": this.client_id,
+			"Authorization": "Bearer "+this.access_token
+		};
+
+		options.url = this.base+endpoint;
+		options.headers = Object.assign(headers, options.headers);
+
+		request(options, (err, response, body) => {
+			if(err) throw new Error(err);
+
+			if(response.statusCode >= 400){
+				console.log(`\Custom request to ${options.url} failed:\n`+
+				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+			}
+
+			callback(response, JSON.parse(body));
+		});
 	}
 }
 
