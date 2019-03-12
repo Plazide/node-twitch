@@ -4,20 +4,20 @@ const methods = require("./methods");
 
 /**
  * Class to control access to the Twitch api.
+ * @fires TwitchApi#refresh - Fired when access token is refreshed.
  */
-class TwitchApi{
+class TwitchApi extends EventEmitter{
 	/**
 	 * Initialize the api.
 	 * @param {object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
 	 */
 	constructor(config){
-		this.access_token = config.access_token || methods.getLocalAccessToken();
-		this.refresh_token = config.refresh_token || methods.getLocalRefreshToken();
+		super();
+		this.access_token = config.access_token;
+		this.refresh_token = config.refresh_token;
 		this.client_id = config.client_id || methods.getLocalClientId();
 		this.client_secret = config.client_secret || methods.getLocalClientSecret();
-
 		this.base = "https://api.twitch.tv/helix";
-		this.events = new EventEmitter();
 
 		methods.setApiUser(config);
 	}
@@ -28,12 +28,18 @@ class TwitchApi{
 	*****************/
 	/**
 	 * Throw a new error.
-	 * @param {string} err - The error message. 
+	 * @param {string} err - The error message.
+	 * @private
 	 */
 	_error(err){
 		throw new Error(err);
 	}
 
+	/**
+	 * Refresh the access token using the refresh token the class was initialized with.
+	 * @param {function} callback - The callback function.
+	 * @private
+	 */
 	_refresh(callback){
 		const data = {
 			client_id: this.client_id,
@@ -63,7 +69,16 @@ class TwitchApi{
 			if(refresh_token)
 				this.refresh_token = refresh_token;
 
-			this.events.emit("refresh", body);
+			/**
+			 * Refresh event fired when the access token is refreshed. Listening to this event lets you save new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
+			 * @event TwitchApi#refresh
+			 * @type {object}
+			 * @property {string} access_token - The new access token.
+			 * @property {string} refresh_token - The new refresh token. Is not always included.
+			 * @property {number} expires_in - The amount of time in seconds until the access token expires.
+			 * @property {array | string} scope - The scopes associated with the access token.
+			  */
+			this.emit("refresh", body);
 			callback();
 		});
 	}
@@ -72,6 +87,7 @@ class TwitchApi{
 	 * Send a GET request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to get.
 	 * @param {function} callback - The callback function containing results.
+	 * @private
 	 */
 	_get(endpoint, callback){
 		const options = {
@@ -84,7 +100,7 @@ class TwitchApi{
 		}
 
 		request(options, (err, response, body) => {
-			if(err) throw new Error(err);
+			if(err) this._error(err);
 			const status = response.statusCode;
 
 			if(status >= 400){
@@ -104,16 +120,45 @@ class TwitchApi{
 		});
 	}
 
-	_post(params, callback){
+	/**
+	 * Send a POST request to the specified api endpoint.
+	 * @param {string} endpoint - The endpoint to call.
+	 * @param {object} data - The json object of data to post.
+	 * @param {function} callback - The callback function.
+	 * @private
+	 */
+	_post(endpoint, data, callback){
 		const options = {
+			url: this.base+endpoint,
 			method: "POST",
 			json: true,
+			body: data,
 			headers: {
 				"Content-Type": "application/json",
 				"Authorization": "Bearer "+this.access_token,
 				"Client-ID": this.client_id
 			}
 		}
+
+		request(options, (err, response, body) => {
+			if(err) this._error(err);
+			const status = response.statusCode;
+
+			if(status >= 400){
+				console.error(`\Post request to ${options.url} failed:\n`+
+				`${status} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+			}
+
+			if(status === 401){
+				this.refresh_token(() => {
+					this._post(endpoint, callback);
+				});
+
+				return;
+			}
+
+			callback(response, JSON.parse(body));
+		});
 	}
 
 
