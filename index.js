@@ -5,6 +5,7 @@ const methods = require("./methods");
 /**
  * Class to control access to the Twitch api.
  * @fires TwitchApi#refresh - Fired when access token is refreshed.
+ * @fires TwitchApi#error - Fired when something goes wrong.
  */
 class TwitchApi extends EventEmitter{
 	/**
@@ -23,9 +24,12 @@ class TwitchApi extends EventEmitter{
 	}
 	
 
-	/*****************
+	/*
+	****************
 	PRIVATE METHODS
-	*****************/
+	****************
+	*/
+	
 	/**
 	 * Throw a new error.
 	 * @param {string} err - The error message.
@@ -57,29 +61,64 @@ class TwitchApi extends EventEmitter{
 			}
 		}
 
+		this._validate( (valid) => {
+			if(valid)
+				return;
+
+			request(options, (err, response, body) => {
+				if(err) this._error(err);
+
+				const access_token = body.access_token;
+				const refresh_token = body.refresh_token;
+
+				if(access_token)
+					this.access_token = access_token;
+
+				if(refresh_token)
+					this.refresh_token = refresh_token;
+
+				/**
+				 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
+				 * @event TwitchApi#refresh
+				 * @type {object}
+				 * @property {string} access_token - The new access token.
+				 * @property {string} refresh_token - The new refresh token. Is not always included.
+				 * @property {number} expires_in - The amount of time in seconds until the access token expires.
+				 * @property {array | string} scope - The scopes associated with the access token.
+				 */
+				this.emit("refresh", body);
+				callback();
+			});
+		});
+			
+	}
+
+	_validate(callback){
+		const options = {
+			url: "https://id.twitch.tv/oauth2/validate",
+			headers: {
+				"Authorization": "OAuth "+this.access_token
+			}
+		};
+
 		request(options, (err, response, body) => {
 			if(err) this._error(err);
+			const message = JSON.parse(body).message;
+			let valid = false;
 
-			const access_token = body.access_token;
-			const refresh_token = body.refresh_token;
+			switch(response.statusCode){
+				case 200:
+				valid = true;
+				break;
+				case 401:
+				valid = false;
+				break;
+			}
 
-			if(access_token)
-				this.access_token = access_token;
+			if(message === "missing authorization token")
+				this._error(message);
 
-			if(refresh_token)
-				this.refresh_token = refresh_token;
-
-			/**
-			 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
-			 * @event TwitchApi#refresh
-			 * @type {object}
-			 * @property {string} access_token - The new access token.
-			 * @property {string} refresh_token - The new refresh token. Is not always included.
-			 * @property {number} expires_in - The amount of time in seconds until the access token expires.
-			 * @property {array | string} scope - The scopes associated with the access token.
-			  */
-			this.emit("refresh", body);
-			callback();
+			callback(valid);
 		});
 	}
 
@@ -102,13 +141,33 @@ class TwitchApi extends EventEmitter{
 		request(options, (err, response, body) => {
 			if(err) this._error(err);
 			const status = response.statusCode;
+			const message = JSON.parse(body).message;
 
 			if(status >= 400){
-				console.error(`\nGet request to ${options.url} failed:\n`+
-				`${status} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+				const err_msg = `\nGet request to ${options.url} failed:\n`+
+				`${status} ${response.statusMessage}: ${message}\n`;
+				const err_obj = {
+					type: "http",
+					code: status,
+					statusMessage: response.statusMessage,
+					message: message
+				}
+
+				console.error(err_msg);
+
+				/**
+				 * Error event emitted when something fails in the api.
+				 * @event TwitchApi#error
+				 * @type {object}
+				 * @property {string} type - The type of error, eg. "http"
+				 * @property {number} code - The status code of the http request. 
+				 * @property {string} statusMessage - Short message explaining the error.
+				 * @property {string} message - Long message explaining the error.
+				 */
+				this.emit("error", err_obj);
 			}
 
-			if(status === 401){
+			if(status === 401){	
 				this._refresh( () => {
 					this._get(endpoint, callback);
 				});
@@ -143,10 +202,21 @@ class TwitchApi extends EventEmitter{
 		request(options, (err, response, body) => {
 			if(err) this._error(err);
 			const status = response.statusCode;
+			const message = JSON.parse(body).message;
 
 			if(status >= 400){
-				console.error(`\Post request to ${options.url} failed:\n`+
-				`${status} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
+				const err_msg = `\nPost request to ${options.url} failed:\n`+
+				`${status} ${response.statusMessage}: ${message}\n`;
+				const err_obj = {
+					type: "http",
+					code: status,
+					statusMessage: response.statusMessage,
+					message: message
+				}
+
+				console.error(err_msg);
+
+				this.emit("error", err_obj);
 			}
 
 			if(status === 401){
@@ -162,10 +232,26 @@ class TwitchApi extends EventEmitter{
 	}
 
 
-	/*****************
+	/* 
+	****************
 	PUBLIC METHODS
-	*****************/
+	**************** 
+	*/
+
 	// GET REQUESTS
+
+	/**
+	 * Get the bits leaderboard of a user or top users.
+	 * @param {object} options - The options for the request.
+	 * @param {function} callback - The callback function.
+	 */
+	getBitsLeaderboard(options, callback){
+		let query = "?";
+		query += methods.parseOptions(options);
+
+		const endpoint = "/bits/leaderboard"+query;
+		this._get(endpoint, callback);
+	}
 
 	/**
 	 * Get one or more users by their login names or twitch ids. If only one user is needed, a single string will suffice.
