@@ -7,16 +7,17 @@ A wrapper for the Helix twitch api in NodeJS.
 Class to control access to the Twitch api.
 
 **Kind**: global class
+**Emits**: <code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>
 
 * [TwitchApi](#TwitchApi)
     * [new TwitchApi(config)](#new_TwitchApi_new)
-    * [._get(endpoint, callback)](#TwitchApi+_get)
     * [.customRequest(endpoint, options)](#TwitchApi+customRequest)
     * [.getUsers(ids, callback)](#TwitchApi+getUsers)
     * [.getFollows(options, callback)](#TwitchApi+getFollows)
     * [.getSubsById(broadcaster_id, callback)](#TwitchApi+getSubsById)
     * [.getSubsStatus(options, callback)](#TwitchApi+getSubsStatus)
     * [.getStreams(options, callback)](#TwitchApi+getStreams)
+    * ["refresh"](#TwitchApi+event_refresh)
 
 <a name="new_TwitchApi_new"></a>
 
@@ -27,18 +28,6 @@ Initialize the api.
 | Param | Type | Description |
 | --- | --- | --- |
 | config | <code>object</code> | A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token. |
-
-<a name="TwitchApi+_get"></a>
-
-### twitchApi.\_get(endpoint, callback)
-Send a GET request to the specified api endpoint.
-
-**Kind**: instance method of [<code>TwitchApi</code>](#TwitchApi)
-
-| Param | Type | Description |
-| --- | --- | --- |
-| endpoint | <code>string</code> | The endpoint to get. |
-| callback | <code>function</code> | The callback function containing results. |
 
 <a name="TwitchApi+customRequest"></a>
 
@@ -111,3 +100,18 @@ Get one or more live streams.
 | --- | --- | --- |
 | options | <code>object</code> | A options object used to create the request. |
 | callback | <code>function</code> | The function that will be called when execution is finished. |
+
+<a name="TwitchApi+event_refresh"></a>
+
+### "refresh"
+Refresh event fired when the access token is refreshed. Listening to this event lets you save new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
+
+**Kind**: event emitted by [<code>TwitchApi</code>](#TwitchApi)
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| access_token | <code>string</code> | The new access token. |
+| refresh_token | <code>string</code> | The new refresh token. Is not always included. |
+| expires_in | <code>number</code> | The amount of time in seconds until the access token expires. |
+| scope | <code>array</code> \| <code>string</code> | The scopes associated with the access token. |
