@@ -20,6 +20,13 @@ class TwitchApi extends EventEmitter{
 		this.client_secret = config.client_secret || methods.getLocalClientSecret();
 		this.base = "https://api.twitch.tv/helix";
 
+		this.getCurrentUser( body => {
+			const data = body.data[0];
+
+			// Add user object to class instance.
+			this.user = data;
+		});
+
 		methods.setApiUser(config);
 	}
 	
@@ -167,7 +174,7 @@ class TwitchApi extends EventEmitter{
 				this.emit("error", err_obj);
 			}
 
-			if(status === 401){	
+			if(status >= 400){	
 				this._refresh( () => {
 					this._get(endpoint, callback);
 				});
@@ -175,7 +182,7 @@ class TwitchApi extends EventEmitter{
 				return;
 			}
 
-			callback(response, JSON.parse(body));
+			callback(JSON.parse(body), response);
 		});
 	}
 
@@ -227,7 +234,7 @@ class TwitchApi extends EventEmitter{
 				return;
 			}
 
-			callback(response, JSON.parse(body));
+			callback(JSON.parse(body), response);
 		});
 	}
 
@@ -283,6 +290,16 @@ class TwitchApi extends EventEmitter{
 	}
 
 	/**
+	 * Gets the currently authenticated users profile information.
+	 * @param {function} callback - The callback function.
+	 */
+	getCurrentUser(callback){
+		const endpoint = "/users";
+
+		this._get(endpoint, callback);
+	}
+
+	/**
 	 * Get follows to or from a channel.
 	 * @param {object} options - The options to customize the request.
 	 * @param {function} callback - The callback function.
@@ -308,33 +325,50 @@ class TwitchApi extends EventEmitter{
 	}
 
 	/**
-	 * Get subscriptions status of users to a broadcaster.
-	 * @param {object} options - An object containing a broadcaster_id and one or more user_ids.
+	 * Get subscription status of users to the current broadcaster.
+	 * @param {string | array} user_ids - The user id/ids to check against the currently authenticated user.
 	 * @param {function} callback - The callback function.
 	 */
-	getSubsStatus(options, callback){
+	getUsersSubStatus(user_ids, callback){
 		let query = "?";
 
-		query += `broadcaster_id=${options.broadcaster_id}`;
+		this.getCurrentUser( body => {
+			const user = body.data[0];
 
-		if(typeof options.user_ids === "string"){
-			query += "&user_id="+options.user_ids;
-		}else{
-			options.user_ids.forEach( id => {
-				query += "&user_id="+id;
-			});
-		}
+			query += `broadcaster_id=${user.id}`;
 
-		const endpoint = "/subscriptions"+query;
-		this._get(endpoint, callback);
+			if(typeof user_ids === "string"){
+				query += "&user_id="+user_ids;
+			}else{
+				user_ids.forEach( id => {
+					query += "&user_id="+id;
+				});
+			}
+
+			const endpoint = "/subscriptions"+query;
+			this._get(endpoint, callback);
+		});
+			
 	}
 
 	/**
 	 * Get one or more live streams.
-	 * @param {object} options - A options object used to create the request.
+	 * @param {object} options - An options object used to create the request.
+	 * @param {string} [options.after] - 	Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
+	 * @param {string} [options.before] - Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
+	 * @param {string} [options.community_id] - Returns streams in a specified community ID. You can specify up to 100 IDs.
+	 * @param {number} [options.first] - Maximum number of objects to return. Maximum: 100. Default: 20.
+	 * @param {string} [options.game_id] - Returns streams broadcasting a specified game ID. You can specify up to 100 IDs.
+	 * @param {string | array} options.channels - A list of user ids and/or user login names, or a string of a single user id or user login name.
 	 * @param {function} callback - The function that will be called when execution is finished.
 	 */
 	getStreams(options, callback){
+		if(!options.channels)
+			this._error("Channels not specified in getStreams()");
+
+		if(!callback)
+			this._error("No callback function passed to getStreams()");
+		
 		let query = "?";
 		const channels = options.channels;
 		delete options.channels;
@@ -361,13 +395,12 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Make a request to an endpoint that doesn't have a function.
-	 * @param {string} endpoint - The endpoint to call eg. "/games?id=493057"
-	 * @param {object} options - A request options object not including url key
+	 * @param {string} endpoint - The endpoint to call including query parameters eg. "/games?id=493057"
+	 * @param {object} options - A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it.
 	 */
 	customRequest(endpoint, options, callback){
 		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
 			this._error("No endpoint was provided, cannot perform custom request.");
-			return 0;
 		}
 			
 		if(endpoint[0] !== "/")
@@ -389,7 +422,7 @@ class TwitchApi extends EventEmitter{
 				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
 			}
 
-			callback(response, JSON.parse(body));
+			callback(JSON.parse(body), response);
 		});
 	}
 }
