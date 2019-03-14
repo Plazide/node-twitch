@@ -51,6 +51,10 @@ Initialize the api.
 | Param | Type | Description |
 | --- | --- | --- |
 | config | <code>object</code> | A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token. |
+| config.client_id | <code>string</code> | Your client id. |
+| config.client_secret | <code>string</code> | Your client secret. |
+| config.access_token | <code>string</code> | The access token from an authenticated user. |
+| config.refresh_token | <code>string</code> | The refresh token from an authenticated user. |
 
 <a name="TwitchApi+getBitsLeaderboard"></a>
 
