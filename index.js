@@ -16,6 +16,17 @@ const methods = require("./methods");
  * @fires TwitchApi#ready - Fired when the api is ready to use.
  * @fires TwitchApi#refresh - Fired when access token is refreshed.
  * @fires TwitchApi#error - Fired when something goes wrong.
+ * @property {object} user - Object containing information about the currently authenticated user.
+ * @property {string} user.broadcaster_type - User's broadcaster type: "partner", "affiliate", or "".
+ * @property {string} user.description - User's channel description.
+ * @property {string} user.display_name - User's display_name.
+ * @property {string} user.email - User's email address. Is only included if scope user:read:email was included in the authentication scopes.
+ * @property {string} user.id - User's ID.
+ * @property {string} user.login - User's login name.
+ * @property {string} user.offline_image_url - URL of the user's offline image.
+ * @property {string} user.profile_image_url - URL of the user's profile image.
+ * @property {string} user.type - User's type: "staff", "admin", "global_mod", or "".
+ * @property {number} user.view_count - Total number of views of the user's channel. Does not update overtime.
  */
 class TwitchApi extends EventEmitter{
 	/**
