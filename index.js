@@ -100,6 +100,10 @@ class TwitchApi extends EventEmitter{
 			
 	}
 
+	/**
+	 * Check validity of access token.
+	 * @param {function} callback - The callback function.
+	 */
 	_validate(callback){
 		const options = {
 			url: "https://id.twitch.tv/oauth2/validate",
