@@ -23,7 +23,10 @@ A wrapper for the Helix twitch api in NodeJS.
 Class to control access to the Twitch api.
 
 **Kind**: global class
-**Emits**: <code>TwitchApi#event:ready - Fired when the api is ready to use.</code>, <code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>, <code>TwitchApi#event:error - Fired when something goes wrong.</code>
+**Emits**:   
+<code>TwitchApi#event:ready - Fired when the api is ready to use.</code>,   
+<code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>,   
+<code>TwitchApi#event:error - Fired when something goes wrong.</code>
 
 * [TwitchApi](#TwitchApi)
     * [new TwitchApi(config)](#new_TwitchApi_new)
