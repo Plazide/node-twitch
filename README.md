@@ -28,6 +28,23 @@ Class to control access to the Twitch api.
 <code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>,   
 <code>TwitchApi#event:error - Fired when something goes wrong.</code>
 
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| user | <code>object</code> | Object containing information about the currently authenticated user. |
+| user.broadcaster_type | <code>string</code> | User's broadcaster type: "partner", "affiliate", or "". |
+| user.description | <code>string</code> | User's channel description. |
+| user.display_name | <code>string</code> | User's display_name. |
+| user.email | <code>string</code> | User's email address. Is only included if scope user:read:email was included in the authentication scopes. |
+| user.id | <code>string</code> | User's ID. |
+| user.login | <code>string</code> | User's login name. |
+| user.offline_image_url | <code>string</code> | URL of the user's offline image. |
+| user.profile_image_url | <code>string</code> | URL of the user's profile image. |
+| user.type | <code>string</code> | User's type: "staff", "admin", "global_mod", or "". |
+| user.view_count | <code>number</code> | Total number of views of the user's channel. Does not update overtime. |
+
+
 * [TwitchApi](#TwitchApi)
     * [new TwitchApi(config)](#new_TwitchApi_new)
     * [.getBitsLeaderboard(options, callback)](#TwitchApi+getBitsLeaderboard)
