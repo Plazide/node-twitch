@@ -21,6 +21,10 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Initialize the api.
 	 * @param {object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
+	 * @param {string} config.client_id - Your client id.
+	 * @param {string} config.client_secret - Your client secret.
+	 * @param {string} config.access_token - The access token from an authenticated user.
+	 * @param {string} config.refresh_token - The refresh token from an authenticated user.
 	 */
 	constructor(config){
 		super();
