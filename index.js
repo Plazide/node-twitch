@@ -6,9 +6,17 @@ const methods = require("./methods");
 /**
  * Api response callback.
  * @callback apiCallback
- * @param {object} body - A json parsed object containing the body of the response.
- * @param {object} response - The entire response object from the request.
+ * @param {Object} body - A json parsed object containing the body of the response.
+ * @param {Object} response - The entire response object from the request.
  */
+
+ /**
+  * @typedef {Object} apiError
+  * @property {string} type - The type of error, eg. "http"
+  * @property {number} code - The status code of the http request.
+  * @property {string} statusMessage - Short message explaining the error.
+  * @property {string} message - Long message explaining the error.
+  */
 
 
 /**
@@ -16,7 +24,7 @@ const methods = require("./methods");
  * @fires TwitchApi#ready - Fired when the api is ready to use.
  * @fires TwitchApi#refresh - Fired when access token is refreshed.
  * @fires TwitchApi#error - Fired when something goes wrong.
- * @property {object} user - Object containing information about the currently authenticated user.
+ * @property {Object} user - Object containing information about the currently authenticated user.
  * @property {string} user.broadcaster_type - User's broadcaster type: "partner", "affiliate", or "".
  * @property {string} user.description - User's channel description.
  * @property {string} user.display_name - User's display_name.
@@ -31,7 +39,7 @@ const methods = require("./methods");
 class TwitchApi extends EventEmitter{
 	/**
 	 * Initialize the api.
-	 * @param {object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
+	 * @param {Object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
 	 * @param {string} config.client_id - Your client id.
 	 * @param {string} config.client_secret - Your client secret.
 	 * @param {string} config.access_token - The access token from an authenticated user.
@@ -118,7 +126,7 @@ class TwitchApi extends EventEmitter{
 				/**
 				 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
 				 * @event TwitchApi#refresh
-				 * @type {object}
+				 * @type {Object}
 				 * @property {string} access_token - The new access token.
 				 * @property {string} refresh_token - The new refresh token. Is not always included.
 				 * @property {number} expires_in - The amount of time in seconds until the access token expires.
@@ -201,15 +209,12 @@ class TwitchApi extends EventEmitter{
 				/**
 				 * Error event emitted when something fails in the api.
 				 * @event TwitchApi#error
-				 * @type {object}
-				 * @property {string} type - The type of error, eg. "http"
-				 * @property {number} code - The status code of the http request. 
-				 * @property {string} statusMessage - Short message explaining the error.
-				 * @property {string} message - Long message explaining the error.
+				 * @type {apiError}
 				 */
 				this.emit("error", err_obj);
 			}
 
+			// If some error occurred, try to refresh the access token.
 			if(status >= 400){	
 				this._refresh( () => {
 					this._get(endpoint, callback);
@@ -225,7 +230,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Send a POST request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to call.
-	 * @param {object} data - The json object of data to post.
+	 * @param {Object} data - The json object of data to post.
 	 * @param {apiCallback} callback - The callback function.
 	 * @private
 	 */
@@ -285,7 +290,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Get the bits leaderboard of a user or top users.
-	 * @param {object} options - The options for the request.
+	 * @param {Object} options - The options for the request.
 	 * @param {number} [options.count] - Number of results to be returned. Maximum: 100. Default: 10.
 	 * @param {string} [options.period] - Time period over which data is aggregated (PST time zone). This parameter interacts with started_at. Valid values are given below. Default: "all". For more information visit the <a href="https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard">official api docs</a>.
 	 * @param {string} [options.started_at] - Timestamp for the period over which the returned data is aggregated. Must be in RFC 3339 format. Ignored if period is "all".
@@ -341,7 +346,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Get follows to or from a channel. Must provide either from_id or to_id.
-	 * @param {object} options - The options to customize the request.
+	 * @param {Object} options - The options to customize the request.
 	 * @param {string} [options.after] - Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
 	 * @param {number} [options.first] - Maximum number of objects to return. Maximum: 100. Default: 20.
 	 * @param {string} options.from_id -  User ID. Return list of channels that the supplied user is following.
@@ -399,7 +404,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Get one or more live streams.
-	 * @param {object} options - An options object used to create the request.
+	 * @param {Object} options - An options object used to create the request.
 	 * @param {string} [options.after] - 	Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
 	 * @param {string} [options.before] - Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
 	 * @param {string} [options.community_id] - Returns streams in a specified community ID. You can specify up to 100 IDs.
@@ -442,7 +447,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Make a request to an endpoint that doesn't have a function.
 	 * @param {string} endpoint - The endpoint to call including query parameters eg. "/games?id=493057"
-	 * @param {object} options - A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it.
+	 * @param {Object} options - A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it.
 	 * @param {apiCallback} callback - The callback function.
 	 */
 	customRequest(endpoint, options, callback){
