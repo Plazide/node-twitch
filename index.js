@@ -42,31 +42,46 @@ class TwitchApi extends EventEmitter{
 	 * @param {Object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
 	 * @param {string} config.client_id - Your client id.
 	 * @param {string} config.client_secret - Your client secret.
-	 * @param {string} config.access_token - The access token from an authenticated user.
-	 * @param {string} config.refresh_token - The refresh token from an authenticated user.
+	 * @param {string} [config.access_token] - The access token from an authenticated user.
+	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
+	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token.
 	 */
 	constructor(config){
 		super();
+		this.isApp = config.isApp || false;
 		this.access_token = config.access_token;
 		this.refresh_token = config.refresh_token;
 		this.client_id = config.client_id || methods.getLocalClientId();
 		this.client_secret = config.client_secret || methods.getLocalClientSecret();
 		this.base = "https://api.twitch.tv/helix";
 
-		this.getCurrentUser( body => {
-			const data = body.data[0];
+		if(this.isApp){
+			this._getAppAccessToken( result => {
+				this.access_token = result.access_token;
 
-			// Add user object to class instance.
-			this.user = data;
+				/**
+				 * Event fired when the api is ready to use.
+				 * @event TwitchApi#ready
+				 */
+				this.emit("ready");
+			});
+		}else{
+			this.getCurrentUser( body => {
+				const data = body.data[0];
 
-			/**
-			 * Event fired when the api is ready to use.
-			 * @event TwitchApi#ready
-			  */
-			this.emit("ready");
-		});
+				// Add user object to class instance.
+				this.user = data;
 
-		methods.setApiUser(config);
+				/**
+				 * Event fired when the api is ready to use.
+				 * @event TwitchApi#ready
+				 */
+				this.emit("ready");
+			});
+
+			methods.setApiUser(config);
+		}
+			
 	}
 	
 
@@ -83,6 +98,33 @@ class TwitchApi extends EventEmitter{
 	 */
 	_error(err){
 		throw new Error(err);
+	}
+
+	/**
+	 * Gets a app access token from the twitch api using the provided client id and client secret.
+	 * @param {apiCallback} callback 
+	 */
+	_getAppAccessToken(callback){
+		const data = {
+			client_id: this.client_id,
+			client_secret: this.client_secret,
+			grant_type: "client_credentials"
+		}
+		const options = {
+			url: "https://id.twitch.tv/oauth2/token",
+			method: "POST",
+			json:true,
+			body: data,
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}
+
+		request(options, (err, response, data) => {
+			if(err) this._error(err);
+
+			callback(data, response);
+		});
 	}
 
 	/**
@@ -110,6 +152,17 @@ class TwitchApi extends EventEmitter{
 		this._validate( (valid) => {
 			if(valid)
 				return;
+
+			if(this.isApp){
+				this._getAppAccessToken( result => {
+					this.access_token = result.access_token;
+
+					this.emit("refresh", result);
+					callback();
+				});
+
+				return;
+			}
 
 			request(options, (err, response, body) => {
 				if(err) this._error(err);
