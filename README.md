@@ -1,6 +1,9 @@
 # node-twitch
 This package aims to simplify calls to the Twitch api by making the endpoints available through simple method calls.
 
+### Early version
+The aim of this package is to make all twitch endpoints available through method calls in a single class. So far, the supported endpoints are limited. Therefore, a `customRequest()` method has been added to the api class. It lets you call any endpoint on the Twitch api using the authentication information already provided. For more info on this see [Unsupported endpoints](#unsupported-endpoints).
+
 ## Installation
 
 To install simply do,
@@ -61,7 +64,29 @@ api.on("ready", () => {
 });
 ```
 
+It's worth noting that it is not necessary to wait for the `ready` event when using this method of authentication. In this case the the only thing the `ready` event indicates is that you can access the `api.user` object, which makes it easier to read the current user's data. 
+
+### Unsupported endpoints
+If you wish to call an endpoint that is not yet supported by this package, refer to the following example:
+```JavaScript
+const TwitchApi = require("node-twitch");
+
+const api = new TwitchApi({
+	client_id: "YOUR TWITCH CLIENT ID",
+	client_secret:  "YOUR CLIENT SECRET",
+	access_token: "A USER'S ACCESS TOKEN",
+	refresh_token: "A USER'S REFRESH TOKEN"
+});
+
+// A custom request to get videos from a user_id
+api.customRequest("/videos?user_id=91919297", {method: "GET"}, body => {
+	console.log(body.data); // Prints array of the specified user's videos.
+});
+```
+
 For further information, read the documentation below.
+
+# Documentation
 
 ## Classes
 
