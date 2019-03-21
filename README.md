@@ -1,5 +1,5 @@
 # node-twitch
-A wrapper for the Helix twitch api in NodeJS.
+This package aims to simplify calls to the Twitch api by making the endpoints available through simple method calls. 
 
 ## Classes
 
@@ -163,8 +163,7 @@ Get one or more live streams.
 | --- | --- | --- |
 | options | <code>object</code> | An options object used to create the request. |
 | [options.after] | <code>string</code> | Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query. |
-| [options.before] | <code>string</code> | Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field
-of a prior query. |
+| [options.before] | <code>string</code> | Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query. |
 | [options.community_id] | <code>string</code> | Returns streams in a specified community ID. You can specify up to 100 IDs. |
 | [options.first] | <code>number</code> | Maximum number of objects to return. Maximum: 100. Default: 20. |
 | [options.game_id] | <code>string</code> | Returns streams broadcasting a specified game ID. You can specify up to 100 IDs. |
@@ -181,8 +180,7 @@ Make a request to an endpoint that doesn't have a function.
 | Param | Type | Description |
 | --- | --- | --- |
 | endpoint | <code>string</code> | The endpoint to call including query parameters eg. "/games?id=493057" |
-| options | <code>object</code> | A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first
-argument of the function, so there is no need to specify it. |
+| options | <code>object</code> | A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it. |
 | callback | [<code>apiCallback</code>](#apiCallback) | The callback function. |
 
 <a name="TwitchApi+event_ready"></a>
