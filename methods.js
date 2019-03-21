@@ -14,7 +14,7 @@ function getLocalRefreshToken(){
 }
 
 function setApiUser(config){
-	fs.writeFile(userFile, config, err => {
+	fs.writeFile(userFile, JSON.stringify(config), err => {
 		if(err && err.code === "ENOENT"){
 			fs.mkdir("./data", err => {
 				if(err) throw new Error(err);
