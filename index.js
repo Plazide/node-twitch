@@ -44,7 +44,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} config.client_secret - Your client secret.
 	 * @param {string} [config.access_token] - The access token from an authenticated user.
 	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
-	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token.
+	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information.
 	 */
 	constructor(config){
 		super();
