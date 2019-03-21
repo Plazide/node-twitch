@@ -1,5 +1,67 @@
 # node-twitch
-This package aims to simplify calls to the Twitch api by making the endpoints available through simple method calls. 
+This package aims to simplify calls to the Twitch api by making the endpoints available through simple method calls.
+
+## Installation
+
+To install simply do,
+```sh
+npm install node-twitch
+```
+
+## Usage
+Before using this package, you will have to create an application on twitch to retrieve a `client_id` and `client_secret`. Use the [official documentation](https://dev.twitch.tv/docs/authentication/#registration) as a guide.
+
+Refer to the example below for a basic usage guide.
+```JavaScript
+const TwitchApi = require("node-twitch");
+
+// Create a new instance of the TwitchApi class and use an app access token to authenticate requests.
+const api = new TwitchApi({
+	client_id: "YOUR TWITCH CLIENT ID",
+	client_secret: "YOUR CLIENT SECRET",
+	isApp: true // When this option is enabled, an application token will be automatically acquired from twitch.
+});
+
+// Wait for the api to start.
+api.on("ready", () => {
+	// Set the options for the request.
+	const options = {
+		// Channels accepts a string or an array of strings representing either a user_id or a user's login name.
+		channels: ["lirik", "shroud"]
+	}
+
+	// Call the streams endpoint.
+	// The callback contains a body and a response object.
+	// The body is the result returned from twitch,
+	// while the response contains the http request information.
+	api.getStreams(options, (body, response) => {
+		console.log(body.data[0].user_name); // Should print "LIRIK" if the stream is live.
+	});
+});
+```  
+The example above has set the `isApp` option set to `true`, which means that the api will automatically request an application token from the twitch api using your `client_id` and `client_secret`. Using this option simplifies the setup process of the api, but it prevents you from accessing any non-public user data. If you need to access private user data, such as subscribers or a user's email, you will need to authenticate the user on the client side and send the `access_token` and `refresh_token` to the server. The process of retrieving these tokens are outside the scope of this package. Refer to the [official documentation](https://dev.twitch.tv/docs/authentication/) on how to authenticate a user.
+
+To use the `access_token` and `refresh_token`, refer to the following example:
+```JavaScript
+const TwitchApi = require("node-twitch");
+
+// Create a new instance of the TwitchApi class.
+const api = new TwitchApi({
+	client_id: "YOUR TWITCH CLIENT ID",
+	client_secret:  "YOUR CLIENT SECRET",
+	access_token: "A USER'S ACCESS TOKEN",
+	refresh_token: "A USER'S REFRESH TOKEN"
+});
+
+// Wait for the api to start.
+api.on("ready", () => {
+	api.getCurrentUser( (body, response) => {
+		console.log(body.data[0].display_name); // Prints the currently authenticated user's display name.
+	});
+});
+```
+
+For further information, read the documentation below.
 
 ## Classes
 
