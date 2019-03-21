@@ -15,7 +15,7 @@ npm install node-twitch
 Before using this package, you will have to create an application on twitch to retrieve a `client_id` and `client_secret`. Use the [official documentation](https://dev.twitch.tv/docs/authentication/#registration) as a guide.
 
 Refer to the example below for a basic usage guide.
-```JavaScript
+```js
 const TwitchApi = require("node-twitch");
 
 // Create a new instance of the TwitchApi class and use an app access token to authenticate requests.
@@ -45,7 +45,7 @@ api.on("ready", () => {
 The example above has set the `isApp` option set to `true`, which means that the api will automatically request an application token from the twitch api using your `client_id` and `client_secret`. Using this option simplifies the setup process of the api, but it prevents you from accessing any non-public user data. If you need to access private user data, such as subscribers or a user's email, you will need to authenticate the user on the client side and send the `access_token` and `refresh_token` to the server. The process of retrieving these tokens are outside the scope of this package. Refer to the [official documentation](https://dev.twitch.tv/docs/authentication/) on how to authenticate a user.
 
 To use the `access_token` and `refresh_token`, refer to the following example:
-```JavaScript
+```js
 const TwitchApi = require("node-twitch");
 
 // Create a new instance of the TwitchApi class.
@@ -68,7 +68,7 @@ It's worth noting that it is not necessary to wait for the `ready` event when us
 
 ### Unsupported endpoints
 If you wish to call an endpoint that is not yet supported by this package, refer to the following example:
-```JavaScript
+```js
 const TwitchApi = require("node-twitch");
 
 const api = new TwitchApi({
