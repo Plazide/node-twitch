@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Plazide/node-twitch-api.git"
+    "url": "git+https://github.com/Plazide/node-twitch.git"
   },
   "keywords": [
     "twitch",
@@ -21,9 +21,9 @@
   "author": "Carl Hallén",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Plazide/node-twitch-api/issues"
+    "url": "https://github.com/Plazide/node-twitch/issues"
   },
-  "homepage": "https://github.com/Plazide/node-twitch-api#readme",
+  "homepage": "https://github.com/Plazide/node-twitch#readme",
   "dependencies": {
     "request": "^2.88.0"
   },
