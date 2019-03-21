@@ -1,7 +1,7 @@
 {
   "name": "node-twitch",
   "version": "0.1.0",
-  "description": "A wrapper for the Helix twitch api in NodeJS.",
+  "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "index.js",
   "scripts": {
     "test": "node test/test.js"
