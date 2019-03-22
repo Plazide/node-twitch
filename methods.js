@@ -13,6 +13,18 @@ function getLocalRefreshToken(){
 	return data.refresh_token;
 }
 
+function getLocalClientId(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.client_id;
+}
+
+function getLocalClientSecret(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.client_secret;
+}
+
 function setApiUser(config){
 	fs.writeFile(userFile, JSON.stringify(config), err => {
 		if(err && err.code === "ENOENT"){
