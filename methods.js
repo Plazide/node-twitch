@@ -35,8 +35,6 @@ function setApiUser(config){
 				return 0;
 			});
 		}
-
-		console.log("Updated tokens on disk!");
 	});
 }
 
@@ -55,6 +53,8 @@ function parseOptions(options){
 module.exports = {
 	getLocalAccessToken,
 	getLocalRefreshToken,
+	getLocalClientId,
+	getLocalClientSecret,
 	setApiUser,
 	parseOptions
 }
