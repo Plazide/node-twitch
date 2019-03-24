@@ -63,10 +63,6 @@ class TwitchApi extends EventEmitter{
 			this._getAppAccessToken( result => {
 				this.access_token = result.access_token;
 
-				/**
-				 * Event fired when the api is ready to use.
-				 * @event TwitchApi#ready
-				 */
 				this.emit("ready");
 			});
 		}else{
