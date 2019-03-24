@@ -54,6 +54,10 @@ class TwitchApi extends EventEmitter{
 		this.client_id = config.client_id || methods.getLocalClientId();
 		this.client_secret = config.client_secret || methods.getLocalClientSecret();
 		this.base = "https://api.twitch.tv/helix";
+		this.refresh_attempts = 0;
+
+		if(this.isApp && this.access_token)
+			this._error("Option isApp is set to true while an access_token is provided. Choose one method of authentication, do not use both.");
 
 		if(this.isApp){
 			this._getAppAccessToken( result => {
@@ -101,10 +105,18 @@ class TwitchApi extends EventEmitter{
 	}
 
 	/**
+	 * Checks if a event is handled or not.
+	 * @param {string} event - Name of the event to check.
+	 */
+	_isListeningFor(event){
+		return this.eventNames().indexOf(event) !== -1;
+	}
+
+	/**
 	 * Gets a app access token from the twitch api using the provided client id and client secret.
 	 * @param {apiCallback} callback 
 	 */
-	_getAppAccessToken(callback){
+	async _getAppAccessToken(callback){
 		const data = {
 			client_id: this.client_id,
 			client_secret: this.client_secret,
@@ -117,14 +129,20 @@ class TwitchApi extends EventEmitter{
 			body: data,
 			headers: {
 				"Content-Type": "application/json"
-			}
+			},
+			// Get the response object and not just the body.
+			resolveWithFullResponse: true,
+			simple: false
 		}
 
-		request(options, (err, response, data) => {
-			if(err) this._error(err);
+		const response = await request(options).catch(err => { this._error(err) });
+		const body = JSON.parse(response.body);
 
-			callback(data, response);
-		});
+		if(callback)
+			callback(body, response);
+		else
+			return body;
+
 	}
 
 	/**
@@ -132,7 +150,10 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} callback - The callback function.
 	 * @private
 	 */
-	_refresh(callback){
+	async _refresh(callback){
+		if(this.refresh_attempts > 1)
+			this._error("Refresh attempts have failed. Use the previously logged information as help.");
+
 		const data = {
 			client_id: this.client_id,
 			client_secret: this.client_secret,
@@ -146,50 +167,59 @@ class TwitchApi extends EventEmitter{
 			body: data,
 			headers: {
 				"Content-Type": "application/json"
-			}
+			},
+			// Get the response object and not just the body.
+			resolveWithFullResponse: true,
+			simple: false
 		}
 
-		this._validate( (valid) => {
-			if(valid)
-				return;
+		const valid = await this._validate();
+		if(valid)
+			return;
 
-			if(this.isApp){
-				this._getAppAccessToken( result => {
-					this.access_token = result.access_token;
+		if(this.isApp){
+			const result = await this._getAppAccessToken().catch( err => { this._error(err) });
+			this.access_token = result.access_token;
 
-					this.emit("refresh", result);
-					callback();
-				});
+			this.emit("refresh", result);
 
-				return;
-			}
-
-			request(options, (err, response, body) => {
-				if(err) this._error(err);
-
-				const access_token = body.access_token;
-				const refresh_token = body.refresh_token;
-
-				if(access_token)
-					this.access_token = access_token;
-
-				if(refresh_token)
-					this.refresh_token = refresh_token;
-
-				/**
-				 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
-				 * @event TwitchApi#refresh
-				 * @type {Object}
-				 * @property {string} access_token - The new access token.
-				 * @property {string} refresh_token - The new refresh token. Is not always included.
-				 * @property {number} expires_in - The amount of time in seconds until the access token expires.
-				 * @property {string|string[]} scope - The scopes associated with the access token.
-				 */
-				this.emit("refresh", body);
+			if(callback)
 				callback();
-			});
-		});
+				
+			return;
+		}
+
+		const response = await request(options).catch( err => { this._error(err) });
+		const body = response.body;
+
+		const access_token = body.access_token;
+		const refresh_token = body.refresh_token;
+
+		if(access_token)
+			this.access_token = access_token;
+
+		if(refresh_token)
+			this.refresh_token = refresh_token;
+
+		if(this._isListeningFor("refresh")){
+			/**
+			 * Refresh event fired when the access token is refreshed. Listening to this event lets you access new refresh and access tokens as they refresh. The refresh and access token in the existing instance will update automatically.
+			 * @event TwitchApi#refresh
+			 * @type {Object}
+			 * @property {string} access_token - The new access token.
+			 * @property {string} refresh_token - The new refresh token. Is not always included.
+			 * @property {number} expires_in - The amount of time in seconds until the access token expires.
+			 * @property {string|string[]} scope - The scopes associated with the access token.
+			 */
+			this.emit("refresh", body);
+		}
+
+		if(callback)
+			callback();
 			
+		this.refresh_attempts += 1;
+		
+		return;	
 	}
 
 	/**
@@ -197,33 +227,39 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} callback - The callback function.
 	 * @private
 	 */
-	_validate(callback){
+	async _validate(callback){
 		const options = {
 			url: "https://id.twitch.tv/oauth2/validate",
 			headers: {
 				"Authorization": "OAuth "+this.access_token
-			}
+			},
+			// Get the response object and not just the body.
+			resolveWithFullResponse: true,
+			simple: false
 		};
 
-		request(options, (err, response, body) => {
-			if(err) this._error(err);
-			const message = JSON.parse(body).message;
-			let valid = false;
+		const response = await request(options).catch(err => { this._error(err) });
+		const body = JSON.parse(response.body);
 
-			switch(response.statusCode){
-				case 200:
-				valid = true;
-				break;
-				case 401:
-				valid = false;
-				break;
-			}
+		const message = body.message;
+		let valid = false;
 
-			if(message === "missing authorization token")
-				this._error(message);
+		switch(response.statusCode){
+			case 200:
+			valid = true;
+			break;
+			case 401:
+			valid = false;
+			break;
+		}
 
+		if(message === "missing authorization token")
+			this._error(message);
+
+		if(callback)
 			callback(valid);
-		});
+		else
+			return valid;
 	}
 
 	/**
@@ -232,33 +268,43 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} callback - The callback function containing results.
 	 * @private
 	 */
-	_get(endpoint, callback){
+	async _get(endpoint, callback){
 		const options = {
 			url: this.base+endpoint,
 			method: "GET",
 			headers: {
 				"Client-ID": this.client_id,
 				"Authorization": "Bearer "+this.access_token
-			}
+			},
+			// Get the response object and not just the body.
+			resolveWithFullResponse: true,
+			simple: false
 		}
 
-		request(options, (err, response, body) => {
-			if(err) this._error(err);
-			const status = response.statusCode;
-			const message = JSON.parse(body).message;
+		const response = await request(options).catch(err => { this._error(err) });
+		const body = JSON.parse(response.body);
+		
+		const status = response.statusCode;
+		const message = body.message;
+		const regexp = new RegExp(/\bValid OAuth token with/i);
 
-			if(status >= 400){
-				const err_msg = `\nGet request to ${options.url} failed:\n`+
-				`${status} ${response.statusMessage}: ${message}\n`;
-				const err_obj = {
-					type: "http",
-					code: status,
-					statusMessage: response.statusMessage,
-					message: message
-				}
+		if(status >= 400){
+			const err_msg = new Error(`\nGet request to ${options.url} failed:\n`+
+			`${status} ${response.statusMessage}: ${message}\n`);
+			const err_obj = {
+				type: "http",
+				code: status,
+				statusMessage: response.statusMessage,
+				message: message
+			}
 
-				console.error(err_msg);
+			if(regexp.test(message)){
+				this._error(message);
+			}
 
+			console.error(err_msg);
+
+			if(this._isListeningFor("error")){
 				/**
 				 * Error event emitted when something fails in the api.
 				 * @event TwitchApi#error
@@ -266,18 +312,19 @@ class TwitchApi extends EventEmitter{
 				 */
 				this.emit("error", err_obj);
 			}
+			
+		}
 
-			// If some error occurred, try to refresh the access token.
-			if(status >= 400){	
-				this._refresh( () => {
-					this._get(endpoint, callback);
-				});
+		// If some error occurred, try to refresh the access token.
+		if(status >= 400){	
+			await this._refresh();
+			return await this._get(endpoint, callback);
+		}
 
-				return;
-			}
-
-			callback(JSON.parse(body), response);
-		});
+		if(callback){
+			callback(body, response);
+		}else
+			return body;
 	}
 
 	/**
@@ -287,7 +334,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} callback - The callback function.
 	 * @private
 	 */
-	_post(endpoint, data, callback){
+	async _post(endpoint, data, callback){
 		const options = {
 			url: this.base+endpoint,
 			method: "POST",
@@ -297,39 +344,46 @@ class TwitchApi extends EventEmitter{
 				"Content-Type": "application/json",
 				"Authorization": "Bearer "+this.access_token,
 				"Client-ID": this.client_id
-			}
+			},
+			// Get the response object and not just the body.
+			resolveWithFullResponse: true,
+			simple: false
 		}
 
-		request(options, (err, response, body) => {
-			if(err) this._error(err);
-			const status = response.statusCode;
-			const message = JSON.parse(body).message;
+		const response = await request(options).catch( err => { this._error(err) });
+		const body = JSON.parse(response.body);
+		
+		const status = response.statusCode;
+		const message = JSON.parse(body).message;
 
-			if(status >= 400){
-				const err_msg = `\nPost request to ${options.url} failed:\n`+
-				`${status} ${response.statusMessage}: ${message}\n`;
-				const err_obj = {
-					type: "http",
-					code: status,
-					statusMessage: response.statusMessage,
-					message: message
-				}
-
-				console.error(err_msg);
-
-				this.emit("error", err_obj);
+		if(status >= 400){
+			const err_msg = `\nPost request to ${options.url} failed:\n`+
+			`${status} ${response.statusMessage}: ${message}\n`;
+			const err_obj = {
+				type: "http",
+				code: status,
+				statusMessage: response.statusMessage,
+				message: message
 			}
 
-			if(status === 401){
-				this.refresh_token(() => {
-					this._post(endpoint, callback);
-				});
+			console.error(err_msg);
 
-				return;
-			}
+			this.emit("error", err_obj);
+		}
 
-			callback(JSON.parse(body), response);
-		});
+		if(status === 401){
+			this.refresh_token(() => {
+				this._post(endpoint, callback);
+			});
+
+			return;
+		}
+
+		if(callback)
+			callback(body, response);
+		else
+			return body;
+		
 	}
 
 
@@ -350,12 +404,16 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} [options.user_id] - ID of the user whose results are returned; i.e., the person who paid for the Bits. If user_id is not provided, the endpoint returns the Bits leaderboard data across top users (subject to the value of count).
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	getBitsLeaderboard(options, callback){
+	async getBitsLeaderboard(options, callback){
 		let query = "?";
 		query += methods.parseOptions(options);
 
 		const endpoint = "/bits/leaderboard"+query;
-		this._get(endpoint, callback);
+
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
@@ -363,7 +421,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string|string[]} ids - A list of ids and/or login names for the users to get. 
 	 * @param {apiCallback} callback - The function that will be called when execution is finished.
 	 */
-	getUsers(ids, callback){
+	async getUsers(ids, callback){
 		let query = "";
 
 		if(typeof ids === "string"){
@@ -384,17 +442,26 @@ class TwitchApi extends EventEmitter{
 
 		const endpoint = "/users"+query;
 
-		this._get(endpoint, callback);
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
 	 * Gets the currently authenticated users profile information.
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	getCurrentUser(callback){
+	async getCurrentUser(callback){
+		if(this.isApp)
+			this._error("Cannot get the current user when using an application token. Use access_token and refresh_token instead.");
+
 		const endpoint = "/users";
 
-		this._get(endpoint, callback);
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
@@ -406,14 +473,18 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} options.to_id - User ID. Return list of users who are following the supplied channel.
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	getFollows(options, callback){
+	async getFollows(options, callback){
 		let query = "?";
 
 		if(options)
 			query += methods.parseOptions(options);
 
 		const endpoint = "/users/follows"+query;
-		this._get(endpoint, callback);
+
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
@@ -421,11 +492,14 @@ class TwitchApi extends EventEmitter{
 	 * @param {string|number} broadcaster_id - The id of the twitch channel to get subscribers from.
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	getSubsById(broadcaster_id, callback){
+	async getSubsById(broadcaster_id, callback){
 		const query = `?broadcaster_id=${broadcaster_id}`;
 		const endpoint = "/subscriptions"+query;
 
-		this._get(endpoint, callback);
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
@@ -433,25 +507,29 @@ class TwitchApi extends EventEmitter{
 	 * @param {string|string[]} user_ids - The user id/ids to check against the currently authenticated user.
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	getUsersSubStatus(user_ids, callback){
+	async getUsersSubStatus(user_ids, callback){
 		let query = "?";
 
-		this.getCurrentUser( body => {
-			const user = body.data[0];
+		let user = await this.getCurrentUser(user_ids);
+		user = body.data[0];
 
-			query += `broadcaster_id=${user.id}`;
+		query += `broadcaster_id=${user.id}`;
 
-			if(typeof user_ids === "string"){
-				query += "&user_id="+user_ids;
-			}else{
-				user_ids.forEach( id => {
-					query += "&user_id="+id;
-				});
-			}
+		if(typeof user_ids === "string"){
+			query += "&user_id="+user_ids;
+		}else{
+			user_ids.forEach( id => {
+				query += "&user_id="+id;
+			});
+		}
 
-			const endpoint = "/subscriptions"+query;
+		const endpoint = "/subscriptions"+query;
+
+		if(callback)
 			this._get(endpoint, callback);
-		});
+		else
+			return await this._get(endpoint);
+		
 			
 	}
 
@@ -466,12 +544,9 @@ class TwitchApi extends EventEmitter{
 	 * @param {string|string[]} options.channels - A list of user ids and/or user login names, or a string of a single user id or user login name. This is not a native twitch api parameter.
 	 * @param {apiCallback} callback - The function that will be called when execution is finished.
 	 */
-	getStreams(options, callback){
+	async getStreams(options, callback){
 		if(!options.channels)
 			this._error("Channels not specified in getStreams()");
-
-		if(!callback)
-			this._error("No callback function passed to getStreams()");
 		
 		let query = "?";
 		const channels = options.channels;
@@ -494,7 +569,11 @@ class TwitchApi extends EventEmitter{
 		}
 
 		const endpoint = "/streams"+query;
-		this._get(endpoint, callback);
+
+		if(callback)
+			this._get(endpoint, callback);
+		else
+			return await this._get(endpoint);
 	}
 
 	/**
@@ -503,7 +582,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {Object} options - A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it.
 	 * @param {apiCallback} callback - The callback function.
 	 */
-	customRequest(endpoint, options, callback){
+	async customRequest(endpoint, options, callback){
 		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
 			this._error("No endpoint was provided, cannot perform custom request.");
 		}
@@ -516,20 +595,35 @@ class TwitchApi extends EventEmitter{
 			"Authorization": "Bearer "+this.access_token
 		};
 
+		if(!options)
+			options = {};
+
+		if(typeof options !== "object")
+			this._error("customRequest received an options parameter that was not of type object.");
+
 		options.url = this.base+endpoint;
 		options.headers = Object.assign(headers, options.headers);
+		options.resolveWithFullResponse = true;
+		options.simple = false;
 
-		request(options, (err, response, body) => {
-			if(err) throw new Error(err);
+		const response = await request(options).catch(err => { this._error(err) });
+		const body = JSON.parse(response.body);
 
-			if(response.statusCode >= 400){
-				console.log(`\Custom request to ${options.url} failed:\n`+
-				`${response.statusCode} ${response.statusMessage}: ${JSON.parse(body).message}\n`);
-			}
+		if(response.statusCode >= 400){
+			console.log(`\Custom request to ${options.url} failed:\n`+
+			`${response.statusCode} ${response.statusMessage}: ${body.message}\n`);
+		}
 
-			callback(JSON.parse(body), response);
-		});
+		if(callback)
+			callback(body, response);
+		else
+			return body;
 	}
 }
 
 module.exports = TwitchApi;
+
+process.on("unhandledRejection", (err) => {
+	console.error(err);
+	process.exit(1);
+})
