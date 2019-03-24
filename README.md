@@ -95,7 +95,7 @@ api.on("ready", async () => { // Uses an async function!!
 	
 });
 ```
-The biggest difference when using async/await is that the response object won't be available. Keep this in mind when deciding which syntax you'd like use for your project.
+The biggest difference when using async/await is that the response object won't be available. Keep this in mind when deciding which syntax you'd like to use for your project.
 
 ### Unsupported endpoints
 If you wish to call an endpoint that is not yet supported by this package, refer to the following example:
@@ -143,9 +143,12 @@ For further information, read the documentation below.
 Class to control access to the Twitch api.
 
 **Kind**: global class
-**Emits**: <code>TwitchApi#event:ready - Fired when the api is ready to use.</code>, <code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>, <code>TwitchApi#event:error - Fired when something goes wrong.</code>
-**Properties**
+**Emits**:  
+<code>TwitchApi#event:ready - Fired when the api is ready to use.</code>,  
+<code>TwitchApi#event:refresh - Fired when access token is refreshed.</code>,  
+<code>TwitchApi#event:error - Fired when something goes wrong.</code>  
 
+**Properties**
 | Name | Type | Description |
 | --- | --- | --- |
 | user | <code>Object</code> | Object containing information about the currently authenticated user. |
@@ -281,8 +284,7 @@ Get one or more live streams.
 | --- | --- | --- |
 | [options] | <code>Object</code> | An options object used to create the request. |
 | [options.after] | <code>string</code> | Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query. |
-| [options.before] | <code>string</code> | Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field
-of a prior query. |
+| [options.before] | <code>string</code> | Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query. |
 | [options.community_id] | <code>string</code> | Returns streams in a specified community ID. You can specify up to 100 IDs. |
 | [options.first] | <code>number</code> | Maximum number of objects to return. Maximum: 100. Default: 20. |
 | [options.game_id] | <code>string</code> | Returns streams broadcasting a specified game ID. You can specify up to 100 IDs. |
@@ -299,16 +301,9 @@ Make a request to an endpoint that doesn't have a function.
 | Param | Type | Description |
 | --- | --- | --- |
 | endpoint | <code>string</code> | The endpoint to call including query parameters eg. "/games?id=493057" |
-| options | <code>Object</code> | A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first
-argument of the function, so there is no need to specify it. |
+| options | <code>Object</code> | A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it. |
 | [callback] | [<code>apiCallback</code>](#apiCallback) | The callback function. |
 
-<a name="TwitchApi+event_ready"></a>
-
-### "ready"
-Event fired when the api is ready to use.
-
-**Kind**: event emitted by [<code>TwitchApi</code>](#TwitchApi)
 <a name="TwitchApi+event_ready"></a>
 
 ### "ready"
