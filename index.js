@@ -1,4 +1,4 @@
-const request = require("request");
+const request = require("request-promise-native");
 const { EventEmitter } = require("events");
 const methods = require("./methods");
 
