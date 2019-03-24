@@ -149,6 +149,7 @@ Class to control access to the Twitch api.
 <code>TwitchApi#event:error - Fired when something goes wrong.</code>  
 
 **Properties**
+
 | Name | Type | Description |
 | --- | --- | --- |
 | user | <code>Object</code> | Object containing information about the currently authenticated user. |
