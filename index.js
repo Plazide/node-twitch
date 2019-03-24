@@ -107,6 +107,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Checks if a event is handled or not.
 	 * @param {string} event - Name of the event to check.
+	 * @private
 	 */
 	_isListeningFor(event){
 		return this.eventNames().indexOf(event) !== -1;
@@ -114,7 +115,8 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Gets a app access token from the twitch api using the provided client id and client secret.
-	 * @param {apiCallback} callback 
+	 * @param {apiCallback} [callback]
+	 * @private
 	 */
 	async _getAppAccessToken(callback){
 		const data = {
@@ -147,7 +149,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Refresh the access token using the refresh token the class was initialized with.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
 	async _refresh(callback){
@@ -224,7 +226,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Check validity of access token.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
 	async _validate(callback){
@@ -265,7 +267,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Send a GET request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to get.
-	 * @param {apiCallback} callback - The callback function containing results.
+	 * @param {apiCallback} [callback] - The callback function containing results.
 	 * @private
 	 */
 	async _get(endpoint, callback){
@@ -331,7 +333,7 @@ class TwitchApi extends EventEmitter{
 	 * Send a POST request to the specified api endpoint.
 	 * @param {string} endpoint - The endpoint to call.
 	 * @param {Object} data - The json object of data to post.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
 	async _post(endpoint, data, callback){
@@ -402,7 +404,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} [options.period] - Time period over which data is aggregated (PST time zone). This parameter interacts with started_at. Valid values are given below. Default: "all". For more information visit the <a href="https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard">official api docs</a>.
 	 * @param {string} [options.started_at] - Timestamp for the period over which the returned data is aggregated. Must be in RFC 3339 format. Ignored if period is "all".
 	 * @param {string} [options.user_id] - ID of the user whose results are returned; i.e., the person who paid for the Bits. If user_id is not provided, the endpoint returns the Bits leaderboard data across top users (subject to the value of count).
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async getBitsLeaderboard(options, callback){
 		let query = "?";
@@ -419,7 +421,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Get one or more users by their login names or twitch ids. If only one user is needed, a single string will suffice.
 	 * @param {string|string[]} ids - A list of ids and/or login names for the users to get. 
-	 * @param {apiCallback} callback - The function that will be called when execution is finished.
+	 * @param {apiCallback} [callback] - The function that will be called when execution is finished.
 	 */
 	async getUsers(ids, callback){
 		let query = "";
@@ -450,7 +452,7 @@ class TwitchApi extends EventEmitter{
 
 	/**
 	 * Gets the currently authenticated users profile information.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async getCurrentUser(callback){
 		if(this.isApp)
@@ -471,7 +473,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {number} [options.first] - Maximum number of objects to return. Maximum: 100. Default: 20.
 	 * @param {string} options.from_id -  User ID. Return list of channels that the supplied user is following.
 	 * @param {string} options.to_id - User ID. Return list of users who are following the supplied channel.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async getFollows(options, callback){
 		let query = "?";
@@ -490,7 +492,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Get subscribers from a channel/broadcaster id.
 	 * @param {string|number} broadcaster_id - The id of the twitch channel to get subscribers from.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async getSubsById(broadcaster_id, callback){
 		const query = `?broadcaster_id=${broadcaster_id}`;
@@ -505,7 +507,7 @@ class TwitchApi extends EventEmitter{
 	/**
 	 * Get subscription status of users to the current broadcaster.
 	 * @param {string|string[]} user_ids - The user id/ids to check against the currently authenticated user.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async getUsersSubStatus(user_ids, callback){
 		let query = "?";
@@ -580,7 +582,7 @@ class TwitchApi extends EventEmitter{
 	 * Make a request to an endpoint that doesn't have a function.
 	 * @param {string} endpoint - The endpoint to call including query parameters eg. "/games?id=493057"
 	 * @param {Object} options - A request options object, see the <a href="https://www.npmjs.com/package/request#requestoptions-callback">request module</a> for all available options. The url parameter will be overwritten by the first argument of the function, so there is no need to specify it.
-	 * @param {apiCallback} callback - The callback function.
+	 * @param {apiCallback} [callback] - The callback function.
 	 */
 	async customRequest(endpoint, options, callback){
 		if(typeof endpoint !== "string" || endpoint === "" || !endpoint){
