@@ -134,7 +134,7 @@ class TwitchApi extends EventEmitter{
 		}
 
 		const response = await request(options).catch(err => { this._error(err) });
-		const body = JSON.parse(response.body);
+		const body = response.body;
 
 		if(callback)
 			callback(body, response);
