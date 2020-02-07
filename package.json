@@ -28,12 +28,13 @@
   },
   "homepage": "https://github.com/Plazide/node-twitch#readme",
   "dependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-plazide": "^0.1.4",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-plazide": "^0.1.4",
+    "eslint-plugin-jest": "^23.6.0",
     "jest": "^25.1.0",
     "minami": "^1.2.3",
     "nodemon": "^1.18.10"
