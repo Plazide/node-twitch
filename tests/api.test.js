@@ -8,7 +8,6 @@ const api = new TwitchApi({
 	scopes: ["bits:read", "channel:read:subscriptions"]
 });
 
-
 test("should return array of single username", async () => {
 	const result = await api.getUsers("iamstreaming");
 
@@ -16,7 +15,7 @@ test("should return array of single username", async () => {
 });
 
 test("should return array", async () => {
-	const result = await api.getFollows({to_id: 48504279});
+	const result = await api.getFollows({ to_id: 48504279 });
 
 	expect(result.data.length).toBeGreaterThan(1);
 });
