@@ -9,7 +9,8 @@
 		"readme": "./README.md",
 		"recurse": true,
 		"verbose": true,
-		"template": "./node_modules/clean-jsdoc-theme"
+		"template": "./node_modules/clean-jsdoc-theme",
+		"destination": "docs/"
 	},
 	"plugins": ["plugins/markdown"]
 }
