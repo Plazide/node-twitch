@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>lib/getCurrentUser.js</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/search.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script> -->
+    <script src="scripts/fuse.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme.css">
+    
+    
+    
+<svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>
+
+</head>
+<body>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html"><div class="text">Home</div></a></h2><div class="search-box"><input type="text" placeholder="Search..." id="search-box" /><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-list-div"><h3>Classes</h3><ul><li><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type='method'><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type='method'><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type='method'><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type='method'><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type='method'><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type='method'><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type='method'><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type='method'><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="TwitchApi.html#event:error">error</a></li><li><a href="TwitchApi.html#event:ready">ready</a></li><li><a href="TwitchApi.html#event:refresh">refresh</a></li></ul></div>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/getCurrentUser.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Gets the currently authenticated users profile information.
+ * @param {apiCallback} [callback] - The callback function.
+ * @memberof TwitchApi
+ * @inner
+*/
+async function getCurrentUser (callback){
+	if(this.isApp)
+		this._error("Cannot get the current user when using an application token. Use access_token and refresh_token instead.");
+
+	const endpoint = "/users";
+
+	if(callback)
+		this._get(endpoint, callback);
+	else
+		return this._get(endpoint);
+};
+
+module.exports = getCurrentUser;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+  
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script>
+var list = [{"title":"TwitchApi","link":"<a href=\"TwitchApi.html\">TwitchApi</a>"},{"title":"TwitchApi~customRequest","link":"<a href=\"TwitchApi.html#~customRequest\">TwitchApi~customRequest &rtrif; undefined</a>"},{"title":"TwitchApi~getBitsLeaderboard","link":"<a href=\"TwitchApi.html#~getBitsLeaderboard\">TwitchApi~getBitsLeaderboard &rtrif; undefined</a>"},{"title":"TwitchApi~getCurrentUser","link":"<a href=\"TwitchApi.html#~getCurrentUser\">TwitchApi~getCurrentUser &rtrif; undefined</a>"},{"title":"TwitchApi~getFollows","link":"<a href=\"TwitchApi.html#~getFollows\">TwitchApi~getFollows &rtrif; undefined</a>"},{"title":"TwitchApi~getStreams","link":"<a href=\"TwitchApi.html#~getStreams\">TwitchApi~getStreams &rtrif; undefined</a>"},{"title":"TwitchApi~getSubsById","link":"<a href=\"TwitchApi.html#~getSubsById\">TwitchApi~getSubsById &rtrif; undefined</a>"},{"title":"TwitchApi~getUsers","link":"<a href=\"TwitchApi.html#~getUsers\">TwitchApi~getUsers &rtrif; undefined</a>"},{"title":"TwitchApi~getUsersSubStatus","link":"<a href=\"TwitchApi.html#~getUsersSubStatus\">TwitchApi~getUsersSubStatus &rtrif; undefined</a>"},{"title":"error","link":"<a href=\"TwitchApi.html#event:error\">error</a>"},{"title":"ready","link":"<a href=\"TwitchApi.html#event:ready\">ready</a>"},{"title":"refresh","link":"<a href=\"TwitchApi.html#event:refresh\">refresh</a>"}];
+setupSearch(list)
+</script>
+
+ 
+<script type="text/javascript" src="scripts/misc.js"></script>
+</body>
+</html>
