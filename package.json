@@ -1,10 +1,10 @@
 {
   "name": "node-twitch",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "index.js",
   "scripts": {
-	"patch": "npm test && npm version patch && echo published",
+    "patch": "npm test && npm version patch && echo published",
     "test": "jest"
   },
   "repository": {
