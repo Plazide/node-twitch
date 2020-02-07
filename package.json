@@ -4,7 +4,7 @@
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "index.js",
   "scripts": {
-	"deploy": "npm test && npm version from-git",
+	"patch": "npm test && npm version patch && echo published",
     "test": "jest"
   },
   "repository": {
