@@ -18,6 +18,7 @@ const customRequest = require("./lib/customRequest");
  * @callback apiCallback
  * @param {Object} body - A json parsed object containing the body of the response.
  * @param {Object} response - The entire response object from the request.
+ * @memberof TwitchApi
  */
 
 /**
@@ -26,6 +27,7 @@ const customRequest = require("./lib/customRequest");
   * @property {number} code - The status code of the http request.
   * @property {string} statusMessage - Short message explaining the error.
   * @property {string} message - Long message explaining the error.
+  * @memberof TwitchApi
   */
 
 /**
