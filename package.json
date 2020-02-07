@@ -7,7 +7,7 @@
     "patch": "npm test && npm version patch && git push && npm publish",
     "minor": "npm test && npm version minor && git push && npm publish",
     "major": "npm test && npm version major && git push && npm publish",
-    "docs": "jsdoc --configure .jsdoc.json --verbose",
+    "docs": "jsdoc --configure .jsdoc.json",
     "test": "jest"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
-    "clean-jsdoc-theme": "^2.2.10",
+    "better-docs": "^1.4.7",
     "eslint": "^6.8.0",
     "eslint-config-plazide": "^0.1.5",
     "eslint-plugin-jest": "^23.6.0",
