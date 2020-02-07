@@ -42,19 +42,21 @@ class TwitchApi extends EventEmitter{
 	 * @param {Object} config - A configuration object containing your client_id and client_secret, as well as an access_token and refresh_token.
 	 * @param {string} config.client_id - Your client id.
 	 * @param {string} config.client_secret - Your client secret.
+	 * @param {string[]} [config.scopes] - The scopes that your application requires. Only needed when using a user access token.
 	 * @param {string} [config.access_token] - The access token from an authenticated user.
 	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
 	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information.
 	 */
-	constructor(config){
+	constructor({ isApp, access_token, refresh_token, client_id, client_secret, scopes }){
 		super();
-		this.isApp = config.isApp || false;
-		this.access_token = config.access_token;
-		this.refresh_token = config.refresh_token;
-		this.client_id = config.client_id || methods.getLocalClientId();
-		this.client_secret = config.client_secret || methods.getLocalClientSecret();
+		this.isApp = isApp || false;
+		this.access_token = access_token;
+		this.refresh_token = refresh_token;
+		this.client_id = client_id || methods.getLocalClientId();
+		this.client_secret = client_secret || methods.getLocalClientSecret();
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
+		this.scopes = scopes;
 
 		if(this.isApp && this.access_token)
 			this._error("Option isApp is set to true while an access_token is provided. Choose one method of authentication, do not use both.");
@@ -118,7 +120,8 @@ class TwitchApi extends EventEmitter{
 		const data = {
 			client_id: this.client_id,
 			client_secret: this.client_secret,
-			grant_type: "client_credentials"
+			grant_type: "client_credentials",
+			scope: this.scopes.join(" ")
 		}
 		const options = {
 			url: "https://id.twitch.tv/oauth2/token",
