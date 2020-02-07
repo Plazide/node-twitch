@@ -1,0 +1,15 @@
+{
+	"source": {
+		"include": ["index.js", "lib", "package.json", "README.md"],
+		"includePattern": ".js$",
+		"excludePattern": "(node_modules/|docs)"
+	},
+	"opts": {
+		"encoding": "utf8",
+		"readme": "./README.md",
+		"recurse": true,
+		"verbose": true,
+		"template": "./node_modules/clean-jsdoc-theme"
+	},
+	"plugins": ["plugins/markdown"]
+}
