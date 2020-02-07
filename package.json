@@ -4,7 +4,7 @@
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "jest && echo Bobby"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
+    "jest": "^25.1.0",
     "minami": "^1.2.3",
     "nodemon": "^1.18.10"
   }
