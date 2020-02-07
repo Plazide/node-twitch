@@ -4,10 +4,10 @@
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "index.js",
   "scripts": {
-	  "patch": "npm test && npm version patch && git push && npm publish",
-	  "minor": "npm test && npm version minor && git push && npm publish",
-	  "major": "npm test && npm version major && git push && npm publish",
-	  "test": "jest"
+    "patch": "npm test && npm version patch && git push && npm publish",
+    "minor": "npm test && npm version minor && git push && npm publish",
+    "major": "npm test && npm version major && git push && npm publish",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/Plazide/node-twitch#readme",
   "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-plazide": "^0.1.4",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
