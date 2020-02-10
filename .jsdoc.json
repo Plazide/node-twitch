@@ -1,6 +1,6 @@
 {
 	"source": {
-		"include": ["index.js", "lib", "package.json", "README.md"],
+		"include": ["index.js", "lib", "README.md"],
 		"includePattern": ".js$",
 		"excludePattern": "(node_modules/|docs)"
 	},
@@ -9,8 +9,11 @@
 		"readme": "./README.md",
 		"recurse": true,
 		"verbose": true,
-		"template": "node_modules/better-docs",
+		"template": "node_modules/braintree-jsdoc-template",
 		"destination": "./docs/"
 	},
-	"plugins": ["plugins/markdown"]
+	"plugins": ["plugins/markdown"],
+	"templates": {
+		"referenceTitle": "Node Twitch Reference"
+	}
 }
