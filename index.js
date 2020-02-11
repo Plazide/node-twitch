@@ -3,17 +3,6 @@ const request = require("request-promise-native");
 const{ EventEmitter } = require("events");
 const methods = require("./methods");
 
-// Import api methods
-const getUsers = require("./lib/getUsers");
-const getBitsleaderboard = require("./lib/getBitsleaderboard");
-const getCurrentUser = require("./lib/getCurrentUser");
-const getFollows = require("./lib/getFollows");
-const getUsersSubStatus = require("./lib/getUsersSubStatus");
-const getSubsById = require("./lib/getSubsById");
-const getStreams = require("./lib/getStreams");
-const customRequest = require("./lib/customRequest");
-const getGames = require("./lib/getGames");
-
 /**
  * Api response callback.
  * @callback apiCallback
@@ -392,15 +381,15 @@ class TwitchApi extends EventEmitter{
 }
 
 // Public methods
-TwitchApi.prototype.getUsers = getUsers;
-TwitchApi.prototype.getBitsleaderboard = getBitsleaderboard;
-TwitchApi.prototype.getCurrentUser = getCurrentUser;
-TwitchApi.prototype.getFollows = getFollows;
-TwitchApi.prototype.getUsersSubStatus = getUsersSubStatus;
-TwitchApi.prototype.getSubsById = getSubsById;
-TwitchApi.prototype.getStreams = getStreams;
-TwitchApi.prototype.customRequest = customRequest;
-TwitchApi.prototype.getGames = getGames;
+TwitchApi.prototype.getUsers = require("./lib/getUsers");
+TwitchApi.prototype.getBitsleaderboard = require("./lib/getBitsleaderboard");
+TwitchApi.prototype.getCurrentUser = require("./lib/getCurrentUser");
+TwitchApi.prototype.getFollows = require("./lib/getFollows");
+TwitchApi.prototype.getUsersSubStatus = require("./lib/getUsersSubStatus");
+TwitchApi.prototype.getSubsById = require("./lib/getSubsById");
+TwitchApi.prototype.getStreams = require("./lib/getStreams");
+TwitchApi.prototype.customRequest = require("./lib/customRequest");
+TwitchApi.prototype.getGames = require("./lib/getGames");
 
 module.exports = TwitchApi;
 
