@@ -49,11 +49,38 @@ function parseOptions(options){
 	return query;
 }
 
+/**
+ * Parse an array with mixed string and number types into a query string.
+ * @param {object} options - Options for creating string.
+ * @param {string} string - Key to use for string values.
+ * @param {string} numeric - Key to use for numeric values.
+ * @returns Query string
+ */
+function parseMixedParam({ values, string, numeric }){
+	let query = "";
+
+	if(values)
+		if(typeof values === "string"){
+			const type = isNaN(values) ? string : numeric;
+
+			query += `${type}=${values}&`;
+		}else{
+			for(let channel of values){
+				const type = isNaN(channel) ? string : numeric;
+
+				query += `${type}=${channel}&`;
+			}
+		}
+
+	return query;
+}
+
 module.exports = {
 	getLocalAccessToken,
 	getLocalRefreshToken,
 	getLocalClientId,
 	getLocalClientSecret,
 	setApiUser,
-	parseOptions
+	parseOptions,
+	parseMixedParam
 };
