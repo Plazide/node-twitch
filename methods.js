@@ -1,31 +1,31 @@
 const fs = require("fs");
 const userFile = "./data/apiUser.json";
 
-function getLocalAccessToken (){
+function getLocalAccessToken(){
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.access_token;
 }
 
-function getLocalRefreshToken (){
+function getLocalRefreshToken(){
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.refresh_token;
 }
 
-function getLocalClientId (){
+function getLocalClientId(){
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.client_id;
 }
 
-function getLocalClientSecret (){
+function getLocalClientSecret(){
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.client_secret;
 }
 
-function setApiUser (config){
+function setApiUser(config){
 	fs.writeFile(userFile, JSON.stringify(config), err => {
 		if(err && err.code === "ENOENT")
 			fs.mkdir("./data", err => {
@@ -37,7 +37,7 @@ function setApiUser (config){
 	});
 }
 
-function parseOptions (options){
+function parseOptions(options){
 	let query = "";
 
 	for(let key in options){
