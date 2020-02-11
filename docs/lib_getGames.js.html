@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getGames">getGames</a></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -96,6 +96,8 @@
  * Get games by their name or id.
  * @param {string[]|number[]|string} games - Array of numbers representing game ids and/or strings representing the exact name of games.
  * @param {function} callback - Function to be called when execution has finished.
+ * @memberof TwitchApi
+ * @inner
  */
 async function getGames(games, callback){
 	console.log(games);
