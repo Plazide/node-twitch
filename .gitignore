@@ -1,4 +1,2 @@
 node_modules
-data/*
-test/*
-out/*
+data
