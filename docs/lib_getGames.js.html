@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      lib/getBitsleaderboard.js - Documentation
+      lib/getGames.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        lib/getBitsleaderboard.js
+        lib/getGames.js
       </h1>
     
 
@@ -90,32 +90,30 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>const{ parseOptions } = require("../methods");
+    <pre class="prettyprint source linenums"><code>const{ parseMixedParam } = require("../methods");
 
 /**
- * Get the bits leaderboard of a user or top users.
- * @param {Object} options - The options for the request.
- * @param {number} [options.count] - Number of results to be returned. Maximum: 100. Default: 10.
- * @param {string} [options.period] - Time period over which data is aggregated (PST time zone). This parameter interacts with started_at. Valid values are given below. Default: "all". For more information visit the &lt;a href="https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard">official api docs&lt;/a>.
- * @param {string} [options.started_at] - Timestamp for the period over which the returned data is aggregated. Must be in RFC 3339 format. Ignored if period is "all".
- * @param {string} [options.user_id] - ID of the user whose results are returned; i.e., the person who paid for the Bits. If user_id is not provided, the endpoint returns the Bits leaderboard data across top users (subject to the value of count).
- * @param {apiCallback} [callback] - The callback function.
- * @memberof TwitchApi
- * @inner
-*/
-async function getBitsLeaderboard(options, callback){
-	let query = "?";
-	query += parseOptions(options);
+ * Get games by their name or id.
+ * @param {string[]|number[]|string} games - Array of numbers representing game ids and/or strings representing the exact name of games.
+ * @param {function} callback - Function to be called when execution has finished.
+ */
+async function getGames(games, callback){
+	console.log(games);
+	if(!Array.isArray(games) &amp;&amp; typeof games !== "string")
+		this._error("games must be either a string or an array of strings and/or numbers");
 
-	const endpoint = "/bits/leaderboard" + query;
+	let query = "?";
+	query += parseMixedParam({ values: games, string: "name", numeric: "id" });
+
+	const endpoint = "/games" + query;
 
 	if(callback)
 		this._get(endpoint, callback);
 	else
 		return this._get(endpoint);
-};
+}
 
-module.exports = getBitsLeaderboard;
+module.exports = getGames;
 </code></pre>
   </article>
 </section>
