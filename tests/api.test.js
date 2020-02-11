@@ -8,6 +8,35 @@ const api = new TwitchApi({
 	scopes: ["bits:read", "channel:read:subscriptions"]
 });
 
+/* Unit tests */
+test("should be falsy", () => {
+	const result = api._isListeningFor("error");
+
+	expect(result).toBeFalsy();
+});
+
+test("should be truthy", () => {
+	api.on("error", () => {
+		console.log("error");
+	});
+
+	const result = api._isListeningFor("error");
+	expect(result).toBeTruthy();
+});
+
+test("should throw error", () => {
+	expect( () => {
+		api._error("Error");
+	}).toThrow();
+});
+
+test("should do stuff", async () => {
+	const result = await api._getAppAccessToken();
+
+	console.log(result);
+	expect(result.access_token).toBeDefined();
+});
+
 test("should return array of single username", async () => {
 	const result = await api.getUsers("iamstreaming");
 
