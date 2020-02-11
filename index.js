@@ -12,6 +12,7 @@ const getUsersSubStatus = require("./lib/getUsersSubStatus");
 const getSubsById = require("./lib/getSubsById");
 const getStreams = require("./lib/getStreams");
 const customRequest = require("./lib/customRequest");
+const getGames = require("./lib/getGames");
 
 /**
  * Api response callback.
@@ -399,6 +400,7 @@ TwitchApi.prototype.getUsersSubStatus = getUsersSubStatus;
 TwitchApi.prototype.getSubsById = getSubsById;
 TwitchApi.prototype.getStreams = getStreams;
 TwitchApi.prototype.customRequest = customRequest;
+TwitchApi.prototype.getGames = getGames;
 
 module.exports = TwitchApi;
 
