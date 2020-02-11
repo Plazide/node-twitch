@@ -119,4 +119,4 @@ For further information, read the documentation below.
 
 # Documentation
 
-- [Documentation](https://plazide.github.io/node-twitch/node-twitch/0.1.3/)
+- [Documentation](https://plazide.github.io/node-twitch/)
