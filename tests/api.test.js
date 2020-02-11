@@ -67,3 +67,9 @@ test("should return array of videos", async () => {
 
 	expect(result.data).toBeInstanceOf(Array);
 });
+
+test("should return a game", async () => {
+	const result = await api.getGames("493057");
+
+	expect(result.data).toHaveLength(1);
+} );
