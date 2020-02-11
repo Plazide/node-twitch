@@ -58,7 +58,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
 	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information.
 	 */
-	constructor (config){
+	constructor(config){
 		super();
 		const{ isApp, access_token, refresh_token, client_id, client_secret, scopes } = config;
 		this.isApp = isApp || false;
@@ -108,7 +108,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} err - The error message.
 	 * @private
 	 */
-	_error (err){
+	_error(err){
 		throw new Error(err);
 	}
 
@@ -117,7 +117,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string} event - Name of the event to check.
 	 * @private
 	 */
-	_isListeningFor (event){
+	_isListeningFor(event){
 		return this.eventNames().indexOf(event) !== -1;
 	}
 
@@ -126,7 +126,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} [callback]
 	 * @private
 	 */
-	async _getAppAccessToken (callback){
+	async _getAppAccessToken(callback){
 		const data = {
 			client_id: this.client_id,
 			client_secret: this.client_secret,
@@ -160,7 +160,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
-	async _refresh (callback){
+	async _refresh(callback){
 		if(this.refresh_attempts > 1)
 			this._error("Refresh attempts have failed. Use the previously logged information as help.");
 
@@ -234,7 +234,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
-	async _validate (callback){
+	async _validate(callback){
 		const options = {
 			url: "https://id.twitch.tv/oauth2/validate",
 			headers: {
@@ -275,7 +275,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} [callback] - The callback function containing results.
 	 * @private
 	 */
-	async _get (endpoint, callback){
+	async _get(endpoint, callback){
 		const options = {
 			url: this.base + endpoint,
 			method: "GET",
@@ -338,7 +338,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {apiCallback} [callback] - The callback function.
 	 * @private
 	 */
-	async _post (endpoint, data, callback){
+	async _post(endpoint, data, callback){
 		const options = {
 			url: this.base + endpoint,
 			method: "POST",
