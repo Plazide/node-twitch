@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getTopGames">getTopGames</a></li></ul>
   </nav>
 
   <div id="main">
@@ -94,17 +94,6 @@
 const request = require("request-promise-native");
 const{ EventEmitter } = require("events");
 const methods = require("./methods");
-
-// Import api methods
-const getUsers = require("./lib/getUsers");
-const getBitsleaderboard = require("./lib/getBitsleaderboard");
-const getCurrentUser = require("./lib/getCurrentUser");
-const getFollows = require("./lib/getFollows");
-const getUsersSubStatus = require("./lib/getUsersSubStatus");
-const getSubsById = require("./lib/getSubsById");
-const getStreams = require("./lib/getStreams");
-const customRequest = require("./lib/customRequest");
-const getGames = require("./lib/getGames");
 
 /**
  * Api response callback.
@@ -484,15 +473,17 @@ class TwitchApi extends EventEmitter{
 }
 
 // Public methods
-TwitchApi.prototype.getUsers = getUsers;
-TwitchApi.prototype.getBitsleaderboard = getBitsleaderboard;
-TwitchApi.prototype.getCurrentUser = getCurrentUser;
-TwitchApi.prototype.getFollows = getFollows;
-TwitchApi.prototype.getUsersSubStatus = getUsersSubStatus;
-TwitchApi.prototype.getSubsById = getSubsById;
-TwitchApi.prototype.getStreams = getStreams;
-TwitchApi.prototype.customRequest = customRequest;
-TwitchApi.prototype.getGames = getGames;
+TwitchApi.prototype.getUsers = require("./lib/getUsers");
+TwitchApi.prototype.getBitsleaderboard = require("./lib/getBitsleaderboard");
+TwitchApi.prototype.getCurrentUser = require("./lib/getCurrentUser");
+TwitchApi.prototype.getFollows = require("./lib/getFollows");
+TwitchApi.prototype.getUsersSubStatus = require("./lib/getUsersSubStatus");
+TwitchApi.prototype.getSubsById = require("./lib/getSubsById");
+TwitchApi.prototype.getStreams = require("./lib/getStreams");
+TwitchApi.prototype.customRequest = require("./lib/customRequest");
+TwitchApi.prototype.getGames = require("./lib/getGames");
+TwitchApi.prototype.getTopGames = require("./lib/getTopGames");
+TwitchApi.prototype.getVideos = require("./lib/getVideos");
 
 module.exports = TwitchApi;
 

@@ -73,7 +73,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getGames">getGames</a></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getTopGames">getTopGames</a></li></ul>
   </nav>
 
   <div id="main">
@@ -167,23 +167,19 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#getGames">
+    <a class="link-icon" href="#getTopGames">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id="getGames">
-      <span class="type-signature">(async) </span>getGames<span class="signature">(games, callback)</span><span class="type-signature"></span>
+    <h4 class="name" id="getTopGames">
+      <span class="type-signature">(async) </span>getTopGames<span class="signature">(options<span class="signature-attributes">opt</span>, ], callback)</span><span class="type-signature"></span>
     </h4>
   </span>
 
   
 
 
-
-  <div class="description">
-    <p>Get games by their name or id.</p>
-  </div>
 
 
 
@@ -204,6 +200,8 @@
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
       
 
@@ -215,26 +213,14 @@
     
       <tr>
         
-          <td class="name"><code>games</code></td>
+          <td class="name"><code>options</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      Array.&lt;string>
-    </span>
-
-    |
-
-    <span class="param-type">
-      Array.&lt;number>
-    </span>
-
-    |
-
-    <span class="param-type">
-      string
+      object
     </span>
 
     
@@ -244,11 +230,58 @@
         </td>
 
         
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
 
         
 
         <td class="description last">
-          <p>Array of numbers representing game ids and/or strings representing the exact name of games.</p>
+          <p>The options for the request.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>]</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          
           
         </td>
       </tr>
@@ -273,11 +306,19 @@
         </td>
 
         
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
 
         
 
         <td class="description last">
-          <p>Function to be called when execution has finished.</p>
+          <p>The callback function.</p>
           
         </td>
       </tr>
@@ -321,7 +362,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_getGames.js.html">lib/getGames.js</a>, <a href="lib_getGames.js.html#line8">line 8</a>
+          <a href="lib_getTopGames.js.html">lib/getTopGames.js</a>, <a href="lib_getTopGames.js.html#line9">line 9</a>
         </li>
       </ul>
     </dd>
