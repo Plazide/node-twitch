@@ -72,4 +72,18 @@ test("should return a game", async () => {
 	const result = await api.getGames("493057");
 
 	expect(result.data).toHaveLength(1);
-} );
+});
+
+test("should return array with one item", async () => {
+	const result = await api.getTopGames({ first: 1 });
+
+	expect(result.data).toHaveLength(1);
+});
+
+test("should return array", async () => {
+	const result = await api.getVideos("48504279");
+
+	console.log(result);
+
+	expect(result.data).toBeInstanceOf(Array);
+});
