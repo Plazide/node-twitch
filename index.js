@@ -390,6 +390,8 @@ TwitchApi.prototype.getSubsById = require("./lib/getSubsById");
 TwitchApi.prototype.getStreams = require("./lib/getStreams");
 TwitchApi.prototype.customRequest = require("./lib/customRequest");
 TwitchApi.prototype.getGames = require("./lib/getGames");
+TwitchApi.prototype.getTopGames = require("./lib/getTopGames");
+TwitchApi.prototype.getVideos = require("./lib/getVideos");
 
 module.exports = TwitchApi;
 
