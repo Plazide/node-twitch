@@ -65,10 +65,10 @@ function parseMixedParam({ values, string, numeric }){
 
 			query += `${type}=${values}&`;
 		}else{
-			for(let channel of values){
-				const type = isNaN(channel) ? string : numeric;
+			for(let value of values){
+				const type = isNaN(value) ? string : numeric;
 
-				query += `${type}=${channel}&`;
+				query += `${type}=${value}&`;
 			}
 		}
 
