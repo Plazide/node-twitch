@@ -60,7 +60,7 @@ function parseMixedParam({ values, string, numeric }){
 	let query = "";
 
 	if(values)
-		if(typeof values === "string"){
+		if(typeof values === "string" || typeof values === "number" ){
 			const type = isNaN(values) ? string : numeric;
 
 			query += `${type}=${values}&`;
