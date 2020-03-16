@@ -75,6 +75,18 @@ function parseMixedParam({ values, string, numeric }){
 	return query;
 }
 
+/**
+ * Parse an array into a query string where every value has the same key.
+ * @param {string} key - The key to use. This will be repeated in the query for every value in the array
+ * @param {string[]|string} arr - Array of values to parse into query string.
+ */
+function parseArrayToQueryString(key, arr){
+	const list = Array.isArray(arr) ? arr : [arr];
+	const result = list.map( value => `${key}=${value}`).join("&");
+
+	return result;
+}
+
 module.exports = {
 	getLocalAccessToken,
 	getLocalRefreshToken,
@@ -82,5 +94,6 @@ module.exports = {
 	getLocalClientSecret,
 	setApiUser,
 	parseOptions,
-	parseMixedParam
+	parseMixedParam,
+	parseArrayToQueryString
 };
