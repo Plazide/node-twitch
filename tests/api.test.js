@@ -30,7 +30,7 @@ test("should throw error", () => {
 	}).toThrow();
 });
 
-test("should do stuff", async () => {
+test("accesss token should be defined", async () => {
 	const result = await api._getAppAccessToken();
 
 	console.log(result);
@@ -81,9 +81,7 @@ test("should return array with one item", async () => {
 });
 
 test("should return array", async () => {
-	const result = await api.getVideos("48504279");
-
-	console.log(result);
+	const result = await api.getVideos({ user_id: "48504279" });
 
 	expect(result.data).toBeInstanceOf(Array);
 });
