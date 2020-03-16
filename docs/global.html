@@ -73,7 +73,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getTopGames">getTopGames</a></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getTopGames-nav"><a href="TwitchApi.html#~getTopGames">getTopGames</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getVideos">getVideos</a></li></ul>
   </nav>
 
   <div id="main">
@@ -167,19 +167,23 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#getTopGames">
+    <a class="link-icon" href="#getVideos">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id="getTopGames">
-      <span class="type-signature">(async) </span>getTopGames<span class="signature">(options<span class="signature-attributes">opt</span>, ], callback)</span><span class="type-signature"></span>
+    <h4 class="name" id="getVideos">
+      <span class="type-signature">(async) </span>getVideos<span class="signature">(options, callback)</span><span class="type-signature"></span>
     </h4>
   </span>
 
   
 
 
+
+  <div class="description">
+    <p>Fetch videos by a user id, game id, or one or more video ids. Only one of these can be specified at a time.</p>
+  </div>
 
 
 
@@ -199,8 +203,6 @@
 
       <th>Type</th>
 
-      
-        <th>Attributes</th>
       
 
       
@@ -230,36 +232,46 @@
         </td>
 
         
-          <td class="attributes">
-            
-              &lt;optional><br>
-            
-
-            
-
-            
-          </td>
-        
 
         
 
         <td class="description last">
-          <p>The options for the request.</p>
           
-        </td>
-      </tr>
+          
+            <h6>Properties</h6>
+            
 
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
     
       <tr>
         
-          <td class="name"><code>]</code></td>
+          <td class="name"><code>ids</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      number
+      Array.&lt;string>
     </span>
 
     
@@ -281,7 +293,362 @@
         
 
         <td class="description last">
+          <p>Array of video ids. If this is specified, you cannot use any of the optional parameters.</p>
           
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>user_id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>User to fetch videos from.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>game_id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Id of the game that the video is of.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>after</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>before</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>first</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Number of values to be returned when getting videos by user or game ID. Limit: 100. Default: 20.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>language</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Language of the video being queried. Limit: 1.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>period</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Period during which the video was created. Valid values: &quot;all&quot;, &quot;day&quot;, &quot;week&quot;, &quot;month&quot;. Default: &quot;all&quot;.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>sort</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Sort order of the videos. Valid values: &quot;time&quot;, &quot;trending&quot;, &quot;views&quot;. Default: &quot;time&quot;.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>type</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Type of video. Valid values: &quot;all&quot;, &quot;upload&quot;, &quot;archive&quot;, &quot;highlight&quot;. Default: &quot;all&quot;.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
           
         </td>
       </tr>
@@ -306,19 +673,11 @@
         </td>
 
         
-          <td class="attributes">
-            
-
-            
-
-            
-          </td>
-        
 
         
 
         <td class="description last">
-          <p>The callback function.</p>
+          <p>Function to be called when data has been fetched.</p>
           
         </td>
       </tr>
@@ -362,7 +721,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_getTopGames.js.html">lib/getTopGames.js</a>, <a href="lib_getTopGames.js.html#line9">line 9</a>
+          <a href="lib_getVideos.js.html">lib/getVideos.js</a>, <a href="lib_getVideos.js.html#line18">line 18</a>
         </li>
       </ul>
     </dd>

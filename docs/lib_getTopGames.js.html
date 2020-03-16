@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getTopGames">getTopGames</a></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getTopGames-nav"><a href="TwitchApi.html#~getTopGames">getTopGames</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getVideos">getVideos</a></li></ul>
   </nav>
 
   <div id="main">
@@ -95,8 +95,12 @@
 /**
  *
  * @param {object} [options] - The options for the request.
- * @param {number} []
+ * @param {number} [options.first] - Maximum number of objects to return. Maximum: 100. Default: 20.
+ * @param {string} [options.after] - Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
+ * @param {string} [options.before] - Cursor for backward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
  * @param {function} callback - The callback function.
+ * @memberof TwitchApi
+ * @inner
  */
 async function getTopGames(options, callback){
 	const query = parseOptions(options);
