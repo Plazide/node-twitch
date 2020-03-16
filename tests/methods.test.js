@@ -20,3 +20,8 @@ test("should return client secret", () => {
 	const result = methods.getLocalClientSecret();
 	expect(result).toBe(credentials.client_secret);
 });
+
+test("should be a query string", () => {
+	const result = methods.parseArrayToQueryString("id", ["test"]);
+	expect(result).toBe("id=test");
+});
