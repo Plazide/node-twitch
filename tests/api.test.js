@@ -56,10 +56,10 @@ test("should be array with length 0", async () => {
 });
 
 test("should get array of streams", async () => {
-	const result = await api.getStreams({ first: 1 });
+	const result = await api.getStreams({ first: 10, game_id: [21548, 509670] });
 
 	expect(result.data).toBeInstanceOf(Array);
-	expect(result.data).toHaveLength(1);
+	expect(result.data).toHaveLength(10);
 });
 
 test("should return array of videos", async () => {
