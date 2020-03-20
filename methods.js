@@ -43,7 +43,10 @@ function parseOptions(options){
 	for(let key in options){
 		const value = options[key];
 
-		query += `${key}=${value}&`;
+		if(Array.isArray(value))
+			query += parseArrayToQueryString(key, value);
+		else
+			query += `${key}=${value}&`;
 	}
 
 	return query;
