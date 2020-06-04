@@ -4,7 +4,6 @@ const client = require("../data/apiUser.json");
 const api = new TwitchApi({
 	client_id: client.client_id,
 	client_secret: client.client_secret,
-	isApp: true,
 	scopes: ["bits:read", "channel:read:subscriptions"]
 });
 
@@ -33,7 +32,6 @@ test("should throw error", () => {
 test("accesss token should be defined", async () => {
 	const result = await api._getAppAccessToken();
 
-	console.log(result);
 	expect(result.access_token).toBeDefined();
 });
 
@@ -59,7 +57,6 @@ test("should get array of streams", async () => {
 	const result = await api.getStreams({ first: 10, game_id: [21548, 509670] });
 
 	expect(result.data).toBeInstanceOf(Array);
-	expect(result.data).toHaveLength(10);
 });
 
 test("should return array of videos", async () => {
@@ -82,6 +79,12 @@ test("should return array with one item", async () => {
 
 test("should return array", async () => {
 	const result = await api.getVideos({ user_id: "48504279" });
+
+	expect(result.data).toBeInstanceOf(Array);
+});
+
+test("should return array of tags", async () => {
+	const result = await api.getAllStreamTags({ first: 5 });
 
 	expect(result.data).toBeInstanceOf(Array);
 });

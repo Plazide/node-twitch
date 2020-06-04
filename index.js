@@ -395,6 +395,7 @@ TwitchApi.prototype.customRequest = require("./lib/customRequest");
 TwitchApi.prototype.getGames = require("./lib/getGames");
 TwitchApi.prototype.getTopGames = require("./lib/getTopGames");
 TwitchApi.prototype.getVideos = require("./lib/getVideos");
+TwitchApi.prototype.getAllStreamTags = require("./lib/getAllStreamTags");
 
 module.exports = TwitchApi;
 
