@@ -37,11 +37,18 @@ function setApiUser(config){
 	});
 }
 
+/**
+ * Parses an object into a query string. If the value of a property is an array, that array will be parsed with the `parseArrayToQueryString` function. If a value is undefined or null, it will be skipped.
+ * @param {Object} options - The options to parse.
+ */
 function parseOptions(options){
 	let query = "";
 
 	for(let key in options){
 		const value = options[key];
+
+		if(value === null || value === undefined)
+			continue;
 
 		if(Array.isArray(value))
 			query += parseArrayToQueryString(key, value);
