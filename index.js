@@ -46,7 +46,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string[]} [config.scopes] - The scopes that your application requires. Only needed when using a user access token.
 	 * @param {string} [config.access_token] - The access token from an authenticated user.
 	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
-	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information.
+	 * @param {bool} [config.isApp] - Deprecated: A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information. If no `access_token` is provided, an app access token will be automatically acquired.
 	 */
 	constructor(config){
 		super();
@@ -63,7 +63,10 @@ class TwitchApi extends EventEmitter{
 		if(this.isApp && this.access_token)
 			this._error("Option isApp is set to true while an access_token is provided. Choose one method of authentication, do not use both.");
 
-		if(this.isApp){
+		if(this.isApp || !this.access_token){
+			if(typeof this.isApp !== "undefined")
+				console.warn("The `isApp` option has been deprecated. The twitch API now requires all requests to use OAuth. That means, if you omit the `access_token` option, an app access token will be automatically fetched. That renders this option useless. Do not rely on it, since it will be removed in the future.");
+
 			this._getAppAccessToken( result => {
 				this.access_token = result.access_token;
 
