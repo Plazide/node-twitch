@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      lib/getBitsleaderboard.js - Documentation
+      lib/getAllStreamTags.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        lib/getBitsleaderboard.js
+        lib/getAllStreamTags.js
       </h1>
     
 
@@ -90,32 +90,37 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>const{ parseOptions } = require("../methods");
+    <pre class="prettyprint source linenums"><code>/* eslint-disable camelcase */
 
+const{ parseOptions } = require("../methods");
 /**
- * Get the bits leaderboard of a user or top users.
- * @param {Object} options - The options for the request.
- * @param {number} [options.count] - Number of results to be returned. Maximum: 100. Default: 10.
- * @param {string} [options.period] - Time period over which data is aggregated (PST time zone). This parameter interacts with started_at. Valid values are given below. Default: "all". For more information visit the &lt;a href="https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard">official api docs&lt;/a>.
- * @param {string} [options.started_at] - Timestamp for the period over which the returned data is aggregated. Must be in RFC 3339 format. Ignored if period is "all".
- * @param {string} [options.user_id] - ID of the user whose results are returned; i.e., the person who paid for the Bits. If user_id is not provided, the endpoint returns the Bits leaderboard data across top users (subject to the value of count).
- * @param {apiCallback} [callback] - The callback function.
- * @memberof TwitchApi
- * @inner
-*/
-async function getBitsLeaderboard(options, callback){
-	let query = "?";
-	query += parseOptions(options);
+ * Gets the list of all stream tags defined by Twitch, optionally filtered by tag ID(s).
+ * @param {Object} [options] - The options for making the request.
+ * @param {Number} [options.first] - Maximum number of objects to return. Maximum: 100. Default: 20.
+ * @param {String} [options.after] - Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.
+ * @param {String|String[]} [options.tag_id] - ID of a tag. Array of IDs can be specified. If provided, only the specified tag(s) is(are) returned. Maximum of 100.
+ * @param {apiCallback} [callback] - Function to be called when execution has finished.
+ */
+async function getAllStreamTags({ first, after, tag_id }, callback){
+	if(first &amp;&amp; typeof first !== "number")
+		throw new TypeError("expected `first` to be type number, got " + typeof first);
 
-	const endpoint = "/bits/leaderboard" + query;
+	if(after &amp;&amp; typeof after !== "string")
+		throw new TypeError("expected `after` to be type string, got " + typeof after);
+
+	if(tag_id &amp;&amp; typeof tag_id !== "string" &amp;&amp; !Array.isArray(tag_id))
+		throw new TypeError("expected `tag_id` to be of type string or array, got " + typeof tag_id);
+
+	const query = "?" + parseOptions({ first, after, tag_id });
+	const endpoint = "/tags/streams" + query;
 
 	if(callback)
 		this._get(endpoint, callback);
 	else
 		return this._get(endpoint);
-};
+}
 
-module.exports = getBitsLeaderboard;
+module.exports = getAllStreamTags;
 </code></pre>
   </article>
 </section>

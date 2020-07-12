@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getTopGames-nav"><a href="TwitchApi.html#~getTopGames">getTopGames</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li><li data-type="method" id="TwitchApi-getVideos-nav"><a href="TwitchApi.html#~getVideos">getVideos</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id="TwitchApi-nav"><a href="TwitchApi.html">TwitchApi</a><ul class='methods'><li data-type="method" id="TwitchApi-customRequest-nav"><a href="TwitchApi.html#~customRequest">customRequest</a></li><li data-type="method" id="TwitchApi-getBitsLeaderboard-nav"><a href="TwitchApi.html#~getBitsLeaderboard">getBitsLeaderboard</a></li><li data-type="method" id="TwitchApi-getCurrentUser-nav"><a href="TwitchApi.html#~getCurrentUser">getCurrentUser</a></li><li data-type="method" id="TwitchApi-getFollows-nav"><a href="TwitchApi.html#~getFollows">getFollows</a></li><li data-type="method" id="TwitchApi-getGames-nav"><a href="TwitchApi.html#~getGames">getGames</a></li><li data-type="method" id="TwitchApi-getStreams-nav"><a href="TwitchApi.html#~getStreams">getStreams</a></li><li data-type="method" id="TwitchApi-getSubsById-nav"><a href="TwitchApi.html#~getSubsById">getSubsById</a></li><li data-type="method" id="TwitchApi-getTopGames-nav"><a href="TwitchApi.html#~getTopGames">getTopGames</a></li><li data-type="method" id="TwitchApi-getUsers-nav"><a href="TwitchApi.html#~getUsers">getUsers</a></li><li data-type="method" id="TwitchApi-getUsersSubStatus-nav"><a href="TwitchApi.html#~getUsersSubStatus">getUsersSubStatus</a></li><li data-type="method" id="TwitchApi-getVideos-nav"><a href="TwitchApi.html#~getVideos">getVideos</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#getAllStreamTags">getAllStreamTags</a></li><li><a href="global.html#parseArrayToQueryString">parseArrayToQueryString</a></li><li><a href="global.html#parseMixedParam">parseMixedParam</a></li><li><a href="global.html#parseOptions">parseOptions</a></li></ul>
   </nav>
 
   <div id="main">
@@ -138,7 +138,7 @@ class TwitchApi extends EventEmitter{
 	 * @param {string[]} [config.scopes] - The scopes that your application requires. Only needed when using a user access token.
 	 * @param {string} [config.access_token] - The access token from an authenticated user.
 	 * @param {string} [config.refresh_token] - The refresh token from an authenticated user.
-	 * @param {bool} [config.isApp] - A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information.
+	 * @param {bool} [config.isApp] - Deprecated: A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information. If no `access_token` is provided, an app access token will be automatically acquired.
 	 */
 	constructor(config){
 		super();
@@ -155,7 +155,10 @@ class TwitchApi extends EventEmitter{
 		if(this.isApp &amp;&amp; this.access_token)
 			this._error("Option isApp is set to true while an access_token is provided. Choose one method of authentication, do not use both.");
 
-		if(this.isApp){
+		if(this.isApp || !this.access_token){
+			if(typeof this.isApp !== "undefined")
+				console.warn("The `isApp` option has been deprecated. The twitch API now requires all requests to use OAuth. That means, if you omit the `access_token` option, an app access token will be automatically fetched. That renders this option useless. Do not rely on it, since it will be removed in the future.");
+
 			this._getAppAccessToken( result => {
 				this.access_token = result.access_token;
 
@@ -484,6 +487,7 @@ TwitchApi.prototype.customRequest = require("./lib/customRequest");
 TwitchApi.prototype.getGames = require("./lib/getGames");
 TwitchApi.prototype.getTopGames = require("./lib/getTopGames");
 TwitchApi.prototype.getVideos = require("./lib/getVideos");
+TwitchApi.prototype.getAllStreamTags = require("./lib/getAllStreamTags");
 
 module.exports = TwitchApi;
 

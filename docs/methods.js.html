@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      lib/getBitsleaderboard.js - Documentation
+      methods.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        lib/getBitsleaderboard.js
+        methods.js
       </h1>
     
 
@@ -90,32 +90,115 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>const{ parseOptions } = require("../methods");
+    <pre class="prettyprint source linenums"><code>const fs = require("fs");
+const userFile = "./data/apiUser.json";
+
+function getLocalAccessToken(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.access_token;
+}
+
+function getLocalRefreshToken(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.refresh_token;
+}
+
+function getLocalClientId(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.client_id;
+}
+
+function getLocalClientSecret(){
+	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
+
+	return data.client_secret;
+}
+
+function setApiUser(config){
+	fs.writeFile(userFile, JSON.stringify(config), err => {
+		if(err &amp;&amp; err.code === "ENOENT")
+			fs.mkdir("./data", err => {
+				if(err) throw new Error(err);
+
+				setApiUser(config);
+				return 0;
+			});
+	});
+}
 
 /**
- * Get the bits leaderboard of a user or top users.
- * @param {Object} options - The options for the request.
- * @param {number} [options.count] - Number of results to be returned. Maximum: 100. Default: 10.
- * @param {string} [options.period] - Time period over which data is aggregated (PST time zone). This parameter interacts with started_at. Valid values are given below. Default: "all". For more information visit the &lt;a href="https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard">official api docs&lt;/a>.
- * @param {string} [options.started_at] - Timestamp for the period over which the returned data is aggregated. Must be in RFC 3339 format. Ignored if period is "all".
- * @param {string} [options.user_id] - ID of the user whose results are returned; i.e., the person who paid for the Bits. If user_id is not provided, the endpoint returns the Bits leaderboard data across top users (subject to the value of count).
- * @param {apiCallback} [callback] - The callback function.
- * @memberof TwitchApi
- * @inner
-*/
-async function getBitsLeaderboard(options, callback){
-	let query = "?";
-	query += parseOptions(options);
+ * Parses an object into a query string. If the value of a property is an array, that array will be parsed with the `parseArrayToQueryString` function. If a value is undefined or null, it will be skipped.
+ * @param {Object} options - The options to parse.
+ */
+function parseOptions(options){
+	let query = "";
 
-	const endpoint = "/bits/leaderboard" + query;
+	for(let key in options){
+		const value = options[key];
 
-	if(callback)
-		this._get(endpoint, callback);
-	else
-		return this._get(endpoint);
+		if(value === null || value === undefined)
+			continue;
+
+		if(Array.isArray(value))
+			query += parseArrayToQueryString(key, value);
+		else
+			query += `${key}=${value}&amp;`;
+	}
+
+	return query;
+}
+
+/**
+ * Parse an array with mixed string and number types into a query string.
+ * @param {object} options - Options for creating string.
+ * @param {string} string - Key to use for string values.
+ * @param {string} numeric - Key to use for numeric values.
+ * @returns Query string
+ */
+function parseMixedParam({ values, string, numeric }){
+	let query = "";
+
+	if(values)
+		if(typeof values === "string" || typeof values === "number" ){
+			const type = isNaN(values) ? string : numeric;
+
+			query += `${type}=${values}&amp;`;
+		}else{
+			for(let value of values){
+				const type = isNaN(value) ? string : numeric;
+
+				query += `${type}=${value}&amp;`;
+			}
+		}
+
+	return query;
+}
+
+/**
+ * Parse an array into a query string where every value has the same key.
+ * @param {string} key - The key to use. This will be repeated in the query for every value in the array
+ * @param {string[]|string} arr - Array of values to parse into query string.
+ */
+function parseArrayToQueryString(key, arr){
+	const list = Array.isArray(arr) ? arr : [arr];
+	const result = list.map( value => `${key}=${value}`).join("&amp;");
+
+	return result;
+}
+
+module.exports = {
+	getLocalAccessToken,
+	getLocalRefreshToken,
+	getLocalClientId,
+	getLocalClientSecret,
+	setApiUser,
+	parseOptions,
+	parseMixedParam,
+	parseArrayToQueryString
 };
-
-module.exports = getBitsLeaderboard;
 </code></pre>
   </article>
 </section>

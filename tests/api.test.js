@@ -1,4 +1,4 @@
-const TwitchApi = require("../index");
+const TwitchApi = require("../src/index");
 const client = require("../data/apiUser.json");
 
 const api = new TwitchApi({

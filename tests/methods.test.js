@@ -1,4 +1,4 @@
-const methods = require("../methods");
+const methods = require("../src/methods");
 const credentials = require("../data/apiUser.json");
 
 test("should return access token", () => {
