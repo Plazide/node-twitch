@@ -18,7 +18,8 @@ import {
 	SearchChannelsOptions,
 	SearchCategoriesOptions,
 	GetStreamTagsOptions,
-	GetBannedUsersOptions
+	GetBannedUsersOptions,
+	GetExtensionTransactionsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -30,7 +31,8 @@ import {
 	APIVideoResponse,
 	APISubResponse,
 	APIChannelResponse,
-	APIBanResponse
+	APIBanResponse,
+	APIExtensionTransactionResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -418,6 +420,13 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/search/categories${query}`;
 
 		return this._get<APIGameResponse>(endpoint);
+	}
+
+	async getExtensionTransactions(options: GetExtensionTransactionsOptions): Promise<APIExtensionTransactionResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/extensions/transactions${query}`;
+
+		return this._get<APIExtensionTransactionResponse>(endpoint);
 	}
 
 	/*********************************

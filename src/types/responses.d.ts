@@ -10,7 +10,8 @@ import {
 	DateRange,
 	Sub,
 	Channel,
-	Ban
+	Ban,
+	ExtensionTransaction
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -59,6 +60,10 @@ export interface APISubResponse extends APIBaseResponse{
 
 export interface APIBanResponse extends APIBaseResponse{
 	data: Ban[];
+}
+
+export interface APIExtensionTransactionResponse extends APIBaseResponse{
+	data: ExtensionTransaction[];
 }
 
 export interface APIBitsLeaderboardResponse{

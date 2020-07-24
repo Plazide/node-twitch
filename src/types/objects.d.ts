@@ -273,6 +273,59 @@ export interface Ban{
 	expires_at: string;
 }
 
+export interface ExtensionTransaction{
+	/** Unique identifier of the Bits in Extensions Transaction. */
+	id: string;
+
+	/** UTC timestamp when this transaction occurred. */
+	timestamp: string;
+
+	/** Twitch User ID of the channel the transaction occurred on. */
+	broadcaster_id: string;
+
+	/** Twitch Display Name of the broadcaster. */
+	broadcaster_name: string;
+
+	/** Twitch User ID of the user who generated the transaction. */
+	user_id: string;
+
+	/** Twitch Display Name of the user who generated the transaction. */
+	user_name: string;
+
+	/** Enum of the product type. Currently only `BITS_IN_EXTENSION`. */
+	product_type: "BITS_IN_EXTENSION";
+
+	/** Object representing the product acquired, as it looked at the time of the transaction. */
+	product_data: {
+		/** Set this field to twitch.ext + your extension ID. */
+		domain?: string;
+
+		/** Flag that denotes whether or not the data was sent over the extension pubsub to all instances of the extension. */
+		broadcast?: boolean;
+
+		/** Always empty since only unexpired products can be purchased. */
+		expiration?: string;
+
+		/** Unique identifier for the product across the extension. */
+		sku: string;
+
+		/** Object representing the cost to acquire the product */
+		cost: {
+			/** Number of Bits required to acquire the product. */
+			amount: number;
+
+			/** Always the string “Bits”. */
+			type: "Bits";
+		}
+
+		/** Display Name of the product. */
+		displayName: string;
+
+		/** Flag used to indicate if the product is in development. Either `true` or `false`. */
+		inDevelopment: boolean;
+	}
+}
+
 export interface DateRange{
 	/** Start of the date range for the returned data. */
 	started_at: string;

@@ -176,6 +176,25 @@ export interface GetBannedUsersOptions{
 	before?: string;
 }
 
+export interface GetExtensionTransactionsOptions{
+	/** ID of the extension to list transactions for. Maximum: 1 */
+	extension_id: string;
+
+	/** Transaction IDs to look up. Can include multiple to fetch multiple transactions in a single request.
+
+		Maximum: 100 */
+	id?: string | string[];
+
+	/** The cursor used to fetch the next page of data. This only applies to queries without ID. If an ID is specified, it supersedes the cursor. */
+	after?: string;
+
+	/** Maximum number of objects to return.
+
+	Maximum: 100
+	Default: 20 */
+	first?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;
