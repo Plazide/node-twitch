@@ -422,6 +422,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIGameResponse>(endpoint);
 	}
 
+	/** Get Extension Transactions allows extension back end servers to fetch a list of transactions that have occurred for their extension across all of Twitch. */
 	async getExtensionTransactions(options: GetExtensionTransactionsOptions): Promise<APIExtensionTransactionResponse>{
 		const query = "?" + parseOptions(options);
 		const endpoint = `/extensions/transactions${query}`;
