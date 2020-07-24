@@ -212,7 +212,7 @@ export interface Clip{
 
 export interface Tag{
 	/** ID of the tag. */
-	id: string;
+	tag_id: string;
 
 	/** true if the tag is auto-generated; otherwise, false . An auto-generated tag is one automatically applied by Twitch (e.g., a language tag based on the broadcaster’s settings); these cannot be added or removed by the user. */
 	is_auto: boolean;
