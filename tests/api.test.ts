@@ -57,6 +57,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`searchChannels` should return array of channels", async () => {
+		const result = await api.searchChannels({ query: "PUBG" });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {

@@ -8,7 +8,8 @@ import {
 	Video,
 	BitsPosition,
 	DateRange,
-	Sub
+	Sub,
+	Channel
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -29,6 +30,10 @@ export interface APIGameResponse extends APIBaseResponse{
 
 export interface APIUserResponse extends APIBaseResponse{
 	data: User[];
+}
+
+export interface APIChannelResponse extends APIBaseResponse{
+	data: Channel[];
 }
 
 export interface APIFollowResponse extends APIBaseResponse{

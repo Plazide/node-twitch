@@ -131,6 +131,22 @@ export interface GetSubsOptions{
 	user_id?: string[] | string;
 }
 
+export interface SearchChannelsOptions{
+	/** The query used to find channels */
+	query: string;
+
+	/** Maximum number of objects to return.
+		Maximum: 100
+		Default: 20 */
+	first?: number;
+
+	/** Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the `pagination` response field of a prior query. */
+	after?: number;
+
+	/** Filter results for live streams only. Default: false */
+	live_only?: boolean;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

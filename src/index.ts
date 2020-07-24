@@ -14,7 +14,8 @@ import {
 	GetFollowsOptions,
 	GetStreamsOptions,
 	GetVideosOptions,
-	GetSubsOptions
+	GetSubsOptions,
+	SearchChannelsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -24,7 +25,8 @@ import {
 	APITagResponse,
 	APIUserResponse,
 	APIVideoResponse,
-	APISubResponse
+	APISubResponse,
+	APIChannelResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -387,6 +389,14 @@ export default class TwitchApi extends EventEmitter{
 
 		const endpoint = `/videos${query}`;
 		return this._get<APIVideoResponse>(endpoint);
+	}
+
+	/** Returns a list of channels (users who have streamed within the past 6 months) that match the query via channel name or description either entirely or partially. Results include both live and offline channels. Online channels will have additional metadata (e.g. started_at, tag_ids). See sample response for distinction. */
+	async searchChannels(options: SearchChannelsOptions): Promise<APIChannelResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/search/channels${query}`;
+
+		return this._get<APIChannelResponse>(endpoint);
 	}
 
 	/*********************************

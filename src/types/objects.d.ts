@@ -31,6 +31,37 @@ export interface User{
 	view_count: number;
 }
 
+export interface Channel{
+	/** ID of the game being played on the stream */
+	game_id: string;
+
+	/** Channel ID */
+	id: string;
+
+	/** Display name corresponding to `user_id`  */
+	display_name: string;
+
+	/** Channel language (Broadcaster Language field from the Channels service) */
+	broadcaster_language: string;
+
+	/** Channel title */
+	title: string;
+
+	/** Thumbnail URL of the stream. All image URLs have variable width and height. You can replace {width} and {height} with any values to get that size image.  */
+	thumbnail_url: string;
+
+	/** Live status */
+	is_live: boolean;
+
+	/** UTC timestamp. (live only) */
+	started_at: string;
+
+	/** Shows tag IDs that apply to the stream (live only).See https://www.twitch.tv/directory/all/tags for tag types
+
+	Note: Category Tags are not returned */
+	tag_ids: string;
+}
+
 export interface Game{
 	/** Template URL for the game’s box art. */
 	box_art_url: string;
