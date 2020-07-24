@@ -17,7 +17,8 @@ import {
 	GetSubsOptions,
 	SearchChannelsOptions,
 	SearchCategoriesOptions,
-	GetStreamTagsOptions
+	GetStreamTagsOptions,
+	GetBannedUsersOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -28,7 +29,8 @@ import {
 	APIUserResponse,
 	APIVideoResponse,
 	APISubResponse,
-	APIChannelResponse
+	APIChannelResponse,
+	APIBanResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -458,5 +460,15 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/subscriptions${query}`;
 
 		return this._get<APISubResponse>(endpoint);
+	}
+
+	async getBannedUsers(options: GetBannedUsersOptions): Promise<APIBanResponse>{
+		if(!this._hasScope("moderation:read"))
+			this._error("missing scope `moderation:read`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = `/moderation/banned${query}`;
+
+		return this._get<APIBanResponse>(endpoint);
 	}
 }

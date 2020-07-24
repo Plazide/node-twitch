@@ -135,4 +135,10 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`getBannedUsers` should return array of bans", async () => {
+		const result = await api.getBannedUsers({ broadcaster_id: userId });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });

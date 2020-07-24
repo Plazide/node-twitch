@@ -9,7 +9,8 @@ import {
 	BitsPosition,
 	DateRange,
 	Sub,
-	Channel
+	Channel,
+	Ban
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -54,6 +55,10 @@ export interface APITagResponse extends APIBaseResponse{
 
 export interface APISubResponse extends APIBaseResponse{
 	data: Sub[];
+}
+
+export interface APIBanResponse extends APIBaseResponse{
+	data: Ban[];
 }
 
 export interface APIBitsLeaderboardResponse{

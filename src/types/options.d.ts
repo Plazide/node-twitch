@@ -158,6 +158,24 @@ export interface SearchOptions{
 	after?: string;
 }
 
+export interface GetBannedUsersOptions{
+	/** Provided broadcaster_id must match the user_id in the auth token.
+
+	Maximum: 1 */
+	broadcaster_id: string;
+
+	/** Filters the results and only returns a status object for users who are banned in this channel and have a matching user_id.
+
+	Maximum: 100 */
+	user_id?: string | string[];
+
+	/** Cursor for forward pagination: tells the server where to start fetching the next set of results in a multi-page response. This applies only to queries without `user_id`. If a `user_id` is specified, it supersedes any cursor/offset combinations. The cursor value specified here is from the `pagination` response field of a prior query. */
+	after?: string;
+
+	/** Cursor for backward pagination: tells the server where to start fetching the next set of results in a multi-page response. This applies only to queries without `user_id`. If a `user_id` is specified, it supersedes any cursor/offset. combinations. The cursor value specified here is from the `pagination` response field of a prior query. */
+	before?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

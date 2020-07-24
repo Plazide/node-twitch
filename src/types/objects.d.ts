@@ -262,6 +262,17 @@ export interface BitsPosition{
 	score: number;
 }
 
+export interface Ban{
+	/** User ID of a user who has been banned. */
+	user_id: string;
+
+	/** Display name of a user who has been banned. */
+	user_name: string;
+
+	/** RFC3339 formatted timestamp for timeouts; empty string for bans. */
+	expires_at: string;
+}
+
 export interface DateRange{
 	/** Start of the date range for the returned data. */
 	started_at: string;
