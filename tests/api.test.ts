@@ -82,7 +82,8 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 describe("unit tests for endpoints requiring user authentication.", () => {
 	const PORT = 5555;
 	let api: TwitchApi,
-		server: HttpServer;
+		server: HttpServer,
+		userId: string;
 
 	beforeAll( async () => {
 		server = new HttpServer({ port: PORT });
@@ -108,6 +109,14 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 	afterAll( () => {
 		server.stop();
+	});
+
+	test("`getCurrentUser` should return object representing the authenticated user", async () => {
+		const result = await api.getCurrentUser();
+		if(result && result.id)
+			userId = result.id;
+
+		expect(userId).toBeDefined();
 	});
 
 	test("`generateAuthUrl` should return valid url to authenticate user.", () => {
