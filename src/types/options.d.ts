@@ -93,6 +93,11 @@ export interface GetAllStreamTagsOptions{
 	tag_id?: string | string[];
 }
 
+export interface GetStreamTagsOptions{
+	/** ID of the stream thats tags are going to be fetched */
+	broadcaster_id: string;
+}
+
 export interface GetBitsLeaderboardOptions{
 	/** Number of results to be returned. Maximum: 100. Default: 10. */
 	count?: number;

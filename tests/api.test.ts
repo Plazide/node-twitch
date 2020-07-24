@@ -5,7 +5,8 @@ import HttpServer from "../test-server/server";
 
 /* Unit tests */
 describe("unit tests for endpoint NOT requiring user authentication.", () => {
-	let api: TwitchApi;
+	let api: TwitchApi,
+		broadcasterId: string;
 
 	beforeAll( () => {
 		api = new TwitchApi({
@@ -18,6 +19,7 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 	test("`getUsers` should return array of users", async () => {
 		const result = await api.getUsers("iamstreaming");
+		broadcasterId = result.data[0].id;
 
 		expect(result.data[0].login).toBe("iamstreaming");
 	});
@@ -54,6 +56,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 	test("`getAllStreamTags` should return array of tags", async () => {
 		const result = await api.getAllStreamTags({ first: 5 });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
+
+	test("`getStreamTags` should return array of tags", async () => {
+		const result = await api.getStreamTags({ broadcaster_id: broadcasterId });
 
 		expect(result.data).toBeInstanceOf(Array);
 	});

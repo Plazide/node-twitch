@@ -16,7 +16,8 @@ import {
 	GetVideosOptions,
 	GetSubsOptions,
 	SearchChannelsOptions,
-	SearchCategoriesOptions
+	SearchCategoriesOptions,
+	GetStreamTagsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -379,6 +380,13 @@ export default class TwitchApi extends EventEmitter{
 	async getAllStreamTags(options?: GetAllStreamTagsOptions): Promise<APITagResponse>{
 		const query = options ? `?${parseOptions(options)}` : "";
 		const endpoint = `/tags/streams${query}`;
+
+		return this._get<APITagResponse>(endpoint);
+	}
+
+	async getStreamTags(options: GetStreamTagsOptions): Promise<APITagResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/streams/tags${query}`;
 
 		return this._get<APITagResponse>(endpoint);
 	}
