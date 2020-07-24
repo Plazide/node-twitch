@@ -11,7 +11,8 @@
 	  "esModuleInterop": true,
 	  "declaration": true,
 	  "outDir": "dist",
-	  "sourceMap": false
+	  "sourceMap": false,
+	  "watch": true
 	},
 	"include": [
 	  "src/**/*"
