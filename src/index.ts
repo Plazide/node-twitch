@@ -465,6 +465,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIBitsLeaderboardResponse>(endpoint);
 	}
 
+	/** Get all of a broadcaster’s subscriptions. */
 	async getSubs(options: GetSubsOptions): Promise<APISubResponse>{
 		if(!this._hasScope("channel:read:subscriptions"))
 			this._error("missing scope `channel:read:subscriptions`");
