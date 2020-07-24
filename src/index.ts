@@ -381,6 +381,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIStreamResponse>(endpoint + query);
 	}
 
+	/** Gets the list of all stream tags defined by Twitch, optionally filtered by tag ID(s). */
 	async getAllStreamTags(options?: GetAllStreamTagsOptions): Promise<APITagResponse>{
 		const query = options ? `?${parseOptions(options)}` : "";
 		const endpoint = `/tags/streams${query}`;
