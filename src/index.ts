@@ -476,6 +476,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APISubResponse>(endpoint);
 	}
 
+	/** Returns all banned and timed-out users in a channel. */
 	async getBannedUsers(options: GetBannedUsersOptions): Promise<APIBanResponse>{
 		if(!this._hasScope("moderation:read"))
 			this._error("missing scope `moderation:read`");
