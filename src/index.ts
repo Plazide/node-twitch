@@ -15,7 +15,8 @@ import {
 	GetStreamsOptions,
 	GetVideosOptions,
 	GetSubsOptions,
-	SearchChannelsOptions
+	SearchChannelsOptions,
+	SearchCategoriesOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -393,10 +394,19 @@ export default class TwitchApi extends EventEmitter{
 
 	/** Returns a list of channels (users who have streamed within the past 6 months) that match the query via channel name or description either entirely or partially. Results include both live and offline channels. Online channels will have additional metadata (e.g. started_at, tag_ids). See sample response for distinction. */
 	async searchChannels(options: SearchChannelsOptions): Promise<APIChannelResponse>{
+		options.query = encodeURIComponent(options.query);
 		const query = "?" + parseOptions(options);
 		const endpoint = `/search/channels${query}`;
 
 		return this._get<APIChannelResponse>(endpoint);
+	}
+
+	async searchCategories(options: SearchCategoriesOptions): Promise<APIGameResponse>{
+		options.query = encodeURIComponent(options.query);
+		const query = "?" + parseOptions(options);
+		const endpoint = `/search/categories${query}`;
+
+		return this._get<APIGameResponse>(endpoint);
 	}
 
 	/*********************************

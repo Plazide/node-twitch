@@ -63,6 +63,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`searchCategories` should return array of games", async () => {
+		const result = await api.searchCategories({ query: "programming" });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {
