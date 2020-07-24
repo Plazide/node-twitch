@@ -319,6 +319,7 @@ export default class TwitchApi extends EventEmitter{
 		return result;
 	}
 
+	/** Gets games sorted by number of current viewers on Twitch, most popular first. */
 	async getTopGames(options?: BaseOptions): Promise<APIGameResponse>{
 		const query = options ? parseOptions(options) : "";
 		const endpoint = `/games/top?${query}`;
