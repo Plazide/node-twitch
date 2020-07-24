@@ -2,13 +2,14 @@
   "name": "node-twitch",
   "version": "0.1.5",
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "patch": "npm test && npm version patch && git push && npm publish",
     "minor": "npm test && npm version minor && git push && npm publish",
     "major": "npm test && npm version major && git push && npm publish",
-    "docs": "jsdoc --configure .jsdoc.json",
-    "test": "jest"
+    "docs": "typedoc --out ./test-docs --exclude ./src/util.ts --stripInternal ./src",
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -29,15 +30,24 @@
   },
   "homepage": "https://github.com/Plazide/node-twitch#readme",
   "dependencies": {
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.5",
+    "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
     "braintree-jsdoc-template": "^3.3.0",
     "eslint": "^6.8.0",
     "eslint-config-plazide": "^0.1.5",
     "eslint-plugin-jest": "^23.6.0",
     "jest": "^25.1.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "open": "^7.1.0",
+    "ts-jest": "^26.1.1",
+    "ts-node": "^8.10.2",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.6"
   }
 }

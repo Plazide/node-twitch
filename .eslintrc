@@ -1,7 +1,10 @@
 {
-	"plugins": ["jest"],
-	"extends": "plazide",
+	"plugins": ["jest", "@typescript-eslint"],
+	"extends": ["plugin:@typescript-eslint/recommended", "plazide"],
 	"env": {
-		"jest/globals": true
-	}
+		"jest/globals": true,
+		"node": true,
+		"es6": true
+	},
+	"parser": "@typescript-eslint/parser"
 }

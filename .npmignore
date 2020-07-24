@@ -1,5 +1,12 @@
 tests
+test-server
 docs
+data
 .jsodc.json
 .gitignore
 .eslintrc
+tsconfig.json
+jest.config.js
+example
+README.md
+CHANGELOG.md

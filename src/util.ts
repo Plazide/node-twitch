@@ -1,50 +1,39 @@
-const fs = require("fs");
+import fs from "fs";
+import { FParseMixedParam } from "./types/functions";
 const userFile = "./data/apiUser.json";
 
-function getLocalAccessToken(){
+export function getLocalAccessToken(): string{
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.access_token;
 }
 
-function getLocalRefreshToken(){
+export function getLocalRefreshToken(): string{
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.refresh_token;
 }
 
-function getLocalClientId(){
+export function getLocalClientId(): string{
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.client_id;
 }
 
-function getLocalClientSecret(){
+export function getLocalClientSecret(): string{
 	const data = JSON.parse(fs.readFileSync(userFile, "utf8"));
 
 	return data.client_secret;
-}
-
-function setApiUser(config){
-	fs.writeFile(userFile, JSON.stringify(config), err => {
-		if(err && err.code === "ENOENT")
-			fs.mkdir("./data", err => {
-				if(err) throw new Error(err);
-
-				setApiUser(config);
-				return 0;
-			});
-	});
 }
 
 /**
  * Parses an object into a query string. If the value of a property is an array, that array will be parsed with the `parseArrayToQueryString` function. If a value is undefined or null, it will be skipped.
  * @param {Object} options - The options to parse.
  */
-function parseOptions(options){
+export function parseOptions<T>(options: T): string{
 	let query = "";
 
-	for(let key in options){
+	for(const key in options){
 		const value = options[key];
 
 		if(value === null || value === undefined)
@@ -56,31 +45,23 @@ function parseOptions(options){
 			query += `${key}=${value}&`;
 	}
 
-	return query;
+	return query.replace(/&$/, "");
 }
 
-/**
- * Parse an array with mixed string and number types into a query string.
- * @param {object} options - Options for creating string.
- * @param {string} string - Key to use for string values.
- * @param {string} numeric - Key to use for numeric values.
- * @returns Query string
- */
-function parseMixedParam({ values, string, numeric }){
+export function parseMixedParam({ values, stringKey, numericKey }: FParseMixedParam): string{
 	let query = "";
 
-	if(values)
-		if(typeof values === "string" || typeof values === "number" ){
-			const type = isNaN(values) ? string : numeric;
+	function addToQuery(value: string | number): void{
+		const type = isNumber("" + value) ? numericKey : stringKey;
+		const key = type === "string" ? stringKey : numericKey;
 
-			query += `${type}=${values}&`;
-		}else{
-			for(let value of values){
-				const type = isNaN(value) ? string : numeric;
+		query += `${key}=${value}`;
+	}
 
-				query += `${type}=${value}&`;
-			}
-		}
+	if(Array.isArray(values))
+		values.forEach(addToQuery);
+	else
+		addToQuery(values);
 
 	return query;
 }
@@ -90,20 +71,14 @@ function parseMixedParam({ values, string, numeric }){
  * @param {string} key - The key to use. This will be repeated in the query for every value in the array
  * @param {string[]|string} arr - Array of values to parse into query string.
  */
-function parseArrayToQueryString(key, arr){
+export function parseArrayToQueryString(key: string, arr: unknown[]): string{
 	const list = Array.isArray(arr) ? arr : [arr];
 	const result = list.map( value => `${key}=${value}`).join("&");
 
 	return result;
 }
 
-module.exports = {
-	getLocalAccessToken,
-	getLocalRefreshToken,
-	getLocalClientId,
-	getLocalClientSecret,
-	setApiUser,
-	parseOptions,
-	parseMixedParam,
-	parseArrayToQueryString
-};
+/** Check if a string represents a number */
+export function isNumber(value: string): boolean{
+	return!isNaN(parseInt(value));
+}
