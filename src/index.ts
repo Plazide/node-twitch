@@ -401,6 +401,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIChannelResponse>(endpoint);
 	}
 
+	/** Returns a list of games or categories that match the query via name either entirely or partially. */
 	async searchCategories(options: SearchCategoriesOptions): Promise<APIGameResponse>{
 		options.query = encodeURIComponent(options.query);
 		const query = "?" + parseOptions(options);
