@@ -195,6 +195,11 @@ export interface GetExtensionTransactionsOptions{
 	first?: string;
 }
 
+export interface GetCheermotesOptions{
+	/** ID for the broadcaster who might own specialized Cheermotes. */
+	broadcaster_id?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

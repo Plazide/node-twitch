@@ -19,7 +19,8 @@ import {
 	SearchCategoriesOptions,
 	GetStreamTagsOptions,
 	GetBannedUsersOptions,
-	GetExtensionTransactionsOptions
+	GetExtensionTransactionsOptions,
+	GetCheermotesOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -32,7 +33,8 @@ import {
 	APISubResponse,
 	APIChannelResponse,
 	APIBanResponse,
-	APIExtensionTransactionResponse
+	APIExtensionTransactionResponse,
+	APICheermoteResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -431,6 +433,14 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/extensions/transactions${query}`;
 
 		return this._get<APIExtensionTransactionResponse>(endpoint);
+	}
+
+	/** Retrieves the list of available Cheermotes, animated emotes to which viewers can assign Bits, to cheer in chat. Cheermotes returned are available throughout Twitch, in all Bits-enabled channels. */
+	async getCheermotes(options?: GetCheermotesOptions): Promise<APICheermoteResponse>{
+		const query = options ? `?${parseOptions(options)}` : "";
+		const endpoint = `/bits/cheermotes${query}`;
+
+		return this._get<APICheermoteResponse>(endpoint);
 	}
 
 	/*********************************

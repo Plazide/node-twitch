@@ -326,6 +326,63 @@ export interface ExtensionTransaction{
 	}
 }
 
+export interface Cheermote{
+	/** An array of Cheermotes with their metadata.  */
+	tiers: CheermoteTier[]
+
+	/** Shows whether the emote is `global_first_party`,  `global_third_party`, `channel_custom`, `display_only`, or `sponsored`. */
+	type: "global_first_party" | "global_third_party" | "channel_custom" | "display_only" | "sponsored";
+
+	/** Order of the emotes as shown in the bits card, in ascending order. */
+	order: number;
+
+	/** The date when this Cheermote was last updated. */
+	last_updated: string;
+
+	/** Indicates whether or not this emote provides a charity contribution match during charity campaigns. */
+	is_charitable: boolean;
+}
+
+export interface CheermoteTier{
+	/** Minimum number of bits needed to be used to hit the given tier of emote.   */
+	min_bits: number;
+
+	/** ID of the emote tier. Possible tiers are: 1,100,500,1000,5000, 10k, or 100k. */
+	id: "1" | "100" | "500" | "1000" | "5000" | "10k" | "100k";
+
+	/** Hex code for the color associated with the bits of that tier. Grey, Purple, Teal, Blue, or Red color to match the base bit type. */
+	color: string;
+
+	/** Structure containing both animated and static image sets, sorted by light and dark. */
+	images: {
+		dark: CheermoteImages;
+		light: CheermoteImages;
+	};
+
+	/** Indicates whether or not emote information is accessible to users. */
+	can_sheer: boolean;
+
+	/** Indicates whether or not we hide the emote from the bits card. */
+	show_in_bits_card: boolean;
+}
+
+interface CheermoteImages{
+	animated: {
+		"1": string;
+		"2": string;
+		"3": string;
+		"4": string;
+		"1.5": string;
+	}
+	static: {
+		"1": string;
+		"2": string;
+		"3": string;
+		"4": string;
+		"1.5": string;
+	}
+}
+
 export interface DateRange{
 	/** Start of the date range for the returned data. */
 	started_at: string;

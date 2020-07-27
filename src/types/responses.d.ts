@@ -11,7 +11,8 @@ import {
 	Sub,
 	Channel,
 	Ban,
-	ExtensionTransaction
+	ExtensionTransaction,
+	Cheermote
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -64,6 +65,10 @@ export interface APIBanResponse extends APIBaseResponse{
 
 export interface APIExtensionTransactionResponse extends APIBaseResponse{
 	data: ExtensionTransaction[];
+}
+
+export interface APICheermoteResponse{
+	data: Cheermote[];
 }
 
 export interface APIBitsLeaderboardResponse{
