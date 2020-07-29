@@ -20,7 +20,8 @@ import {
 	GetStreamTagsOptions,
 	GetBannedUsersOptions,
 	GetExtensionTransactionsOptions,
-	GetCheermotesOptions
+	GetCheermotesOptions,
+	GetStreamKeyOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -34,7 +35,8 @@ import {
 	APIChannelResponse,
 	APIBanResponse,
 	APIExtensionTransactionResponse,
-	APICheermoteResponse
+	APICheermoteResponse,
+	APIStreamKeyResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -446,6 +448,18 @@ export default class TwitchApi extends EventEmitter{
 	/*********************************
 	Methods requiring user permissions
 	**********************************/
+
+	/** Gets the channel stream key for a user. */
+	async getStreamKey(options: GetStreamKeyOptions): Promise<string>{
+		if(!this._hasScope("channel:read:stream_key"))
+			this._error("missing scope `channel:read:stream_key`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = `/streams/key${query}`;
+
+		const result = await this._get<APIStreamKeyResponse>(endpoint);
+		return result.data[0].stream_key;
+	}
 
 	/** Gets the currently authenticated users profile information. */
 	async getCurrentUser(): Promise<User | undefined>{

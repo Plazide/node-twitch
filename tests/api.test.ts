@@ -136,6 +136,12 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		expect(result).toBe(expected);
 	});
 
+	test("`getStreamKey` should return string", async () => {
+		const result = await api.getStreamKey({ broadcaster_id: userId });
+
+		expect(result).toEqual(expect.stringMatching(/^live_[0-9]*_[a-zA-Z0-9]*$/));
+	});
+
 	test("`getBitsLeaderboard` should return a `date_range` and array of positions in leaderboard", async () => {
 		const result = await api.getBitsLeaderboard();
 

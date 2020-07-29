@@ -200,6 +200,11 @@ export interface GetCheermotesOptions{
 	broadcaster_id?: string;
 }
 
+export interface GetStreamKeyOptions{
+	/** User ID of the broadcaster */
+	broadcaster_id: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

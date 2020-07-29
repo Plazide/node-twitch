@@ -125,6 +125,11 @@ export interface Stream{
 	viewer_count: number;
 }
 
+export interface StreamKey{
+	/** Stream key for the channel */
+	stream_key: string;
+}
+
 export interface Video{
 	/** Date when the video was created. */
 	created_at: string;
