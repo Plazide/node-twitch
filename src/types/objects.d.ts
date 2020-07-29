@@ -62,6 +62,26 @@ export interface Channel{
 	tag_ids: string;
 }
 
+export interface ChannelInfo{
+	/** Twitch User ID of this channel owner */
+	broadcaster_id: string;
+
+	/** Display name of this channel owner */
+	broadcaster_name: string;
+
+	/** Name of the game being played on the channel */
+	game_name: string;
+
+	/** Current game ID being played on the channel */
+	game_id: string;
+
+	/** Language of the channel */
+	broadcaster_language: string;
+
+	/** Title of the stream */
+	title: string;
+}
+
 export interface Game{
 	/** Template URL for the game’s box art. */
 	box_art_url: string;

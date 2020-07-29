@@ -21,7 +21,8 @@ import {
 	GetBannedUsersOptions,
 	GetExtensionTransactionsOptions,
 	GetCheermotesOptions,
-	GetStreamKeyOptions
+	GetStreamKeyOptions,
+	GetChannelInfoOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -36,7 +37,8 @@ import {
 	APIBanResponse,
 	APIExtensionTransactionResponse,
 	APICheermoteResponse,
-	APIStreamKeyResponse
+	APIStreamKeyResponse,
+	APIChanneInfoResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -409,6 +411,13 @@ export default class TwitchApi extends EventEmitter{
 
 		const endpoint = `/videos${query}`;
 		return this._get<APIVideoResponse>(endpoint);
+	}
+
+	async getChannelInformation(options: GetChannelInfoOptions): Promise<APIChanneInfoResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/channels${query}`;
+
+		return this._get<APIChanneInfoResponse>(endpoint);
 	}
 
 	/** Returns a list of channels (users who have streamed within the past 6 months) that match the query via channel name or description either entirely or partially. Results include both live and offline channels. Online channels will have additional metadata (e.g. started_at, tag_ids). See sample response for distinction. */

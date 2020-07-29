@@ -136,6 +136,11 @@ export interface GetSubsOptions{
 	user_id?: string[] | string;
 }
 
+export interface GetChannelInfoOptions{
+	/** ID of the channel to get */
+	broadcaster_id: string;
+}
+
 export interface SearchChannelsOptions extends SearchOptions{
 	/** Filter results for live streams only. Default: false */
 	live_only?: boolean;

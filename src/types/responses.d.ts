@@ -13,7 +13,8 @@ import {
 	Ban,
 	ExtensionTransaction,
 	Cheermote,
-	StreamKey
+	StreamKey,
+	ChannelInfo
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -38,6 +39,10 @@ export interface APIUserResponse extends APIBaseResponse{
 
 export interface APIChannelResponse extends APIBaseResponse{
 	data: Channel[];
+}
+
+export interface APIChanneInfoResponse{
+	data: ChannelInfo[];
 }
 
 export interface APIFollowResponse extends APIBaseResponse{
