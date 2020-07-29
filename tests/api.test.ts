@@ -78,7 +78,7 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 		expect(result.data).toBeInstanceOf(Array);
 	});
 
-	test.only("`getCheermotes` should return array of cheermotes", async () => {
+	test("`getCheermotes` should return array of cheermotes", async () => {
 		const result = await api.getCheermotes();
 
 		expect(result.data).toBeInstanceOf(Array);
