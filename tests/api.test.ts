@@ -95,7 +95,8 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 	const PORT = 5555;
 	let api: TwitchApi,
 		server: HttpServer,
-		userId: string;
+		userId: string,
+		followUserId: string;
 
 	beforeAll( async () => {
 		server = new HttpServer({ port: PORT });
@@ -108,7 +109,7 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 			scopes: client.scopes
 		});
 
-		return new Promise( async resolve => {
+		await new Promise( async resolve => {
 			const authUrl = api.generateAuthUrl();
 			await open(authUrl, { url: true });
 
@@ -117,6 +118,9 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 				resolve();
 			});
 		});
+
+		const followUserIdResult = await api.getUsers("astreambot");
+		followUserId = followUserIdResult.data[0].id;
 	});
 
 	afterAll( () => {
@@ -158,5 +162,11 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		const result = await api.getBannedUsers({ broadcaster_id: userId });
 
 		expect(result.data).toBeInstanceOf(Array);
+	});
+
+	test("`createUserFollows` should return result object", async () => {
+		const result = await api.createUserFollows({ from_id: userId, to_id: followUserId });
+
+		expect(result).toBeDefined();
 	});
 });

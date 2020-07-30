@@ -210,6 +210,17 @@ export interface GetStreamKeyOptions{
 	broadcaster_id: string;
 }
 
+export interface CreateUserFollows{
+	/** User ID of the follower */
+	from_id: string;
+
+	/** ID of the channel to be followed by the user */
+	to_id: string;
+
+	/** If `true`, the user gets email or push notifications (depending on the user’s notification settings) when the channel goes live. Default value is `false`. */
+	allow_notifications?: boolean;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

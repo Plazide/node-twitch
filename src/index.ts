@@ -22,7 +22,8 @@ import {
 	GetExtensionTransactionsOptions,
 	GetCheermotesOptions,
 	GetStreamKeyOptions,
-	GetChannelInfoOptions
+	GetChannelInfoOptions,
+	CreateUserFollows
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -229,13 +230,13 @@ export default class TwitchApi extends EventEmitter{
 	/** Send a post request to the Twitch API
 	 * @internal
 	 */
-	private async _post(endpoint: string, data: Record<string, unknown>): Promise<any>{
+	private async _post(endpoint: string, data?: Record<string, unknown>): Promise<any>{
 		if(endpoint.substring(0, 1) !== "/") this._error("Endpoint must start with a '/' (forward slash)");
 
 		const url = this.base + endpoint;
 		const options = {
 			method: "POST",
-			body: JSON.stringify(data),
+			body: data ? JSON.stringify(data) : "",
 			headers: {
 				"Content-Type": "application/json",
 				"Authorization": `Bearer ${this.access_token}`,
@@ -245,7 +246,11 @@ export default class TwitchApi extends EventEmitter{
 
 		try{
 			const response = await fetch(url, options);
-			return response.json();
+
+			if(response.status === 200)
+				return response.json();
+			else
+				return response.text();
 		}catch(err){
 			const status = err.status;
 
@@ -518,5 +523,13 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/moderation/banned${query}`;
 
 		return this._get<APIBanResponse>(endpoint);
+	}
+
+	/** Adds a specified user to the followers of a specified channel. A successful request does not return any content. */
+	async createUserFollows(options: CreateUserFollows): Promise<Record<string, unknown> | void>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/users/follows${query}`;
+
+		return this._post(endpoint);
 	}
 }
