@@ -565,6 +565,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._post(endpoint);
 	}
 
+	/** Deletes a specified user from the followers of a specified channel. */
 	async deleteUserFollows(options: DeleteUserFollowsOptions): Promise<Record<string, unknown> | void>{
 		const query = "?" + parseOptions(options);
 		const endpoint = `/users/follows${query}`;
