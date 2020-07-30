@@ -55,6 +55,29 @@ export interface GetStreamsOptions extends BaseOptions{
 	channel?: string;
 }
 
+interface BaseClipsOptions extends BaseOptions{
+	/** Ending date/time for returned clips, in RFC3339 format. (Note that the seconds value is ignored.) If this is specified, `started_at` also must be specified; otherwise, the time period is ignored. */
+	ended_at?: string;
+
+	/** Starting date/time for returned clips, in RFC3339 format. (Note that the seconds value is ignored.) If this is specified, `ended_at` also should be specified; otherwise, the `ended_at` date/time will be 1 week after the `started_at` value. */
+	started_at?: string;
+}
+
+export interface ClipsBroadcasterIdOptions extends BaseClipsOptions{
+	/** ID of the broadcaster for whom clips are returned. The number of clips returned is determined by the `first` query-string parameter (default: 20). Results are ordered by view count. */
+	broadcaster_id: string;
+}
+
+export interface ClipsGameIdOptions extends BaseClipsOptions{
+	/** ID of the game for which clips are returned. The number of clips returned is determined by the `first` query-string parameter (default: 20). Results are ordered by view count. */
+	game_id: string;
+}
+
+export interface ClipsIdOptions extends BaseClipsOptions{
+	/** ID of the clip being queried. Limit: 100. */
+	id: string | string[];
+}
+
 /** Options for getting videos. At least one of `id`, `user_id`, and `game_id` needs to be specified. */
 export interface GetVideosOptions extends BaseOptions{
 	/** Single video ID or array of video IDs. Limit: 100. If this is specified, you cannot use any of the optional query parameters. */

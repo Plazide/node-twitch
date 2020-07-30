@@ -24,7 +24,10 @@ import {
 	GetStreamKeyOptions,
 	GetChannelInfoOptions,
 	CreateUserFollowsOptions,
-	DeleteUserFollowsOptions
+	DeleteUserFollowsOptions,
+	ClipsBroadcasterIdOptions,
+	ClipsGameIdOptions,
+	ClipsIdOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -40,7 +43,8 @@ import {
 	APIExtensionTransactionResponse,
 	APICheermoteResponse,
 	APIStreamKeyResponse,
-	APIChanneInfoResponse
+	APIChanneInfoResponse,
+	APIClipsResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -448,6 +452,13 @@ export default class TwitchApi extends EventEmitter{
 
 		const endpoint = `/videos${query}`;
 		return this._get<APIVideoResponse>(endpoint);
+	}
+
+	async getClips(options: ClipsBroadcasterIdOptions | ClipsGameIdOptions | ClipsIdOptions): Promise<APIClipsResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/clips${query}`;
+
+		return this._get<APIClipsResponse>(endpoint);
 	}
 
 	async getChannelInformation(options: GetChannelInfoOptions): Promise<APIChanneInfoResponse>{

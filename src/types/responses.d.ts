@@ -14,7 +14,8 @@ import {
 	ExtensionTransaction,
 	Cheermote,
 	StreamKey,
-	ChannelInfo
+	ChannelInfo,
+	Clip
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -59,6 +60,10 @@ export interface APIStreamKeyResponse{
 
 export interface APIVideoResponse extends APIBaseResponse{
 	data: Video[];
+}
+
+export interface APIClipsResponse extends APIBaseResponse{
+	data: Clip[];
 }
 
 export interface APITagResponse extends APIBaseResponse{
