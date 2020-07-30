@@ -261,6 +261,37 @@ export default class TwitchApi extends EventEmitter{
 		}
 	}
 
+	private async _delete(endpoint: string, data?: Record<string, unknown>): Promise<any>{
+		if(endpoint.substring(0, 1) !== "/") this._error("Endpoint must start with a '/' (forward slash)");
+
+		const url = this.base + endpoint;
+		const options = {
+			method: "DELETE",
+			body: data ? JSON.stringify(data) : "",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${this.access_token}`,
+				"Client-ID": this.client_id
+			}
+		};
+
+		try{
+			const response = await fetch(url, options);
+
+			if(response.status === 200)
+				return response.json();
+			else
+				return response.text();
+		}catch(err){
+			const status = err.status;
+
+			if(status === 401)
+				return this._post(endpoint, options);
+
+			this._error(err);
+		}
+	}
+
 	/** Check if the current instance was created with a certain scope
 	 * @internal
 	 */
