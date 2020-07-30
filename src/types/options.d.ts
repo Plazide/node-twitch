@@ -210,7 +210,7 @@ export interface GetStreamKeyOptions{
 	broadcaster_id: string;
 }
 
-export interface CreateUserFollows{
+export interface CreateUserFollowsOptions{
 	/** User ID of the follower */
 	from_id: string;
 

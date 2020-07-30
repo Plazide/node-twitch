@@ -23,7 +23,7 @@ import {
 	GetCheermotesOptions,
 	GetStreamKeyOptions,
 	GetChannelInfoOptions,
-	CreateUserFollows,
+	CreateUserFollowsOptions,
 	DeleteUserFollowsOptions
 } from "./types/options";
 import {
@@ -558,7 +558,7 @@ export default class TwitchApi extends EventEmitter{
 	}
 
 	/** Adds a specified user to the followers of a specified channel. A successful request does not return any content. */
-	async createUserFollows(options: CreateUserFollows): Promise<Record<string, unknown> | void>{
+	async createUserFollows(options: CreateUserFollowsOptions): Promise<Record<string, unknown> | void>{
 		const query = "?" + parseOptions(options);
 		const endpoint = `/users/follows${query}`;
 
