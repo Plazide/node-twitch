@@ -23,7 +23,8 @@ import {
 	GetCheermotesOptions,
 	GetStreamKeyOptions,
 	GetChannelInfoOptions,
-	CreateUserFollows
+	CreateUserFollows,
+	DeleteUserFollowsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -562,5 +563,12 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/users/follows${query}`;
 
 		return this._post(endpoint);
+	}
+
+	async deleteUserFollows(options: DeleteUserFollowsOptions): Promise<Record<string, unknown> | void>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/users/follows${query}`;
+
+		return this._delete(endpoint);
 	}
 }

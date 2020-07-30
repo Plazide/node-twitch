@@ -164,9 +164,15 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		expect(result.data).toBeInstanceOf(Array);
 	});
 
-	test("`createUserFollows` should return result object", async () => {
+	test("`createUserFollows` should return empty string", async () => {
 		const result = await api.createUserFollows({ from_id: userId, to_id: followUserId });
 
-		expect(result).toBeDefined();
+		expect(result).toBe("");
+	});
+
+	test("`deleteUserFollows` should return empty string", async () => {
+		const result = await api.deleteUserFollows({ from_id: userId, to_id: followUserId });
+
+		expect(result).toBe("");
 	});
 });

@@ -221,6 +221,14 @@ export interface CreateUserFollows{
 	allow_notifications?: boolean;
 }
 
+export interface DeleteUserFollowsOptions{
+	/** User ID of the follower */
+	from_id: string;
+
+	/** Channel to be unfollowed by the user */
+	to_id: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;
