@@ -233,6 +233,16 @@ export interface GetStreamKeyOptions{
 	broadcaster_id: string;
 }
 
+export interface GetStreamMarkerUserIdOptions extends BaseOptions{
+	/** ID of the broadcaster from whose stream markers are returned. */
+	user_id: string;
+}
+
+export interface GetStreamMarkerVideoIdOptions extends BaseOptions{
+	/** ID of the VOD/video whose stream markers are returned. */
+	video_id: string;
+}
+
 export interface CreateUserFollowsOptions{
 	/** User ID of the follower */
 	from_id: string;

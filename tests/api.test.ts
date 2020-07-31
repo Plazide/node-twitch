@@ -181,4 +181,10 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		expect(result).toBe("");
 	});
+
+	test("`getStreamMarkers` should return array of stream markers", async () => {
+		const result = await api.getStreamMarkers({ user_id: userId });
+
+		expect(result).toBeDefined();
+	});
 });

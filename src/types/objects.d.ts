@@ -145,6 +145,32 @@ export interface Stream{
 	viewer_count: number;
 }
 
+export interface StreamMarker{
+	/** ID of the marker. */
+	id: string;
+
+	/** RFC3339 timestamp of the marker. */
+	created_at: string;
+
+	/** Description of the marker. */
+	description: string;
+
+	/** Relative offset (in seconds) of the marker, from the beginning of the stream. */
+	position_seconds: number;
+
+	/** A link to the stream with a query parameter that is a timestamp of the marker’s location. */
+	URL: string;
+
+	/** ID of the user whose markers are returned. */
+	user_id: string;
+
+	/** Display name corresponding to `user_id`. */
+	user_name: string;
+
+	/** ID of the stream (VOD/video) that was marked. */
+	video_id: string;
+}
+
 export interface StreamKey{
 	/** Stream key for the channel */
 	stream_key: string;

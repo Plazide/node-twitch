@@ -15,7 +15,8 @@ import {
 	Cheermote,
 	StreamKey,
 	ChannelInfo,
-	Clip
+	Clip,
+	StreamMarker
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -52,6 +53,10 @@ export interface APIFollowResponse extends APIBaseResponse{
 
 export interface APIStreamResponse extends APIBaseResponse{
 	data: Stream[];
+}
+
+export interface APIStreamMarkerResponse extends APIBaseResponse{
+	data: StreamMarker[];
 }
 
 export interface APIStreamKeyResponse{

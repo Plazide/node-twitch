@@ -27,7 +27,9 @@ import {
 	DeleteUserFollowsOptions,
 	ClipsBroadcasterIdOptions,
 	ClipsGameIdOptions,
-	ClipsIdOptions
+	ClipsIdOptions,
+	GetStreamMarkerUserIdOptions,
+	GetStreamMarkerVideoIdOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -44,7 +46,8 @@ import {
 	APICheermoteResponse,
 	APIStreamKeyResponse,
 	APIChanneInfoResponse,
-	APIClipsResponse
+	APIClipsResponse,
+	APIStreamMarkerResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -582,5 +585,18 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/users/follows${query}`;
 
 		return this._delete(endpoint);
+	}
+
+	/** Gets a list of markers for either a specified user’s most recent stream or a specified VOD/video (stream), ordered by recency. A marker is an arbitrary point in a stream that the broadcaster wants to mark; e.g., to easily return to later. The only markers returned are those created by the user identified by the Bearer token.
+
+	The response has a JSON payload with a `data` field containing an array of marker information elements and a `pagination` field containing information required to query for more follow information. */
+	async getStreamMarkers(options: GetStreamMarkerUserIdOptions | GetStreamMarkerVideoIdOptions): Promise<APIStreamMarkerResponse>{
+		if(!this._hasScope("user:read:broadcast"))
+			this._error("missing scope `user:read:broadcast`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = `/streams/markers${query}`;
+
+		return this._get<APIStreamMarkerResponse>(endpoint);
 	}
 }
