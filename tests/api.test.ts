@@ -93,7 +93,6 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 	test("`getClips` should return array of clips", async () => {
 		const result = await api.getClips({ broadcaster_id: broadcasterId });
 
-		console.log(result);
 		expect(result.data).toBeInstanceOf(Array);
 	});
 });
