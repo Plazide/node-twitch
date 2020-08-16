@@ -601,6 +601,9 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIStreamMarkerResponse>(endpoint);
 	}
 
+	/** Gets a list of all extensions (both active and inactive) for a specified user, identified by a Bearer token.
+
+	The response has a JSON payload with a `data` field containing an array of user-information elements. */
 	async getUserExtensions(): Promise<APIExtensionResponse>{
 		if(!this._hasScope("user:read:broadcast"))
 			this._error("missing scope `user:read:broadcast`");
