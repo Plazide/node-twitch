@@ -377,6 +377,23 @@ export interface ExtensionTransaction{
 	}
 }
 
+export interface Extension{
+	/** Indicates whether the extension is configured such that it can be activated. */
+	can_activate: boolean;
+
+	/** Types for which the extension can be activated. Valid values: `"component"`, `"mobile"`, `"panel"`, `"overlay"`. */
+	type: string[];
+
+	/** ID of the extension. */
+	id: string;
+
+	/** Name of the extension. */
+	name: string;
+
+	/** Version of the extension. */
+	version: string;
+}
+
 export interface Cheermote{
 	/** An array of Cheermotes with their metadata.  */
 	tiers: CheermoteTier[]

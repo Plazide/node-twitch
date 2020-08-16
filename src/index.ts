@@ -47,7 +47,8 @@ import {
 	APIStreamKeyResponse,
 	APIChanneInfoResponse,
 	APIClipsResponse,
-	APIStreamMarkerResponse
+	APIStreamMarkerResponse,
+	APIExtensionResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -598,5 +599,13 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/streams/markers${query}`;
 
 		return this._get<APIStreamMarkerResponse>(endpoint);
+	}
+
+	async getUserExtensions(): Promise<APIExtensionResponse>{
+		if(!this._hasScope("user:read:broadcast"))
+			this._error("missing scope `user:read:broadcast`");
+
+		const endpoint = "/users/extensions/list";
+		return this._get<APIExtensionResponse>(endpoint);
 	}
 }
