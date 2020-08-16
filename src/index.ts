@@ -614,6 +614,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIExtensionResponse>(endpoint);
 	}
 
+	/** Gets information about active extensions installed by a specified user, identified by a user ID or Bearer token. */
 	async getUserActiveExtensions(options?: GetUserActiveExtensionsOptions): Promise<APIActiveUserExtensionResponse>{
 		if(!this._hasScope("user:read:broadcast") && !this._hasScope("user:edit:broadcast"))
 			this._error("Missing scope `user:read:broadcast` or `user:edit:broadcast`");
