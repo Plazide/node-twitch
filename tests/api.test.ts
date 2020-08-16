@@ -191,6 +191,12 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 	test("`getUserExtensions` should return array of extensions", async () => {
 		const result = await api.getUserExtensions();
 
+		expect(result).toBeDefined();
+	});
+
+	test("`getUserActiveExtensions` should return array of active extensions", async () => {
+		const result = await api.getUserActiveExtensions();
+
 		console.log(result);
 		expect(result).toBeDefined();
 	});

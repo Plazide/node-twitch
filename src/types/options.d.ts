@@ -262,6 +262,11 @@ export interface DeleteUserFollowsOptions{
 	to_id: string;
 }
 
+export interface GetUserActiveExtensionsOptions{
+	/** ID of the user whose installed extensions will be returned. Limit: 1. */
+	user_id?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

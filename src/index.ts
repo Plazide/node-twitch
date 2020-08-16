@@ -29,7 +29,8 @@ import {
 	ClipsGameIdOptions,
 	ClipsIdOptions,
 	GetStreamMarkerUserIdOptions,
-	GetStreamMarkerVideoIdOptions
+	GetStreamMarkerVideoIdOptions,
+	GetUserActiveExtensionsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -48,7 +49,8 @@ import {
 	APIChanneInfoResponse,
 	APIClipsResponse,
 	APIStreamMarkerResponse,
-	APIExtensionResponse
+	APIExtensionResponse,
+	APIActiveUserExtensionResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -610,5 +612,14 @@ export default class TwitchApi extends EventEmitter{
 
 		const endpoint = "/users/extensions/list";
 		return this._get<APIExtensionResponse>(endpoint);
+	}
+
+	async getUserActiveExtensions(options?: GetUserActiveExtensionsOptions): Promise<APIActiveUserExtensionResponse>{
+		if(!this._hasScope("user:read:broadcast") && !this._hasScope("user:edit:broadcast"))
+			this._error("Missing scope `user:read:broadcast` or `user:edit:broadcast`");
+
+		const query = options ? "?" + parseOptions(options) : "";
+		const endpoint = "/users/extensions" + query;
+		return this._get<APIActiveUserExtensionResponse>(endpoint);
 	}
 }

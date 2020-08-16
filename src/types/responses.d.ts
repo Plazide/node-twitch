@@ -17,7 +17,8 @@ import {
 	ChannelInfo,
 	Clip,
 	StreamMarker,
-	Extension
+	Extension,
+	ActiveExtension
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -90,6 +91,10 @@ export interface APIExtensionTransactionResponse extends APIBaseResponse{
 
 export interface APIExtensionResponse{
 	data: Extension[];
+}
+
+export interface APIActiveUserExtensionResponse{
+	data: ActiveExtension[];
 }
 
 export interface APICheermoteResponse{

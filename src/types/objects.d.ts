@@ -394,6 +394,39 @@ export interface Extension{
 	version: string;
 }
 
+export interface ActiveExtension{
+	panel: Map<string, ActiveExtensionBase | NotActive>;
+	overlay: Map<string, ActiveExtensionBase | NotActive>;
+	component: Map<string, ExtensionComponent | NotActive>;
+}
+
+interface NotActive{
+	/** Activation state of the extension, for each extension type (component, overlay, mobile, panel). If false, no other data is provided. */
+	active: false;
+}
+
+interface ExtensionComponent extends ActiveExtensionBase{
+	/** (Video-component Extensions only) X-coordinate of the placement of the extension. */
+	x: number;
+
+	/** (Video-component Extensions only) Y-coordinate of the placement of the extension. */
+	y: number;
+}
+
+interface ActiveExtensionBase{
+	/** Activation state of the extension, for each extension type (component, overlay, mobile, panel). If false, no other data is provided. */
+	active: boolean;
+
+	/** ID of the extension. */
+	id: string;
+
+	/** Version of the extension. */
+	version: string;
+
+	/** Name of the extension. */
+	name: string;
+}
+
 export interface Cheermote{
 	/** An array of Cheermotes with their metadata.  */
 	tiers: CheermoteTier[]
