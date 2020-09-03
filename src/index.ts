@@ -284,8 +284,18 @@ export default class TwitchApi extends EventEmitter{
 		return this._update(endpoint, data, "delete");
 	}
 
+	/** Send a patch request to the Twitch API
+	 * @internal
+	*/
 	private async _patch(endpoint: string, data?: Record<string, unknown>): Promise<any>{
 		return this._update(endpoint, data, "patch");
+	}
+
+	/** Send put request to the Twitch API
+	 * @internal
+	*/
+	private async _put(endpoint: string, data?: Record<string, unknown>): Promise<any>{
+		return this._update(endpoint, data, "put");
 	}
 
 	/** Check if the current instance was created with a certain scope
