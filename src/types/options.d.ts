@@ -286,6 +286,14 @@ export interface UpdateUserOptions{
 	description?: string;
 }
 
+export interface CreateClipOptions{
+	/** ID of the stream from which the clip will be made. */
+	broadcaster_id: string;
+
+	/** If `false`, the clip is captured from the live stream when the API is called; otherwise, a delay is added before the clip is captured (to account for the brief delay between the broadcaster’s stream and the viewer’s experience of that stream). Default: `false`. */
+	has_delay?: boolean;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

@@ -18,7 +18,8 @@ import {
 	Clip,
 	StreamMarker,
 	Extension,
-	ActiveExtension
+	ActiveExtension,
+	CreatedClip
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -99,6 +100,10 @@ export interface APIActiveUserExtensionResponse{
 
 export interface APICheermoteResponse{
 	data: Cheermote[];
+}
+
+export interface APICreateClipResponse{
+	data: CreatedClip[];
 }
 
 export interface APIBitsLeaderboardResponse{

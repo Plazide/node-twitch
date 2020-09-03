@@ -216,4 +216,10 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		expect(result.data[0].description).toBe(description);
 	});
+
+	test("`createClip` should create clip", async () => {
+		const result = await api.createClip({ broadcaster_id: userId });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });

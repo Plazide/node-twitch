@@ -324,6 +324,14 @@ export interface Ban{
 	expires_at: string;
 }
 
+export interface CreatedClip{
+	/** ID of the clip that was created. */
+	id: string;
+
+	/** URL of the edit page for the clip. */
+	edit_url: string;
+}
+
 export interface ExtensionTransaction{
 	/** Unique identifier of the Bits in Extensions Transaction. */
 	id: string;

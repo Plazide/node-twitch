@@ -32,7 +32,8 @@ import {
 	GetStreamMarkerVideoIdOptions,
 	GetUserActiveExtensionsOptions,
 	ModifyChannelInformationOptions,
-	UpdateUserOptions
+	UpdateUserOptions,
+	CreateClipOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -52,7 +53,8 @@ import {
 	APIClipsResponse,
 	APIStreamMarkerResponse,
 	APIExtensionResponse,
-	APIActiveUserExtensionResponse
+	APIActiveUserExtensionResponse,
+	APICreateClipResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -257,7 +259,7 @@ export default class TwitchApi extends EventEmitter{
 		try{
 			const response = await fetch(url, options);
 
-			if(response.status === 200)
+			if(response.status === 200 || response.status === 202)
 				return response.json();
 			else
 				return response.text();
@@ -640,5 +642,22 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = "/users" + query;
 
 		return this._put(endpoint);
+	}
+
+	/** Creates a clip programmatically. This returns both an ID and an edit URL for the new clip.
+
+	Note that the clips service returns a maximum of 1000 clips,
+
+	Clip creation takes time. We recommend that you query Get Clips, with the clip ID that is returned here. If Get Clips returns a valid clip, your clip creation was successful. If, after 15 seconds, you still have not gotten back a valid clip from Get Clips, assume that the clip was not created and retry Create Clip.
+
+	This endpoint has a global rate limit, across all callers. The limit may change over time, but the response includes informative headers: */
+	async createClip(options: CreateClipOptions): Promise<APICreateClipResponse>{
+		if(!this._hasScope("clips:edit"))
+			this._error("Missing scope `clips:edit`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = "/clips" + query;
+
+		return this._post(endpoint);
 	}
 }
