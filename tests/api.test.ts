@@ -3,6 +3,8 @@ import client from "../data/apiUser";
 import open from "open";
 import HttpServer from "../test-server/server";
 
+jest.setTimeout(10000);
+
 /* Unit tests */
 describe("unit tests for endpoint NOT requiring user authentication.", () => {
 	let api: TwitchApi,
