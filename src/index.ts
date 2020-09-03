@@ -31,7 +31,8 @@ import {
 	GetStreamMarkerUserIdOptions,
 	GetStreamMarkerVideoIdOptions,
 	GetUserActiveExtensionsOptions,
-	ModifyChannelInformationOptions
+	ModifyChannelInformationOptions,
+	UpdateUserOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -628,5 +629,16 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = "/channels" + query;
 
 		return this._patch(endpoint);
+	}
+
+	/** Updates the description of a user specified by a Bearer token. */
+	async updateUser(options?: UpdateUserOptions): Promise<APIUserResponse>{
+		if(!this._hasScope("user:edit"))
+			this._error("Missing scope `user:edit`");
+
+		const query = options && options.description ? "?" + parseOptions(options) : "";
+		const endpoint = "/users" + query;
+
+		return this._put(endpoint);
 	}
 }

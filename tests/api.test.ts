@@ -199,7 +199,6 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 	test("`getUserActiveExtensions` should return array of active extensions", async () => {
 		const result = await api.getUserActiveExtensions();
 
-		console.log(result);
 		expect(result).toBeDefined();
 	});
 
@@ -209,5 +208,12 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		const result = await api.getChannelInformation({ broadcaster_id: userId });
 
 		expect(result.data[0].title).toBe(newTitle);
+	});
+
+	test("`updateUser` should update user", async () => {
+		const description = "Web developer streaming fun side projects from time to time.";
+		const result = await api.updateUser({ description });
+
+		expect(result.data[0].description).toBe(description);
 	});
 });

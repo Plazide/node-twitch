@@ -281,6 +281,11 @@ export interface ModifyChannelInformationOptions{
 	title?: string;
 }
 
+export interface UpdateUserOptions{
+	/** User’s account description */
+	description?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;
