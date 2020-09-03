@@ -33,7 +33,8 @@ import {
 	GetUserActiveExtensionsOptions,
 	ModifyChannelInformationOptions,
 	UpdateUserOptions,
-	CreateClipOptions
+	CreateClipOptions,
+	GetModeratorsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -54,7 +55,8 @@ import {
 	APIStreamMarkerResponse,
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
-	APICreateClipResponse
+	APICreateClipResponse,
+	APIModeratorResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -659,5 +661,15 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = "/clips" + query;
 
 		return this._post(endpoint);
+	}
+
+	async getModerators(options: GetModeratorsOptions): Promise<APIModeratorResponse>{
+		if(!this._hasScope("moderation:read"))
+			this._error("Missing scope `moderation:read`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = "/moderation/moderators" + query;
+
+		return this._get(endpoint);
 	}
 }

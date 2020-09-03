@@ -222,4 +222,10 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`getModerators` should return moderators", async () => {
+		const result = await api.getModerators({ broadcaster_id: userId });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });

@@ -324,6 +324,14 @@ export interface Ban{
 	expires_at: string;
 }
 
+export interface Moderator{
+	/** `user_id` of moderator */
+	user_id: string;
+
+	/** `user_name` of moderator */
+	user_name: string;
+}
+
 export interface CreatedClip{
 	/** ID of the clip that was created. */
 	id: string;

@@ -19,7 +19,8 @@ import {
 	StreamMarker,
 	Extension,
 	ActiveExtension,
-	CreatedClip
+	CreatedClip,
+	Moderator
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -104,6 +105,10 @@ export interface APICheermoteResponse{
 
 export interface APICreateClipResponse{
 	data: CreatedClip[];
+}
+
+export interface APIModeratorResponse extends APIBaseResponse{
+	data: Moderator[];
 }
 
 export interface APIBitsLeaderboardResponse{
