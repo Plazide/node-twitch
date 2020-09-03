@@ -267,6 +267,20 @@ export interface GetUserActiveExtensionsOptions{
 	user_id?: string;
 }
 
+export interface ModifyChannelInformationOptions{
+	/** ID of the channel to be updated */
+	broadcaster_id: string;
+
+	/** The current game ID being played on the channel */
+	game_id?: string;
+
+	/** The language of the channel */
+	broadcaster_language?: string;
+
+	/** The title of the stream */
+	title?: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

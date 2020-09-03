@@ -202,4 +202,12 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		console.log(result);
 		expect(result).toBeDefined();
 	});
+
+	test("`modifyChannelInformation`", async () => {
+		const newTitle = "Working on a Twitch API wrapper...";
+		await api.modifyChannelInformation({ broadcaster_id: userId, title: newTitle });
+		const result = await api.getChannelInformation({ broadcaster_id: userId });
+
+		expect(result.data[0].title).toBe(newTitle);
+	});
 });

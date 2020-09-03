@@ -30,7 +30,8 @@ import {
 	ClipsIdOptions,
 	GetStreamMarkerUserIdOptions,
 	GetStreamMarkerVideoIdOptions,
-	GetUserActiveExtensionsOptions
+	GetUserActiveExtensionsOptions,
+	ModifyChannelInformationOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -238,15 +239,12 @@ export default class TwitchApi extends EventEmitter{
 		return result;
 	}
 
-	/** Send a post request to the Twitch API
-	 * @internal
-	 */
-	private async _post(endpoint: string, data?: Record<string, unknown>): Promise<any>{
+	async _update(endpoint: string, data?: Record<string, unknown>, method?: "post" | "put" | "delete" | "patch"): Promise<any>{
 		if(endpoint.substring(0, 1) !== "/") this._error("Endpoint must start with a '/' (forward slash)");
 
 		const url = this.base + endpoint;
 		const options = {
-			method: "POST",
+			method: method || "post",
 			body: data ? JSON.stringify(data) : "",
 			headers: {
 				"Content-Type": "application/json",
@@ -272,35 +270,22 @@ export default class TwitchApi extends EventEmitter{
 		}
 	}
 
+	/** Send a post request to the Twitch API
+	 * @internal
+	 */
+	private async _post(endpoint: string, data?: Record<string, unknown>): Promise<any>{
+		return this._update(endpoint, data, "post");
+	}
+
+	/** Send a delete request to the Twitch API
+	 * @internal
+	 */
 	private async _delete(endpoint: string, data?: Record<string, unknown>): Promise<any>{
-		if(endpoint.substring(0, 1) !== "/") this._error("Endpoint must start with a '/' (forward slash)");
+		return this._update(endpoint, data, "delete");
+	}
 
-		const url = this.base + endpoint;
-		const options = {
-			method: "DELETE",
-			body: data ? JSON.stringify(data) : "",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Bearer ${this.access_token}`,
-				"Client-ID": this.client_id
-			}
-		};
-
-		try{
-			const response = await fetch(url, options);
-
-			if(response.status === 200)
-				return response.json();
-			else
-				return response.text();
-		}catch(err){
-			const status = err.status;
-
-			if(status === 401)
-				return this._post(endpoint, options);
-
-			this._error(err);
-		}
+	private async _patch(endpoint: string, data?: Record<string, unknown>): Promise<any>{
+		return this._update(endpoint, data, "patch");
 	}
 
 	/** Check if the current instance was created with a certain scope
@@ -622,5 +607,16 @@ export default class TwitchApi extends EventEmitter{
 		const query = options ? "?" + parseOptions(options) : "";
 		const endpoint = "/users/extensions" + query;
 		return this._get<APIActiveUserExtensionResponse>(endpoint);
+	}
+
+	/** Modifies channel information for users. */
+	async modifyChannelInformation(options: ModifyChannelInformationOptions): Promise<void>{
+		if(!this._hasScope("user:edit:broadcast"))
+			this._error("Missing scope `user:edit:broadcast`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = "/channels" + query;
+
+		return this._patch(endpoint);
 	}
 }
