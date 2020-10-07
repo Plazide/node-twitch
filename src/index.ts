@@ -34,7 +34,7 @@ import {
 	ModifyChannelInformationOptions,
 	UpdateUserOptions,
 	CreateClipOptions,
-	GetModeratorsOptions
+	GetModeratorsOptions, GetCodeStatusOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -56,7 +56,7 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse
+	APIModeratorResponse, APICodeStatusResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -672,5 +672,17 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = "/moderation/moderators" + query;
 
 		return this._get(endpoint);
+	}
+
+	/** Gets the status of one or more provided Bits codes. This API requires that the caller is an authenticated Twitch user. The API is throttled to one request per second per authenticated user. Codes are redeemable alphanumeric strings tied only to the bits product. This third-party API allows other parties to redeem codes on behalf of users. Third-party app and extension developers can use the API to provide rewards of bits from within their games.
+
+	All codes are single-use. Once a code has been redeemed, via either this API or the site page, then the code is no longer valid for any further use.
+
+	This endpoint is only available for developers who have a preexisting arrangement with Twitch. We provide sets of codes to the third party as part of a contract agreement. The third-party program then calls this API to credit the Twitch user by submitting specific code(s). This means that a bits reward can be applied without users having to follow any manual steps. */
+	async getCodeStatus(options: GetCodeStatusOptions): Promise<APICodeStatusResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = "/entitlements/codes" + query;
+
+		return this._get<APICodeStatusResponse>(endpoint);
 	}
 }

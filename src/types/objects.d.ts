@@ -332,6 +332,43 @@ export interface Moderator{
 	user_name: string;
 }
 
+declare enum Status{
+	/** Request successfully redeemed this code to the authenticated user’s account.This status will only ever be encountered when calling the POST API to redeem a key. */
+	SUCCESSFULLY_REDEEMED,
+
+	/** Code has already been claimed by a Twitch user. */
+	ALREADY_CLAIMED,
+
+	/** Code has expired and can no longer be claimed. */
+	EXPIRED,
+
+	/** User is not eligible to redeem this code. */
+	USER_NOT_ELIGIBLE,
+
+	/** Code is not valid and/or does not exist in our database. */
+	NOT_FOUND,
+
+	/** Code is not currently active. */
+	INACTIVE,
+
+	/** Code has not been claimed.This status will only ever be encountered when calling the GET API to get a keys status. */
+	UNUSED,
+
+	/** Code was not properly formatted. */
+	INCORRECT_FORMAT,
+
+	/** Indicates some internal and/or unknown failure handling this code. */
+	INTERNAL_ERROR
+}
+
+export interface CodeStatus{
+	/** The code. */
+	code: string;
+
+	/**  */
+	status: Status;
+}
+
 export interface CreatedClip{
 	/** ID of the clip that was created. */
 	id: string;

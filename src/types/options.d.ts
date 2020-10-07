@@ -281,6 +281,17 @@ export interface ModifyChannelInformationOptions{
 	title?: string;
 }
 
+export interface GetCodeStatusOptions{
+	/** The code to get the status of. Pass an array of codes to get the status of multiple codes.
+	 *
+	 * Max 20 codes allowed.
+	*/
+	code: string | string[];
+
+	/** The user account which is going to receive the entitlement associated with the code. */
+	user_id: string;
+}
+
 export interface UpdateUserOptions{
 	/** User’s account description */
 	description?: string;

@@ -20,7 +20,7 @@ import {
 	Extension,
 	ActiveExtension,
 	CreatedClip,
-	Moderator
+	Moderator, CodeStatus
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -109,6 +109,10 @@ export interface APICreateClipResponse{
 
 export interface APIModeratorResponse extends APIBaseResponse{
 	data: Moderator[];
+}
+
+export interface APICodeStatusResponse{
+	data: CodeStatus[];
 }
 
 export interface APIBitsLeaderboardResponse{

@@ -97,6 +97,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`getCodeStatus` should do something", async () => {
+		const result = await api.getCodeStatus({ code: "asdasd", user_id: broadcasterId });
+
+		expect(result).toBeDefined();
+	});
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {
@@ -218,9 +224,13 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 	});
 
 	test("`createClip` should create clip", async () => {
+		const stream = await api.getStreams({ channel: userId });
 		const result = await api.createClip({ broadcaster_id: userId });
 
-		expect(result.data).toBeInstanceOf(Array);
+		if(stream.data.length > 0)
+			expect(result.data).toBeInstanceOf(Array);
+		else
+			expect(result.data).toBe(undefined);
 	});
 
 	test("`getModerators` should return moderators", async () => {
