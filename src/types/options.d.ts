@@ -292,6 +292,17 @@ export interface GetCodeStatusOptions{
 	user_id: string;
 }
 
+export interface ReplaceStreamTagsOptions{
+	/** IDs of tags to be applied to the stream.
+
+		Maximum of 100 supported.
+	*/
+	tag_ids?: string[];
+
+	/** ID of the stream for which tags are to be replaced. */
+	broadcaster_id: string;
+}
+
 export interface UpdateUserOptions{
 	/** User’s account description */
 	description?: string;

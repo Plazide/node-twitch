@@ -238,4 +238,18 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("`replaceStreamTags` should replace stream tags", async () => {
+		let success = false;
+
+		try{
+			await api.replaceStreamTags({ broadcaster_id: userId });
+			success = true;
+		}catch(err){
+			console.error(err);
+			success = false;
+		}
+
+		expect(success).toBe(true);
+	});
 });

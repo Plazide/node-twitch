@@ -34,7 +34,7 @@ import {
 	ModifyChannelInformationOptions,
 	UpdateUserOptions,
 	CreateClipOptions,
-	GetModeratorsOptions, GetCodeStatusOptions
+	GetModeratorsOptions, GetCodeStatusOptions, ReplaceStreamTagsOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -684,5 +684,19 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = "/entitlements/codes" + query;
 
 		return this._get<APICodeStatusResponse>(endpoint);
+	}
+
+	/** Applies specified tags to a specified stream, overwriting any existing tags applied to that stream. If no tags are specified, all tags previously applied to the stream are removed. Automated tags are not affected by this operation.
+
+	Tags expire 72 hours after they are applied, unless the stream is live within that time period. If the stream is live within the 72-hour window, the 72-hour clock restarts when the stream goes offline. The expiration period is subject to change. */
+	async replaceStreamTags(options: ReplaceStreamTagsOptions): Promise<void>{
+		const query = `?broadcaster_id=${options.broadcaster_id}`;
+		const endpoint = "/streams/tags" + query;
+		const data = options.tag_ids ? { tag_ids: options.tag_ids } : null;
+
+		if(data)
+			return this._put(endpoint, data);
+		else
+			return this._put(endpoint);
 	}
 }
