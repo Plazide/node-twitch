@@ -663,6 +663,7 @@ export default class TwitchApi extends EventEmitter{
 		return this._post(endpoint);
 	}
 
+	/** Returns all moderators in a channel. */
 	async getModerators(options: GetModeratorsOptions): Promise<APIModeratorResponse>{
 		if(!this._hasScope("moderation:read"))
 			this._error("Missing scope `moderation:read`");
