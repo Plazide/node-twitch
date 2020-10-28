@@ -65,7 +65,6 @@ export default class TwitchApi extends EventEmitter{
 	client_id: string;
 
 	user?: User;
-	isApp?: boolean;
 	access_token?: string;
 	refresh_token?: string;
 	scopes?: Scope[];
@@ -79,7 +78,6 @@ export default class TwitchApi extends EventEmitter{
 
 		this.client_secret = config.client_secret;
 		this.client_id = config.client_id;
-		this.isApp = config.isApp;
 		this.access_token = config.access_token;
 		this.refresh_token = config.refresh_token;
 		this.scopes = config.scopes;
@@ -87,12 +85,6 @@ export default class TwitchApi extends EventEmitter{
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
 		this.ready = false;
-
-		if(config.isApp && config.access_token)
-			this._error("Option isApp is set to true while an `access_token` is provided. Choose one method of authentication, do not use both.");
-
-		if(config.isApp)
-			console.warn("The `isApp` option has been deprecated. The Twitch API now requires all requests to use OAuth. That means, if you omit the `access_token` option, an app access token will be automatically fetched. That renders the option useless, and it will be removed in future versions.");
 
 		this._init();
 	}
@@ -526,14 +518,11 @@ export default class TwitchApi extends EventEmitter{
 
 	/** Gets the currently authenticated users profile information. */
 	async getCurrentUser(): Promise<User | undefined>{
-		if(this.isApp)
-			this._error("Cannot get the current user when using an application token. Use access_token and refresh_token instead.");
-
 		const endpoint = "/users";
 		const result = await this._get<APIUserResponse>(endpoint);
 
 		if(!result) {
-			this._error("Failed to get current user.");
+			this._error("Failed to get current user. This could be because you haven't provided an access_token connected to a user.");
 			return;
 		}
 

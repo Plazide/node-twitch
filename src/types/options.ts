@@ -20,9 +20,6 @@ export interface TwitchApiConfig{
 
 	/** Your registered redirect URI. */
 	redirect_uri?: string;
-
-	/** Deprecated: A boolean value that determines whether or not the api should fetch an app access token. When using this option, you are only able to access public user information. If no `access_token` is provided, an app access token will be automatically acquired. */
-	isApp?: boolean;
 }
 
 /** The options to customize the request. */
