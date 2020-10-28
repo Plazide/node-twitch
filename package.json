@@ -9,7 +9,8 @@
     "major": "npm test && npm version major",
     "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal ./src",
     "test": "jest",
-    "build": "tsc"
+	"build": "tsc",
+	"prepublish": "yarn test && yarn build"
   },
   "repository": {
     "type": "git",
