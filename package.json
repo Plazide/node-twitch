@@ -21,7 +21,8 @@
     "helix",
     "new",
     "server",
-    "node"
+	"node",
+	"typescript"
   ],
   "author": "Carl Hallén",
   "license": "ISC",
