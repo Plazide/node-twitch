@@ -93,7 +93,7 @@ getStreams();
 ```
 
 Provided that the stream is live, something like this will be logged:
-```json
+```js
 {
   data: [
     {
