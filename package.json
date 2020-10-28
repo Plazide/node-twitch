@@ -1,6 +1,6 @@
 {
   "name": "node-twitch",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "dist/index.js",
   "scripts": {
@@ -21,8 +21,8 @@
     "helix",
     "new",
     "server",
-	"node",
-	"typescript"
+    "node",
+    "typescript"
   ],
   "author": "Carl Hallén",
   "license": "ISC",
