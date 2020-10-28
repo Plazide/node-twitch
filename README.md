@@ -1,122 +1,137 @@
 # node-twitch
-This package aims to simplify calls to the Twitch api by making the endpoints available through simple method calls.
+This package is a wrapper around the Twitch Helix API. It is written in Typescript and provides in-editor documentation for all methods and options. All methods are named after their endpoint names in the [Twitch API Reference](https://dev.twitch.tv/docs/api/reference).
 
-### Early version
-The aim of this package is to make all twitch endpoints available through method calls in a single class. So far, the supported endpoints are limited. Therefore, a `customRequest()` method has been added to the api class. It lets you call any endpoint on the Twitch api using the authentication information already provided. For more info on this see [Unsupported endpoints](#unsupported-endpoints).
+> **NOTE**: This package is still under development. All endpoints are not yet supported. See documentation for all supported endpoints.
+
+## Documentation
+To see and read about the methods provided by the package, please visit the [documentation](https://plazide.github.io/node-twitch).
 
 ## Installation
+The package is available through NPM, which means you can choose to install it using either `npm` or `yarn`
 
-To install simply do,
-```bash
+NPM:
+```sh
 npm install node-twitch
 ```
 
+Yarn:
+```sh
+yarn add node-twitch
+```
+
 ## Usage
-Before using this package, you will have to create an application on twitch to retrieve a `client_id` and `client_secret`. Use the [official documentation](https://dev.twitch.tv/docs/authentication/#registration) as a guide.
 
-Refer to the example below for a basic usage guide.
+To start using the package, you need to import and initialize the API class. You need to provide it with your `client_id` and `client_secret` which you get from creating an application on the [Twitch developers site](https://dev.twitch.tv/console). 
+
+Using Typescript or bundler:
 ```js
-const TwitchApi = require("node-twitch");
+import TwitchApi from "node-twitch";
 
-// Create a new instance of the TwitchApi class and use an app access token to authenticate requests.
-const api = new TwitchApi({
-	client_id: "YOUR TWITCH CLIENT ID",
-	client_secret: "YOUR CLIENT SECRET",
-	isApp: true // When this option is enabled, an application token will be automatically acquired from twitch.
-});
-
-// Wait for the api to start.
-api.on("ready", () => {
-	// Set the options for the request.
-	const options = {
-		// Channels accepts a string or an array of strings representing either a user_id or a user's login name.
-		channels: ["lirik", "shroud"]
-	}
-
-	// Call the streams endpoint.
-	// The callback contains a body and a response object.
-	// The body is the result returned from twitch,
-	// while the response contains the http request information.
-	api.getStreams(options, (body, response) => {
-		console.log(body.data[0].user_name); // Should print "LIRIK" if the stream is live.
-	});
-});
-```  
-The example above has set the `isApp` option set to `true`, which means that the api will automatically request an application token from the twitch api using your `client_id` and `client_secret`. Using this option simplifies the setup process of the api, but it prevents you from accessing any non-public user data. If you need to access private user data, such as subscribers or a user's email, you will need to authenticate the user on the client side and send the `access_token` and `refresh_token` to the server. The process of retrieving these tokens are outside the scope of this package. Refer to the [official documentation](https://dev.twitch.tv/docs/authentication/) on how to authenticate a user.
-
-To use the `access_token` and `refresh_token`, refer to the following example:
-```js
-const TwitchApi = require("node-twitch");
-
-// Create a new instance of the TwitchApi class.
-const api = new TwitchApi({
-	client_id: "YOUR TWITCH CLIENT ID",
-	client_secret:  "YOUR CLIENT SECRET",
-	access_token: "A USER'S ACCESS TOKEN",
-	refresh_token: "A USER'S REFRESH TOKEN"
-});
-
-// Wait for the api to start.
-api.on("ready", () => {
-	api.getCurrentUser( (body, response) => {
-		console.log(body.data[0].display_name); // Prints the currently authenticated user's display name.
-	});
+const twitch = new TwitchApi({
+	client_id: "YOUR_CLIENT_ID",
+	client_secret: "YOUR_CLIENT_SECRET"
 });
 ```
 
-It's worth noting that it is not necessary to wait for the `ready` event when using this method of authentication. In this case the the only thing the `ready` event indicates is that you can access the `api.user` object, which makes it easier to read the current user's data. 
-
-### Async/Await
-In addition to the syntax above, this package also uses promises, which means that you can use a async/await syntax if you'd like. The example below does the same thing as the first example, but using an async/await syntax.
-
+Using native NodeJS:
 ```js
-const TwitchApi = require("node-twitch");
+const TwitchApi = require("node-twitch").default;
 
-// Create a new instance of the TwitchApi class and use an app access token to authenticate requests.
-const api = new TwitchApi({
-	client_id: "YOUR TWITCH CLIENT ID",
-	client_secret: "YOUR CLIENT SECRET",
-	isApp: true // When this option is enabled, an application token will be automatically acquired from twitch.
-});
-
-// Wait for the api to start.
-api.on("ready", async () => { // Uses an async function!!
-	// Set the options for the request.
-	const options = {
-		// Channels accepts a string or an array of strings representing either a user_id or a user's login name.
-		channels: ["lirik", "shroud"]
-	}
-
-	// Call the streams endpoint.
-	// Uses async/await instead of a callback.
-	// This method does not return the full response object.
-	const streams = await api.getStreams(options);
-	console.log(streams.data[0].user_name); // Should print "LIRIK" if the stream is live.
-	
-});
-```
-The biggest difference when using async/await is that the response object won't be available. Keep this in mind when deciding which syntax you'd like to use for your project.
-
-### Unsupported endpoints
-If you wish to call an endpoint that is not yet supported by this package, refer to the following example:
-```js
-const TwitchApi = require("node-twitch");
-
-const api = new TwitchApi({
-	client_id: "YOUR TWITCH CLIENT ID",
-	client_secret:  "YOUR CLIENT SECRET",
-	access_token: "A USER'S ACCESS TOKEN",
-	refresh_token: "A USER'S REFRESH TOKEN"
-});
-
-// A custom request to get videos from a user_id
-api.customRequest("/videos?user_id=91919297", {method: "GET"}, body => {
-	console.log(body.data); // Prints array of the specified user's videos.
+const twitch = new TwitchApi({
+	client_id: "YOUR_CLIENT_ID",
+	client_secret: "YOUR_CLIENT_SECRET"
 });
 ```
 
-For further information, read the documentation below.
+This is the easiest way to get started with the package. Using this configuration, an app access token will be automatically fetched for you which will allow to call all public endpoints. 
 
-# Documentation
+### With an authenticated user
 
-- [Documentation](https://plazide.github.io/node-twitch/)
+If you need to access user data, you'll will have to provide an `access_token` which grants access for a user.
+
+To get this `access_token` you can follow one of the authentication flows on the [Twitch documentation site](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth).
+
+> **NOTE:** It is recommended that you handle the authentication yourself. This package is made for use on the server, and authentication requires you to present a link on the client where users grant your app permissions.
+
+#### Before initialization
+
+If you want, you can handle all of the authentication yourself and simply pass in an `access_token` when creating a new instance of `TwitchApi`. You should also pass in the scopes the `scopes` that are granted for the passed in `access_token`.
+
+```js
+import TwitchApi from "node-twitch";
+
+const twitch = new TwitchApi({
+  client_id: "YOUR_CLIENT_ID",
+  client_secret: "YOUR_CLIENT_SECRET",
+  access_token: "USER_ACCESS_TOKEN",
+  scopes: ["YOUR_SCOPES"]
+});
+```
+
+#### After initialization
+
+You can also get user access after creating an instance of `TwitchApi`. There are two important methods to help you with this.
+
+1. **generateAuthUrl**. This method will generate the URL for your users to visit in order to grant permissions to your app. It will use the `client_id`, `client_secret`, and `scopes` passed to the constructor to generate the URL.
+2. **getUserAccess**. This method will fetch the refresh and access tokens using the code returned from Twitch after a user visits the auth URL. This requires you to setup proper callback URLs.
+
+Read more about authentication on the [official Twitch documentation](https://dev.twitch.tv/docs/authentication)
+
+### Examples
+Here are a few examples of common use cases to get you started. The examples assume that you have created an instance of `TwitchApi` called `twitch`. See [usage](#usage) on how to do this.
+
+#### Getting a user's stream
+
+To get the stream information from a single user:
+```js
+async function getStreams(){
+  const streams = await twitch.getStreams({ channel: "sacriel" });
+  console.log(streams);
+}
+
+getStreams();
+```
+
+Provided that the stream is live, something like this will be logged:
+```json
+{
+  data: [
+    {
+      id: '39800533772',
+      user_id: '23735582',
+      user_name: 'Sacriel',
+      game_id: '491931',
+      type: 'live',
+      title: 'Cheeky bit of Tarky, maybe PUBG later?',
+      viewer_count: 2013,
+      started_at: '2020-10-28T11:40:49Z',
+      language: 'en',
+      thumbnail_url: 'https://static-cdn.jtvnw.net/previews-ttv/live_user_sacriel-{width}x{height}.jpg',
+      tag_ids: [Array]
+    }
+  ],
+  pagination: {}
+}
+```
+
+#### Getting a user's ID
+To get the ID of a user:
+```js
+async function getUserId(loginName){
+  const users = await twitch.getUsers(loginName);
+  const user = users.data[0];
+  const userId = user.id;
+
+  console.log(userId);
+}
+
+getUserId("sacriel");
+```
+
+This would log:
+```
+23735582
+```
+
+## Get in touch
+If you have any questions or just want to reach me, you can get in touch with me on Twitter([@chj_web](https://twitter.com/chj_web))
