@@ -12,7 +12,7 @@
 	  "declaration": true,
 	  "outDir": "dist",
 	  "sourceMap": false,
-	  "watch": true
+	  "watch": false
 	},
 	"include": [
 	  "src/**/*"
