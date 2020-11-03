@@ -236,6 +236,10 @@ export default class TwitchApi extends EventEmitter{
 		return result;
 	}
 
+	/**
+	 * Send update request, ie. post, put, patch, delete.
+	 * @internal
+	 */
 	async _update(endpoint: string, data?: Record<string, unknown>, method?: "post" | "put" | "delete" | "patch"): Promise<any>{
 		if(endpoint.substring(0, 1) !== "/") this._error("Endpoint must start with a '/' (forward slash)");
 
