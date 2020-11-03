@@ -7,7 +7,7 @@
     "patch": "npm test && npm version patch",
     "minor": "npm test && npm version minor",
     "major": "npm test && npm version major",
-    "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode modules --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
+    "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode file --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
     "test": "jest",
     "build": "tsc",
     "prepublish": "yarn test && yarn build"
