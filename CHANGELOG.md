@@ -1,12 +1,5 @@
 # Changelog for node-twitch
 
-## *0.1.4 - 2020-02-12*
-
-### Added
- - Changelog
- - getGames method
- - Tests for api and helper methods
-
 ## *0.2.0 - 2020-10-28*
 
 ### Changed
@@ -39,3 +32,10 @@
 ### Removed
   - isApp option. All requests to the Twitch API now require a access token. If an access token isn't provided, an app access token will be fetched automatically, rendering the isApp option useless.
   - customRequest. *Almost every endpoint has been added, which makes the customRequest method redundant*
+
+## *0.1.4 - 2020-02-12*
+
+### Added
+ - Changelog
+ - getGames method
+ - Tests for api and helper methods
