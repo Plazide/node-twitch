@@ -1,5 +1,16 @@
 # Changelog for node-twitch
 
+## *0.3.0* - 2020-12-08
+
+## Added
+  - Method on stream object to get the thumbnail url with filled in `{width}` and `{height}` values.
+  - More examples in README
+
+## Fixed
+  - `channels` option on `getStreams()` always returning empty array.
+
+---
+
 ## *0.2.0 - 2020-10-28*
 
 ### Changed
