@@ -33,7 +33,7 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 	});
 
 	test("`getStreams` should get array of streams", async () => {
-		const result = await api.getStreams({ first: 10, game_id: [21548, 509670] });
+		const result = await api.getStreams({ channels: ["shroud", "summit1g"] });
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
