@@ -80,16 +80,16 @@ Read more about authentication on the [official Twitch documentation](https://de
 ### Examples
 Here are a few examples of common use cases to get you started. The examples assume that you have created an instance of `TwitchApi` called `twitch`. See [usage](#usage) on how to do this.
 
-#### Getting a user's stream
+#### Getting a single stream
 
 To get the stream information from a single user:
 ```js
-async function getStreams(){
+async function getStream(){
   const streams = await twitch.getStreams({ channel: "sacriel" });
   console.log(streams);
 }
 
-getStreams();
+getStream();
 ```
 
 Provided that the stream is live, something like this will be logged:
@@ -114,6 +114,75 @@ Provided that the stream is live, something like this will be logged:
 }
 ```
 
+#### Getting multiple streams
+
+To get stream information of multiple channels:
+
+```js
+async function getStreams(){
+	const streams = await twitch.getStreams({ channels: ["shroud", "summit1g"] });
+	console.log(streams);
+}
+
+getStreams();
+```
+
+Provided that both streams are live, something like this would be returned:
+
+```js
+{
+  data: [
+    {
+      id: '40860684878',
+      user_id: '26490481',
+      user_name: 'summit1g',
+      game_id: '491931',
+      game_name: 'Escape From Tarkov',
+      type: 'live',
+      title: 'big gains today. [ @summit1g ]',
+      viewer_count: 23923,
+      started_at: '2020-12-07T22:46:40Z',
+      language: 'en',
+      thumbnail_url: 'https://static-cdn.jtvnw.net/previews-ttv/live_user_summit1g-{width}x{height}.jpg',
+      tag_ids: [Array]
+    },
+    {
+      id: '40860769838',
+      user_id: '37402112',
+      user_name: 'shroud',
+      game_id: '65632',
+      game_name: 'DayZ',
+      type: 'live',
+      title: 'Namalsk. | Follow @shroud on socials',
+      viewer_count: 22813,
+      started_at: '2020-12-07T22:53:30Z',
+      language: 'en',
+      thumbnail_url: 'https://static-cdn.jtvnw.net/previews-ttv/live_user_shroud-{width}x{height}.jpg',
+      tag_ids: [Array]
+    }
+  ],
+  pagination: {}
+}
+```
+
+#### Getting thumbnail url from a stream
+
+```js
+async function getThumbnailUrl(){
+	const result = await twitch.getStreams({ channel: "shroud" });
+	const stream = result.data[0];
+	console.log(stream.getThumbnailUrl());
+}
+
+getThumbnailUrl();
+```
+
+Provided that the stream is live, this would be returned:
+
+```
+https://static-cdn.jtvnw.net/previews-ttv/live_user_shroud-1920x1080.jpg
+```
+
 #### Getting a user's ID
 To get the ID of a user:
 ```js
@@ -132,6 +201,10 @@ This would log:
 ```
 23735582
 ```
+
+## Problems or issues?
+
+If you encounter any problems, bugs or other issues with the package, please create an [issue in the GitHub repo](https://github.com/Plazide/node-twitch/issues). 
 
 ## Get in touch
 If you have any questions or just want to reach me, you can get in touch with me on Twitter([@chj_web](https://twitter.com/chj_web))
