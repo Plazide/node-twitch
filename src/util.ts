@@ -89,7 +89,8 @@ export function isNumber(value: unknown): boolean{
 
 export function addThumbnailMethod(stream: Stream): Stream{
 	const thumbnailUrl = stream.thumbnail_url;
-	stream.getThumbnailUrl = ({ width = 1920, height = 1080 }: { width: number, height: number }) => {
+	stream.getThumbnailUrl = (options: { width: number, height: number } = { width: 1920, height: 1080 }) => {
+		const{ width, height } = options;
 		return thumbnailUrl.replace("{width}", "" + width).replace("{height}", "" + height);
 	};
 
