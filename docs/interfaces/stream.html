@@ -78,6 +78,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stream.html#game_id" class="tsd-kind-icon">game_<wbr>id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stream.html#getthumbnailurl" class="tsd-kind-icon">get<wbr>Thumbnail<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stream.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stream.html#language" class="tsd-kind-icon">language</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stream.html#started_at" class="tsd-kind-icon">started_<wbr>at</a></li>
@@ -101,7 +102,7 @@
 					<div class="tsd-signature tsd-kind-icon">game_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L115">src/types/objects.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L115">src/types/objects.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -111,12 +112,48 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getthumbnailurl" class="tsd-anchor"></a>
+					<h3>get<wbr>Thumbnail<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Thumbnail<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L133">src/types/objects.ts:133</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Replace the <code>{width}</code> and <code>{height}</code> values in the thumbnail url by passing in options. Returns a working thumbnail url. If no options are provided, the default dimensions are <code>1920x1080</code></p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L118">src/types/objects.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L118">src/types/objects.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -131,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L121">src/types/objects.ts:121</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L121">src/types/objects.ts:121</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -146,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">started_<wbr>at<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L124">src/types/objects.ts:124</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L124">src/types/objects.ts:124</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +198,7 @@
 					<div class="tsd-signature tsd-kind-icon">tag_<wbr>ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L127">src/types/objects.ts:127</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L127">src/types/objects.ts:127</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">thumbnail_<wbr>url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L130">src/types/objects.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L130">src/types/objects.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -191,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L133">src/types/objects.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L136">src/types/objects.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -206,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L136">src/types/objects.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L139">src/types/objects.ts:139</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -221,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">user_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L139">src/types/objects.ts:139</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L142">src/types/objects.ts:142</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +273,7 @@
 					<div class="tsd-signature tsd-kind-icon">user_<wbr>name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L142">src/types/objects.ts:142</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L145">src/types/objects.ts:145</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -251,7 +288,7 @@
 					<div class="tsd-signature tsd-kind-icon">viewer_<wbr>count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/f3026c4/src/types/objects.ts#L145">src/types/objects.ts:145</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/4f7b599/src/types/objects.ts#L148">src/types/objects.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -279,6 +316,9 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="stream.html#game_id" class="tsd-kind-icon">game_<wbr>id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="stream.html#getthumbnailurl" class="tsd-kind-icon">get<wbr>Thumbnail<wbr>Url</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="stream.html#id" class="tsd-kind-icon">id</a>
