@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import fetch from "node-fetch";
 import { EventEmitter } from "events";
-import { parseMixedParam, parseOptions, isNumber } from "./util";
+import { parseMixedParam, parseOptions, isNumber, addThumbnailMethod } from "./util";
 import { Scope } from "./types/scopes";
 import { User } from "./types/objects";
 import { AuthEvent } from "./types/events";
@@ -431,7 +431,9 @@ export default class TwitchApi extends EventEmitter{
 
 		query += "&";
 		query += parseOptions(options);
-		return this._get<APIStreamResponse>(endpoint + query);
+		const response = await this._get<APIStreamResponse>(endpoint + query);
+		response.data.map(addThumbnailMethod);
+		return response;
 	}
 
 	/** Gets the list of all stream tags defined by Twitch, optionally filtered by tag ID(s). */

@@ -1,5 +1,6 @@
 import fs from "fs";
 import { FParseMixedParam } from "./types/functions";
+import { Stream } from "./types/objects";
 const userFile = "./data/apiUser.json";
 
 export function getLocalAccessToken(): string{
@@ -84,4 +85,13 @@ export function isNumber(value: unknown): boolean{
 	if(value === null) return false;
 
 	return!isNaN(parseInt("" + value));
+}
+
+export function addThumbnailMethod(stream: Stream): Stream{
+	const thumbnailUrl = stream.thumbnail_url;
+	stream.getThumbnailUrl = ({ width = 1920, height = 1080 }: { width: number, height: number }) => {
+		return thumbnailUrl.replace("{width}", "" + width).replace("{height}", "" + height);
+	};
+
+	return stream;
 }

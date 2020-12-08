@@ -129,6 +129,9 @@ export interface Stream{
 	/** Thumbnail URL of the stream. All image URLs have variable width and height. You can replace `{width}` and `{height}` with any values to get that size image */
 	thumbnail_url: string;
 
+	/** Replace the `{width}` and `{height}` values in the thumbnail url by passing in options. Returns a working thumbnail url */
+	getThumbnailUrl: (options: { width: number, height: number }) => string;
+
 	/** Stream title. */
 	title: string;
 
