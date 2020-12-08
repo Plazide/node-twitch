@@ -69,6 +69,8 @@ export default class TwitchApi extends EventEmitter{
 	refresh_token?: string;
 	scopes?: Scope[];
 	redirect_uri?: string;
+
+	/** @internal */
 	base: string;
 	refresh_attempts: number;
 	ready: boolean;
@@ -427,6 +429,7 @@ export default class TwitchApi extends EventEmitter{
 				numericKey: "user_id"
 			});
 
+		query += "&";
 		query += parseOptions(options);
 		return this._get<APIStreamResponse>(endpoint + query);
 	}

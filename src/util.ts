@@ -52,10 +52,10 @@ export function parseMixedParam({ values, stringKey, numericKey }: FParseMixedPa
 	let query = "";
 
 	function addToQuery(value: string | number): void{
-		const type = isNumber("" + value) ? numericKey : stringKey;
+		const type = isNaN(parseInt("" + value)) ? "string" : "number";
 		const key = type === "string" ? stringKey : numericKey;
 
-		query += `${key}=${value}`;
+		query += `${key}=${value}&`;
 	}
 
 	if(Array.isArray(values))
@@ -63,7 +63,7 @@ export function parseMixedParam({ values, stringKey, numericKey }: FParseMixedPa
 	else
 		addToQuery(values);
 
-	return query;
+	return query.replace(/&$/, "");
 }
 
 /**
@@ -79,6 +79,9 @@ export function parseArrayToQueryString(key: string, arr: unknown[]): string{
 }
 
 /** Check if a string represents a number */
-export function isNumber(value: string): boolean{
-	return!isNaN(parseInt(value));
+export function isNumber(value: unknown): boolean{
+	if(typeof value === "undefined") return false;
+	if(value === null) return false;
+
+	return!isNaN(parseInt("" + value));
 }
