@@ -124,7 +124,7 @@ export interface Stream{
 	started_at: string;
 
 	/** Shows tag IDs that apply to the stream. */
-	tag_ids: string;
+	tag_ids: string[];
 
 	/** Thumbnail URL of the stream. All image URLs have variable width and height. You can replace `{width}` and `{height}` with any values to get that size image */
 	thumbnail_url: string;
