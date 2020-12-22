@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetAllStreamTagsOptions | node-twitch</title>
+	<title>Commercial | node-twitch</title>
 	<meta name="description" content="Documentation for node-twitch">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,28 +52,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="getallstreamtagsoptions.html">GetAllStreamTagsOptions</a>
+					<a href="commercial.html">Commercial</a>
 				</li>
 			</ul>
-			<h1>Interface GetAllStreamTagsOptions</h1>
+			<h1>Interface Commercial</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Options for getting all stream tags</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetAllStreamTagsOptions</span>
+						<span class="target">Commercial</span>
 					</li>
 				</ul>
 			</section>
@@ -84,9 +77,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#after" class="tsd-kind-icon">after</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#first" class="tsd-kind-icon">first</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#tag_id" class="tsd-kind-icon">tag_<wbr>id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="commercial.html#length" class="tsd-kind-icon">length</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="commercial.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="commercial.html#retry_after" class="tsd-kind-icon">retry_<wbr>after</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,49 +88,48 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="after" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after</h3>
-					<div class="tsd-signature tsd-kind-icon">after<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="length" class="tsd-anchor"></a>
+					<h3>length</h3>
+					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commerciallength" class="tsd-signature-type">CommercialLength</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L106">src/types/options.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/objects.ts#L553">src/types/objects.ts:553</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.</p>
+							<p>Length of the triggered commercial</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="first" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first</h3>
-					<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L109">src/types/options.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/objects.ts#L556">src/types/objects.ts:556</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Maximum number of objects to return. Maximum: 100. Default: 20.</p>
+							<p>Provides contextual information on why the request failed</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tag_id" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag_<wbr>id</h3>
-					<div class="tsd-signature tsd-kind-icon">tag_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="retry_after" class="tsd-anchor"></a>
+					<h3>retry_<wbr>after</h3>
+					<div class="tsd-signature tsd-kind-icon">retry_<wbr>after<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L114">src/types/options.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/objects.ts#L559">src/types/objects.ts:559</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>ID of a tag. Multiple IDs can be specified, separated by ampersands. If provided, only the specified tag(s) is(are) returned.</p>
+							<p>Seconds until the next commercial can be served on this channel</p>
 						</div>
-						<p>Maximum of 100.</p>
 					</div>
 				</section>
 			</section>
@@ -155,16 +147,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="getallstreamtagsoptions.html" class="tsd-kind-icon">Get<wbr>All<wbr>Stream<wbr>Tags<wbr>Options</a>
+						<a href="commercial.html" class="tsd-kind-icon">Commercial</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#after" class="tsd-kind-icon">after</a>
+								<a href="commercial.html#length" class="tsd-kind-icon">length</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#first" class="tsd-kind-icon">first</a>
+								<a href="commercial.html#message" class="tsd-kind-icon">message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#tag_id" class="tsd-kind-icon">tag_<wbr>id</a>
+								<a href="commercial.html#retry_after" class="tsd-kind-icon">retry_<wbr>after</a>
 							</li>
 						</ul>
 					</li>

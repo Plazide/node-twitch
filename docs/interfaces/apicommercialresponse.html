@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetAllStreamTagsOptions | node-twitch</title>
+	<title>APICommercialResponse | node-twitch</title>
 	<meta name="description" content="Documentation for node-twitch">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,28 +52,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="getallstreamtagsoptions.html">GetAllStreamTagsOptions</a>
+					<a href="apicommercialresponse.html">APICommercialResponse</a>
 				</li>
 			</ul>
-			<h1>Interface GetAllStreamTagsOptions</h1>
+			<h1>Interface APICommercialResponse</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Options for getting all stream tags</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetAllStreamTagsOptions</span>
+						<span class="target">APICommercialResponse</span>
 					</li>
 				</ul>
 			</section>
@@ -84,9 +77,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#after" class="tsd-kind-icon">after</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#first" class="tsd-kind-icon">first</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getallstreamtagsoptions.html#tag_id" class="tsd-kind-icon">tag_<wbr>id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="apicommercialresponse.html#data" class="tsd-kind-icon">data</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,50 +86,14 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="after" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after</h3>
-					<div class="tsd-signature tsd-kind-icon">after<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="commercial.html" class="tsd-signature-type">Commercial</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L106">src/types/options.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/responses.ts#L129">src/types/responses.ts:129</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="first" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first</h3>
-					<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L109">src/types/options.ts:109</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Maximum number of objects to return. Maximum: 100. Default: 20.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tag_id" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag_<wbr>id</h3>
-					<div class="tsd-signature tsd-kind-icon">tag_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/3d0ae0c/src/types/options.ts#L114">src/types/options.ts:114</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ID of a tag. Multiple IDs can be specified, separated by ampersands. If provided, only the specified tag(s) is(are) returned.</p>
-						</div>
-						<p>Maximum of 100.</p>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -155,16 +110,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="getallstreamtagsoptions.html" class="tsd-kind-icon">Get<wbr>All<wbr>Stream<wbr>Tags<wbr>Options</a>
+						<a href="apicommercialresponse.html" class="tsd-kind-icon">APICommercial<wbr>Response</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#after" class="tsd-kind-icon">after</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#first" class="tsd-kind-icon">first</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getallstreamtagsoptions.html#tag_id" class="tsd-kind-icon">tag_<wbr>id</a>
+								<a href="apicommercialresponse.html#data" class="tsd-kind-icon">data</a>
 							</li>
 						</ul>
 					</li>
