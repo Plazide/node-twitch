@@ -1,5 +1,10 @@
 # Changelog for node-twitch
 
+## *0.3.1* - 
+
+## Fixed
+  - Incorrect type on for `tag_ids` on `Stream` interface
+
 ## *0.3.0* - 2020-12-08
 
 ## Added
