@@ -1,6 +1,6 @@
 # Changelog for node-twitch
 
-## *0.4.0* - 
+## *0.4.0 - 2020-12-22*
 
 ## Fixed
   - Incorrect type on for `tag_ids` on `Stream` interface
@@ -8,7 +8,7 @@
 ## Added
   - Added startCommercial method
 
-## *0.3.0* - 2020-12-08
+## *0.3.0 - 2020-12-08*
 
 ## Added
   - Method on stream object to get the thumbnail url with filled in `{width}` and `{height}` values.
