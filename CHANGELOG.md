@@ -1,9 +1,12 @@
 # Changelog for node-twitch
 
-## *0.3.1* - 
+## *0.4.0* - 
 
 ## Fixed
   - Incorrect type on for `tag_ids` on `Stream` interface
+
+## Added
+  - Added startCommercial method
 
 ## *0.3.0* - 2020-12-08
 
