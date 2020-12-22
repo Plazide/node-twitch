@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { CommercialLength } from "./objects";
 import { Scope } from "./scopes";
 
 /** The configuration options for the API instance. */
@@ -311,6 +312,17 @@ export interface CreateClipOptions{
 
 	/** If `false`, the clip is captured from the live stream when the API is called; otherwise, a delay is added before the clip is captured (to account for the brief delay between the broadcaster’s stream and the viewer’s experience of that stream). Default: `false`. */
 	has_delay?: boolean;
+}
+
+export interface StartCommercialOptions{
+	/** ID of the channel requesting a commercial */
+	broadcaster_id: string;
+
+	/** Desired length of the commercial in seconds.
+	 *
+	 * Valid options are 30, 60, 90, 120, 150, 180
+	*/
+	length: CommercialLength;
 }
 
 export interface GetModeratorsOptions{

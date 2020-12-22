@@ -20,7 +20,7 @@ import {
 	Extension,
 	ActiveExtension,
 	CreatedClip,
-	Moderator, CodeStatus
+	Moderator, CodeStatus, Commercial
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -123,4 +123,8 @@ export interface APIBitsLeaderboardResponse{
 
 	/** Total number of results (users) returned. This is `count` or the total number of entries in the leaderboard, whichever is less. */
 	total: number;
+}
+
+export interface APICommercialResponse{
+	data: Commercial[];
 }

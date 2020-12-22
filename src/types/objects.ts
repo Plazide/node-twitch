@@ -547,3 +547,16 @@ export interface DateRange{
 	/**  End of the date range for the returned data. */
 	ended_at: string;
 }
+
+export interface Commercial{
+	/** Length of the triggered commercial */
+	length: CommercialLength;
+
+	/** Provides contextual information on why the request failed */
+	message: string;
+
+	/** Seconds until the next commercial can be served on this channel */
+	retry_after: number;
+}
+
+export type CommercialLength = 30 | 60 | 90 | 120 | 150 | 180;

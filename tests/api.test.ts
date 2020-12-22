@@ -129,7 +129,7 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 			server.on("code", async code => {
 				await api.getUserAccess(code);
-				resolve();
+				resolve(undefined);
 			});
 		});
 
@@ -251,5 +251,11 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		}
 
 		expect(success).toBe(true);
+	});
+
+	test("`startCommercial` should start a commercial", async () => {
+		const result = await api.startCommercial({ broadcaster_id: userId, length: 30 });
+
+		expect(result).toBeDefined();
 	});
 });

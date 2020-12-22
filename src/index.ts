@@ -34,7 +34,7 @@ import {
 	ModifyChannelInformationOptions,
 	UpdateUserOptions,
 	CreateClipOptions,
-	GetModeratorsOptions, GetCodeStatusOptions, ReplaceStreamTagsOptions
+	GetModeratorsOptions, GetCodeStatusOptions, ReplaceStreamTagsOptions, StartCommercialOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -56,7 +56,7 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse, APICodeStatusResponse
+	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -696,5 +696,16 @@ export default class TwitchApi extends EventEmitter{
 			return this._put(endpoint, data);
 		else
 			return this._put(endpoint);
+	}
+
+	/** Starts a commercial on a specified channel. */
+	async startCommercial(options: StartCommercialOptions): Promise<APICommercialResponse>{
+		if(!this._hasScope("channel:edit:commercial"))
+			this._error("Missing scope `channel:edit:commercial`");
+
+		const query = "?" + parseOptions(options);
+		const endpoint = `/channels/commercial${query}`;
+
+		return this._post(endpoint);
 	}
 }
