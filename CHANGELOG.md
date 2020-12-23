@@ -2,19 +2,19 @@
 
 ## *0.4.0 - 2020-12-22*
 
-## Fixed
+### Fixed
   - Incorrect type on for `tag_ids` on `Stream` interface
 
-## Added
+### Added
   - Added startCommercial method
 
 ## *0.3.0 - 2020-12-08*
 
-## Added
+### Added
   - Method on stream object to get the thumbnail url with filled in `{width}` and `{height}` values.
   - More examples in README
 
-## Fixed
+### Fixed
   - `channels` option on `getStreams()` always returning empty array.
 
 ---
