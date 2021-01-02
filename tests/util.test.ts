@@ -9,6 +9,9 @@ describe.only("Unit tests for util functions", () => {
 	test("should check if string represents number", () => {
 		expect(isNumber("we")).toBeFalsy();
 		expect(isNumber("1")).toBeTruthy();
+		expect(isNumber("4chan")).toBeFalsy();
+		expect(isNumber("4000")).toBeTruthy();
+		expect(isNumber("chan4")).toBeFalsy();
 	});
 
 	test("should properly parse an object to querystring", () => {

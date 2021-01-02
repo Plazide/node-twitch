@@ -84,7 +84,7 @@ export function isNumber(value: unknown): boolean{
 	if(typeof value === "undefined") return false;
 	if(value === null) return false;
 
-	return!isNaN(parseInt("" + value));
+	return!isNaN(Number("" + value));
 }
 
 export function addThumbnailMethod(stream: Stream): Stream{
