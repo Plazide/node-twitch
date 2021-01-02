@@ -72,7 +72,7 @@ export function parseMixedParam({ values, stringKey, numericKey }: FParseMixedPa
  * @param {string} key - The key to use. This will be repeated in the query for every value in the array
  * @param {string[]|string} arr - Array of values to parse into query string.
  */
-export function parseArrayToQueryString(key: string, arr: unknown[]): string{
+export function parseArrayToQueryString(key: string, arr: readonly unknown[]): string{
 	const list = Array.isArray(arr) ? arr : [arr];
 	const result = list.map( value => `${key}=${value}`).join("&");
 
