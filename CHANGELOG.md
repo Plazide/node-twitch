@@ -1,5 +1,12 @@
 # Changelog for node-twitch
 
+## *0.4.1 - 2021-01-03*
+
+### Fixed
+  - Bug where ids would be treated as login names, thus not returning any users and not throwing any errors. Thanks to [@IXyles](https://github.com/iXyles) for reporting this in issue #14.
+
+---
+
 ## *0.4.0 - 2020-12-22*
 
 ### Fixed
@@ -7,6 +14,8 @@
 
 ### Added
   - Added startCommercial method
+
+---
 
 ## *0.3.0 - 2020-12-08*
 
