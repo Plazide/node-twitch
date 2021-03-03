@@ -132,12 +132,12 @@ export default class TwitchApi extends EventEmitter{
 				"Content-Type": "application/json"
 			}
 		});
+		const result = await response.text();
 
 		try{
-			const result = await response.json();
-			return result.access_token;
+			const data = JSON.parse(result);
+			return data.access_token;
 		}catch(err){
-			const result = await response.text();
 			this._error(`Error getting app access token. Expected twitch to return JSON object but got: ${result}`);
 			return undefined;
 		}
