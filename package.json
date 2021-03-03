@@ -1,6 +1,6 @@
 {
   "name": "node-twitch",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode file --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
     "test": "jest",
     "build": "tsc",
-	"dev": "tsc --watch",
+    "dev": "tsc --watch",
     "prepublish": "yarn test && yarn build"
   },
   "repository": {
