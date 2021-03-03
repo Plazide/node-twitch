@@ -117,7 +117,7 @@ export default class TwitchApi extends EventEmitter{
 	/** Get an app access token
 	 * @internal
 	 */
-	private async _getAppAccessToken(): Promise<string>{
+	private async _getAppAccessToken(): Promise<string | undefined>{
 		const data = {
 			client_id: this.client_id,
 			client_secret: this.client_secret,
@@ -133,8 +133,14 @@ export default class TwitchApi extends EventEmitter{
 			}
 		});
 
-		const result = await response.json();
-		return result.access_token;
+		try{
+			const result = await response.json();
+			return result.access_token;
+		}catch(err){
+			const result = await response.text();
+			this._error(`Error getting app access token. Expected twitch to return JSON object but got: ${result}`);
+			return undefined;
+		}
 	}
 
 	/** Refresh the access token
@@ -215,6 +221,8 @@ export default class TwitchApi extends EventEmitter{
 	private async _get<T>(endpoint: string): Promise<T>{
 		if(!this.access_token){
 			const accessToken = await this._getAppAccessToken();
+
+			if(!accessToken) throw new Error("App access token could not be fetched. Please make sure your `client_id` and `client_secret` are correct.");
 			this.access_token = accessToken;
 		}
 
