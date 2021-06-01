@@ -1,5 +1,12 @@
 # Changelog for node-twitch
 
+## *0.4.4 - 2021-06-01*
+
+### Fixed
+  - Issue where login names that looks like hex numbers (0xdeadbeef) would be treated as ids. Thanks to [@alacroix](https://github.com/alacroix) for reporting the issue in #22 and fixing with PR #23.
+
+---
+
 ## *0.4.1 - 2021-01-03*
 
 ### Fixed
