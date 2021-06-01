@@ -83,6 +83,7 @@ export function parseArrayToQueryString(key: string, arr: readonly unknown[]): s
 export function isNumber(value: unknown): boolean{
 	if(typeof value === "undefined") return false;
 	if(value === null) return false;
+	if(("" + value).includes("x")) return false;
 
 	return!isNaN(Number("" + value));
 }
