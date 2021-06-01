@@ -39,5 +39,11 @@ describe.only("Unit tests for util functions", () => {
 			stringKey: "name",
 			numericKey: "id"
 		})).toBe("id=5023423&id=242342");
+
+		expect(parseMixedParam({
+			values: ["0xdeadbeef", 'shroud'],
+			stringKey: "user_login",
+			numericKey: "user_id"
+		})).toBe("user_login=0xdeadbeef&user_login=shroud");
 	});
 });

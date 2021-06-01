@@ -53,8 +53,7 @@ export function parseMixedParam({ values, stringKey, numericKey }: FParseMixedPa
 	let query = "";
 
 	function addToQuery(value: string | number): void{
-		const type = isNaN(parseInt("" + value)) ? "string" : "number";
-		const key = type === "string" ? stringKey : numericKey;
+		const key = !isNumber(value) ? stringKey : numericKey;
 
 		query += `${key}=${value}&`;
 	}
