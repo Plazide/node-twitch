@@ -274,8 +274,10 @@ export default class TwitchApi extends EventEmitter{
 		}catch(err){
 			const status = err.status;
 
-			if(status === 401)
+			if(status === 401) {
+				await this._refresh();
 				return this._post(endpoint, options);
+			}
 
 			this._error(err);
 		}
