@@ -114,8 +114,14 @@ export interface Stream{
 	/** ID of the game being played on the stream. */
 	game_id: string;
 
+	/** Name of the game being played on the stream. */
+	game_name: string;
+
 	/** Stream ID. */
 	id: string;
+
+	/** Indicates if the broadcaster has specified their channel contains mature content that may be inappropriate for younger audiences. */
+	is_mature: boolean;
 
 	/** Stream language. */
 	language: string;
@@ -140,6 +146,9 @@ export interface Stream{
 
 	/** ID of the user who is streaming. */
 	user_id: string;
+
+	/** Login of the user who is streaming. */
+	user_login: string;
 
 	/** Display name corresponding to `user_id`. */
 	user_name: string;
