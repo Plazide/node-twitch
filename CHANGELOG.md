@@ -9,6 +9,7 @@
 ### Fixed
 
  - Failed post requests not triggering a refresh of access token.
+ - Incorrect types
 
 ## *0.4.4 - 2021-06-01*
 
