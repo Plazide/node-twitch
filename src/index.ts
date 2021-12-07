@@ -56,7 +56,7 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse
+	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIChannelEmotesResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -272,14 +272,14 @@ export default class TwitchApi extends EventEmitter{
 			else
 				return response.text();
 		}catch(err){
-			const status = err.status;
+			const status = (err as any).status;
 
 			if(status === 401) {
 				await this._refresh();
 				return this._post(endpoint, options);
 			}
 
-			this._error(err);
+			this._error(err as any);
 		}
 	}
 
@@ -519,6 +519,13 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APICheermoteResponse>(endpoint);
 	}
 
+	async getChannelEmotes(broadcasterId: string): Promise<APIChannelEmotesResponse>{
+		const query = `?broadcaster_id=${broadcasterId}`;
+		const endpoint = `/chat/emotes${query}`;
+
+		return this._get(endpoint);
+	}
+
 	/*********************************
 	Methods requiring user permissions
 	**********************************/
@@ -582,16 +589,22 @@ export default class TwitchApi extends EventEmitter{
 		return this._get<APIBanResponse>(endpoint);
 	}
 
-	/** Adds a specified user to the followers of a specified channel. A successful request does not return any content. */
+	/** Adds a specified user to the followers of a specified channel. A successful request does not return any content.
+	 * @deprecated
+	*/
 	async createUserFollows(options: CreateUserFollowsOptions): Promise<Record<string, unknown> | void>{
+		console.warn("`createUserFollows` is deprecated. Twitch has already removed the related endpoint, and this method will be removed from `node-twitch` in a future version.");
 		const query = "?" + parseOptions(options);
 		const endpoint = `/users/follows${query}`;
 
 		return this._post(endpoint);
 	}
 
-	/** Deletes a specified user from the followers of a specified channel. */
+	/** Deletes a specified user from the followers of a specified channel.
+	 * @deprecated
+	 */
 	async deleteUserFollows(options: DeleteUserFollowsOptions): Promise<Record<string, unknown> | void>{
+		console.warn("`deleteUserFollows` is deprecated. Twitch has already removed the related endpoint, and this method will be removed from `node-twitch` in a future version.");
 		const query = "?" + parseOptions(options);
 		const endpoint = `/users/follows${query}`;
 

@@ -13,6 +13,7 @@ import {
 	Ban,
 	ExtensionTransaction,
 	Cheermote,
+	Emote,
 	StreamKey,
 	ChannelInfo,
 	Clip,
@@ -101,6 +102,15 @@ export interface APIActiveUserExtensionResponse{
 
 export interface APICheermoteResponse{
 	data: Cheermote[];
+}
+
+export interface APIChannelEmotesResponse{
+	data: Emote[];
+
+	/** A templated URL. Use the values from id, format, scale, and theme_mode to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.
+
+	For information about what the template looks like and how to use it to fetch emotes, see https://dev.twitch.tv/docs/irc/emotes#cdn-template */
+	template: string;
 }
 
 export interface APICreateClipResponse{

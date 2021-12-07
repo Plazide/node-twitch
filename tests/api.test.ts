@@ -103,14 +103,20 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result).toBeDefined();
 	});
+
+	test("Should get channel emotes", async () => {
+		const result = await api.getChannelEmotes(broadcasterId);
+
+		expect(result.data).toBeInstanceOf(Array);
+		expect(typeof result.template).toBe("string");
+	});
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {
-	const PORT = 5555;
+	const PORT = 5000;
 	let api: TwitchApi,
 		server: HttpServer,
-		userId: string,
-		followUserId: string;
+		userId: string;
 
 	beforeAll( async () => {
 		server = new HttpServer({ port: PORT });
@@ -132,9 +138,6 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 				resolve(undefined);
 			});
 		});
-
-		const followUserIdResult = await api.getUsers("astreambot");
-		followUserId = followUserIdResult.data[0].id;
 	});
 
 	afterAll( () => {
@@ -176,18 +179,6 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 		const result = await api.getBannedUsers({ broadcaster_id: userId });
 
 		expect(result.data).toBeInstanceOf(Array);
-	});
-
-	test("`createUserFollows` should return empty string", async () => {
-		const result = await api.createUserFollows({ from_id: userId, to_id: followUserId });
-
-		expect(result).toBe("");
-	});
-
-	test("`deleteUserFollows` should return empty string", async () => {
-		const result = await api.deleteUserFollows({ from_id: userId, to_id: followUserId });
-
-		expect(result).toBe("");
 	});
 
 	test("`getStreamMarkers` should return array of stream markers", async () => {

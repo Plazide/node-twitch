@@ -540,6 +540,68 @@ interface CheermoteImages{
 	}
 }
 
+export interface Emote{
+	/** An id that identifies the emote. */
+	id: string;
+
+	/** The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  */
+	name: string;
+
+	/** Contains the image URLs for the emote. These image URLs will always provide a static (i.e., non-animated) emote image with a light background. **NOTE:** The preference is for you to use the templated URL in the `template` field to fetch the image instead of using these URLs. */
+	images: {
+		/** A URL to the small version (28px x 28px) of the emote. */
+		url_1x: string;
+
+		/** A URL to the medium version (56px x 56px) of the emote. */
+		url_2x: string;
+
+		/** A URL to the large version (112px x 112px) of the emote. */
+		url_3x: string;
+	}
+
+	/** The subscriber tier at which the emote is unlocked.
+	 * This field contains the tier information only if
+	 * `emote_type` is set to `subscriptions`, otherwise, it’s an empty string.
+	*/
+	tier: string;
+
+	/** The type of emote. The possible values are:
+	 	- `bitstier` — Indicates a custom Bits tier emote.
+		- `follower` — Indicates a custom follower emote.
+		- `subscriptions` — Indicates a custom subscriber emote.
+	*/
+	emote_type: "bitstier" | "follower" | "subscriptions";
+
+	/** An ID that identifies the emote set that the emote belongs to. */
+	emote_set_id: string;
+
+	/** The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `static`. But if it’s available as a static PNG and an animated GIF, the array contains `static` and `animated`. The possible formats are:
+
+	`animated` — Indicates an animated GIF is available for this emote.
+
+	`static` — Indicates a static PNG file is available for this emote.
+	 */
+	format: ("animated" | "static")[];
+
+	/** The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are:
+
+	- `1.0` — A small version (28px x 28px) is available.
+
+	- `2.0` — A medium version (56px x 56px) is available.
+
+	- `3.0` — A large version (112px x 112px) is available.
+	*/
+	scale: ("1.0" | "2.0" | "3.0")[];
+
+	/** The background themes that the emote is available in. Possible themes are:
+
+	- `dark`
+
+	- `light`
+	*/
+	theme_mode: ("light" | "dark")[];
+}
+
 export interface DateRange{
 	/** Start of the date range for the returned data. */
 	started_at: string;

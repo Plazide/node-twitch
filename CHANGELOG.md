@@ -1,5 +1,15 @@
 # Changelog for node-twitch
 
+## *0.4.5 - 2021-11-15*
+
+### Added
+
+ - `getChannelEmotes()`. This method gets all emotes that the specified channel created.
+
+### Fixed
+
+ - Failed post requests not triggering a refresh of access token.
+
 ## *0.4.4 - 2021-06-01*
 
 ### Fixed
