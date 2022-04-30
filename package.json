@@ -4,9 +4,9 @@
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "dist/index.js",
   "scripts": {
-    "patch": "npm test && npm version patch",
-    "minor": "npm test && npm version minor",
-    "major": "npm test && npm version major",
+    "patch": "npm test && npm run build && npm version patch",
+    "minor": "npm test && npm run build && npm version minor",
+    "major": "npm test && npm run build && npm version major",
     "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode file --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
     "test": "jest",
     "build": "tsc",
