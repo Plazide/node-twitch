@@ -131,7 +131,7 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 
 		await new Promise( async resolve => {
 			const authUrl = api.generateAuthUrl();
-			await open(authUrl, { url: true });
+			await open(authUrl);
 
 			server.on("code", async code => {
 				await api.getUserAccess(code);

@@ -32,11 +32,11 @@
   },
   "homepage": "https://github.com/Plazide/node-twitch#readme",
   "dependencies": {
-    "node-fetch": "^3.1.1"
+    "node-fetch": "2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
-    "@types/jest": "^26.0.5",
+    "@types/jest": "^27.4.1",
     "@types/node-fetch": "^2.5.7",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
     "@typescript-eslint/parser": "^3.6.0",
@@ -44,10 +44,10 @@
     "eslint": "^6.8.0",
     "eslint-config-plazide": "^0.1.5",
     "eslint-plugin-jest": "^23.6.0",
-    "jest": "^25.1.0",
+    "jest": "^27.5.1",
     "nodemon": "^1.18.10",
-    "open": "^7.1.0",
-    "ts-jest": "^26.1.1",
+    "open": "^8.4.0",
+    "ts-jest": "^27.1.4",
     "ts-node": "^8.10.2",
     "typedoc": "^0.17.8",
     "typescript": "^4.6.4"
