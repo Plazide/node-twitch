@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>StreamKey | node-twitch</title>
+	<title>APIChannelEmotesResponse | node-twitch</title>
 	<meta name="description" content="Documentation for node-twitch">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="streamkey.html">StreamKey</a>
+					<a href="apichannelemotesresponse.html">APIChannelEmotesResponse</a>
 				</li>
 			</ul>
-			<h1>Interface StreamKey</h1>
+			<h1>Interface APIChannelEmotesResponse</h1>
 		</div>
 	</div>
 </header>
@@ -66,7 +66,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">StreamKey</span>
+						<span class="target">APIChannelEmotesResponse</span>
 					</li>
 				</ul>
 			</section>
@@ -77,7 +77,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="streamkey.html#stream_key" class="tsd-kind-icon">stream_<wbr>key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="apichannelemotesresponse.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="apichannelemotesresponse.html#template" class="tsd-kind-icon">template</a></li>
 							</ul>
 						</section>
 					</div>
@@ -86,18 +87,29 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="stream_key" class="tsd-anchor"></a>
-					<h3>stream_<wbr>key</h3>
-					<div class="tsd-signature tsd-kind-icon">stream_<wbr>key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="emote.html" class="tsd-signature-type">Emote</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/types/objects.ts#L188">src/types/objects.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/types/responses.ts#L108">src/types/responses.ts:108</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="template" class="tsd-anchor"></a>
+					<h3>template</h3>
+					<div class="tsd-signature tsd-kind-icon">template<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/types/responses.ts#L113">src/types/responses.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Stream key for the channel</p>
+							<p>A templated URL. Use the values from id, format, scale, and theme_mode to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.</p>
 						</div>
+						<p>For information about what the template looks like and how to use it to fetch emotes, see <a href="https://dev.twitch.tv/docs/irc/emotes#cdn-template">https://dev.twitch.tv/docs/irc/emotes#cdn-template</a></p>
 					</div>
 				</section>
 			</section>
@@ -115,10 +127,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="streamkey.html" class="tsd-kind-icon">Stream<wbr>Key</a>
+						<a href="apichannelemotesresponse.html" class="tsd-kind-icon">APIChannel<wbr>Emotes<wbr>Response</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="streamkey.html#stream_key" class="tsd-kind-icon">stream_<wbr>key</a>
+								<a href="apichannelemotesresponse.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="apichannelemotesresponse.html#template" class="tsd-kind-icon">template</a>
 							</li>
 						</ul>
 					</li>

@@ -87,6 +87,12 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-class"><a href="../interfaces/twitchapi.abortable.html" class="tsd-kind-icon">Abortable</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="twitchapi.html#constructor" class="tsd-kind-icon">constructor</a></li>
@@ -104,6 +110,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="twitchapi.html#refresh_token" class="tsd-kind-icon">refresh_<wbr>token</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="twitchapi.html#scopes" class="tsd-kind-icon">scopes</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="twitchapi.html#user" class="tsd-kind-icon">user</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#capturerejectionsymbol" class="tsd-kind-icon">capture<wbr>Rejection<wbr>Symbol</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#capturerejections" class="tsd-kind-icon">capture<wbr>Rejections</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#defaultmaxlisteners" class="tsd-kind-icon">default<wbr>Max<wbr>Listeners</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#errormonitor" class="tsd-kind-icon">error<wbr>Monitor</a></li>
 							</ul>
@@ -121,6 +129,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getallstreamtags" class="tsd-kind-icon">get<wbr>All<wbr>Stream<wbr>Tags</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getbannedusers" class="tsd-kind-icon">get<wbr>Banned<wbr>Users</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getbitsleaderboard" class="tsd-kind-icon">get<wbr>Bits<wbr>Leaderboard</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getchannelemotes" class="tsd-kind-icon">get<wbr>Channel<wbr>Emotes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getchannelinformation" class="tsd-kind-icon">get<wbr>Channel<wbr>Information</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getcheermotes" class="tsd-kind-icon">get<wbr>Cheermotes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#getclips" class="tsd-kind-icon">get<wbr>Clips</a></li>
@@ -159,7 +168,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="twitchapi.html#setmaxlisteners" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#startcommercial" class="tsd-kind-icon">start<wbr>Commercial</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="twitchapi.html#updateuser" class="tsd-kind-icon">update<wbr>User</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#geteventlisteners" class="tsd-kind-icon">get<wbr>Event<wbr>Listeners</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#listenercount-1" class="tsd-kind-icon">listener<wbr>Count</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#on-1" class="tsd-kind-icon">on</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="twitchapi.html#once-1" class="tsd-kind-icon">once</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="twitchapi.html#setmaxlisteners-1" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a></li>
 							</ul>
 						</section>
 					</div>
@@ -178,7 +191,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L76">src/index.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L76">src/index.ts:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -200,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">access_<wbr>token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L68">src/index.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L68">src/index.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -210,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">client_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L65">src/index.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L65">src/index.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -220,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">client_<wbr>secret<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L64">src/index.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L64">src/index.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -230,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">ready<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L76">src/index.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L76">src/index.ts:76</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -240,7 +253,7 @@
 					<div class="tsd-signature tsd-kind-icon">redirect_<wbr>uri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L71">src/index.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L71">src/index.ts:71</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -250,7 +263,7 @@
 					<div class="tsd-signature tsd-kind-icon">refresh_<wbr>attempts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L75">src/index.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L75">src/index.ts:75</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -260,7 +273,7 @@
 					<div class="tsd-signature tsd-kind-icon">refresh_<wbr>token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L69">src/index.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L69">src/index.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -270,7 +283,7 @@
 					<div class="tsd-signature tsd-kind-icon">scopes<span class="tsd-signature-symbol">:</span> <a href="../globals.html#scope" class="tsd-signature-type">Scope</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L70">src/index.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L70">src/index.ts:70</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -280,9 +293,36 @@
 					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <a href="../interfaces/user.html" class="tsd-signature-type">User</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L67">src/index.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L67">src/index.ts:67</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="capturerejectionsymbol" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> capture<wbr>Rejection<wbr>Symbol</h3>
+					<div class="tsd-signature tsd-kind-icon">capture<wbr>Rejection<wbr>Symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">symbol</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#capturerejectionsymbol">captureRejectionSymbol</a></p>
+						<ul>
+							<li>Defined in node_modules/@types/node/events.d.ts:301</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="capturerejections" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> capture<wbr>Rejections</h3>
+					<div class="tsd-signature tsd-kind-icon">capture<wbr>Rejections<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#capturerejections">captureRejections</a></p>
+						<ul>
+							<li>Defined in node_modules/@types/node/events.d.ts:306</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Sets or gets the default captureRejection value for all emitters.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="defaultmaxlisteners" class="tsd-anchor"></a>
@@ -291,7 +331,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#defaultmaxlisteners">defaultMaxListeners</a></p>
 						<ul>
-							<li>Defined in node_modules/@types/node/events.d.ts:45</li>
+							<li>Defined in node_modules/@types/node/events.d.ts:307</li>
 						</ul>
 					</aside>
 				</section>
@@ -302,7 +342,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#errormonitor">errorMonitor</a></p>
 						<ul>
-							<li>Defined in node_modules/@types/node/events.d.ts:55</li>
+							<li>Defined in node_modules/@types/node/events.d.ts:300</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -323,20 +363,30 @@
 					<a name="addlistener" class="tsd-anchor"></a>
 					<h3>add<wbr>Listener</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Listener<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Listener<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#addlistener">addListener</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:62</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:327</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>emitter.on(eventName, listener)</code>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.26</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
@@ -374,7 +424,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L662">src/index.ts:662</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L677">src/index.ts:677</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,13 +455,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L584">src/index.ts:584</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L595">src/index.ts:595</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Adds a specified user to the followers of a specified channel. A successful request does not return any content.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -433,13 +487,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L592">src/index.ts:592</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L606">src/index.ts:606</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Deletes a specified user from the followers of a specified channel.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -455,20 +513,62 @@
 					<a name="emit" class="tsd-anchor"></a>
 					<h3>emit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#emit">emit</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:72</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:583</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Synchronously calls each of the listeners registered for the event named<code>eventName</code>, in the order they were registered, passing the supplied arguments
+									to each.</p>
+								</div>
+								<p>Returns <code>true</code> if the event had listeners, <code>false</code> otherwise.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+<span class="hljs-keyword">const</span> myEmitter = <span class="hljs-keyword">new</span> EventEmitter();
+
+<span class="hljs-comment">// First listener</span>
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstListener</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Helloooo! first listener&#x27;</span>);
+});
+<span class="hljs-comment">// Second listener</span>
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">secondListener</span>(<span class="hljs-params">arg1, arg2</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`event with parameters <span class="hljs-subst">${arg1}</span>, <span class="hljs-subst">${arg2}</span> in second listener`</span>);
+});
+<span class="hljs-comment">// Third listener</span>
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">thirdListener</span>(<span class="hljs-params">...args</span>) </span>{
+  <span class="hljs-keyword">const</span> parameters = args.join(<span class="hljs-string">&#x27;, &#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`event with parameters <span class="hljs-subst">${parameters}</span> in third listener`</span>);
+});
+
+<span class="hljs-built_in">console</span>.log(myEmitter.listeners(<span class="hljs-string">&#x27;event&#x27;</span>));
+
+myEmitter.emit(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-comment">// Prints:</span>
+<span class="hljs-comment">// [</span>
+<span class="hljs-comment">//   [Function: firstListener],</span>
+<span class="hljs-comment">//   [Function: secondListener],</span>
+<span class="hljs-comment">//   [Function: thirdListener]</span>
+<span class="hljs-comment">// ]</span>
+<span class="hljs-comment">// Helloooo! first listener</span>
+<span class="hljs-comment">// event with parameters 1, 2 in second listener</span>
+<span class="hljs-comment">// event with parameters 1, 2, 3, 4, 5 in third listener</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.26</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
@@ -489,9 +589,30 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#eventnames">eventNames</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:77</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:642</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an array listing the events for which the emitter has registered
+									listeners. The values in the array are strings or <code>Symbol</code>s.</p>
+								</div>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+<span class="hljs-keyword">const</span> myEE = <span class="hljs-keyword">new</span> EventEmitter();
+myEE.on(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-function">() =&gt;</span> {});
+myEE.on(<span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-function">() =&gt;</span> {});
+
+<span class="hljs-keyword">const</span> sym = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;symbol&#x27;</span>);
+myEE.on(sym, <span class="hljs-function">() =&gt;</span> {});
+
+<span class="hljs-built_in">console</span>.log(myEE.eventNames());
+<span class="hljs-comment">// Prints: [ &#x27;foo&#x27;, &#x27;bar&#x27;, Symbol(symbol) ]</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v6.0.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -506,7 +627,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L333">src/index.ts:333</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L335">src/index.ts:335</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -528,7 +649,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L448">src/index.ts:448</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L450">src/index.ts:450</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,7 +677,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L573">src/index.ts:573</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L582">src/index.ts:582</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -584,7 +705,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L551">src/index.ts:551</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L560">src/index.ts:560</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -603,6 +724,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getchannelemotes" class="tsd-anchor"></a>
+					<h3>get<wbr>Channel<wbr>Emotes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Channel<wbr>Emotes<span class="tsd-signature-symbol">(</span>broadcasterId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/apichannelemotesresponse.html" class="tsd-signature-type">APIChannelEmotesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L522">src/index.ts:522</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>broadcasterId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/apichannelemotesresponse.html" class="tsd-signature-type">APIChannelEmotesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getchannelinformation" class="tsd-anchor"></a>
 					<h3>get<wbr>Channel<wbr>Information</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -612,7 +756,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L479">src/index.ts:479</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L481">src/index.ts:481</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -635,7 +779,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L513">src/index.ts:513</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L515">src/index.ts:515</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -663,7 +807,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L472">src/index.ts:472</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L474">src/index.ts:474</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -686,7 +830,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L688">src/index.ts:688</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L703">src/index.ts:703</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -716,7 +860,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L537">src/index.ts:537</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L546">src/index.ts:546</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -738,7 +882,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L505">src/index.ts:505</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L507">src/index.ts:507</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -766,7 +910,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L407">src/index.ts:407</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L409">src/index.ts:409</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -794,7 +938,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L366">src/index.ts:366</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L368">src/index.ts:368</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -823,9 +967,20 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#getmaxlisteners">getMaxListeners</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:69</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:499</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the current max listener value for the <code>EventEmitter</code> which is either
+									set by <code>emitter.setMaxListeners(n)</code> or defaults to <a href="twitchapi.html#defaultmaxlisteners">defaultMaxListeners</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v1.0.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
@@ -840,7 +995,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L673">src/index.ts:673</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L688">src/index.ts:688</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -868,7 +1023,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L525">src/index.ts:525</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L534">src/index.ts:534</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -896,7 +1051,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L602">src/index.ts:602</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L617">src/index.ts:617</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -925,7 +1080,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L456">src/index.ts:456</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L458">src/index.ts:458</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -953,7 +1108,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L419">src/index.ts:419</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L421">src/index.ts:421</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -981,7 +1136,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L562">src/index.ts:562</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L571">src/index.ts:571</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1009,7 +1164,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L382">src/index.ts:382</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L384">src/index.ts:384</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1037,7 +1192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L345">src/index.ts:345</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L347">src/index.ts:347</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1065,7 +1220,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L624">src/index.ts:624</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L639">src/index.ts:639</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1093,7 +1248,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L615">src/index.ts:615</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L630">src/index.ts:630</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1116,7 +1271,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L390">src/index.ts:390</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L392">src/index.ts:392</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1144,7 +1299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L464">src/index.ts:464</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L466">src/index.ts:466</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1166,20 +1321,33 @@
 					<a name="listenercount" class="tsd-anchor"></a>
 					<h3>listener<wbr>Count</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">listener<wbr>Count<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">listener<wbr>Count<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#listenercount">listenerCount</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:73</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:589</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the number of listeners listening to the event named <code>eventName</code>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v3.2.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event being listened for</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -1190,20 +1358,35 @@
 					<a name="listeners" class="tsd-anchor"></a>
 					<h3>listeners</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">listeners<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">listeners<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#listeners">listeners</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:70</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:512</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a copy of the array of listeners for the event named <code>eventName</code>.</p>
+								</div>
+								<pre><code class="language-js">server.on(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;someone connected!&#x27;</span>);
+});
+<span class="hljs-built_in">console</span>.log(util.inspect(server.listeners(<span class="hljs-string">&#x27;connection&#x27;</span>)));
+<span class="hljs-comment">// Prints: [ [Function] ]</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.26</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -1220,7 +1403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L634">src/index.ts:634</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L649">src/index.ts:649</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1242,20 +1425,30 @@
 					<a name="off" class="tsd-anchor"></a>
 					<h3>off</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">off<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">off<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#off">off</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:66</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:472</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>emitter.removeListener()</code>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v10.0.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
@@ -1287,23 +1480,55 @@
 					<a name="on" class="tsd-anchor"></a>
 					<h3>on</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#on">on</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:63</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:358</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds the <code>listener</code> function to the end of the listeners array for the
+										event named <code>eventName</code>. No checks are made to see if the <code>listener</code> has
+										already been added. Multiple calls passing the same combination of <code>eventName</code>and <code>listener</code> will result in the <code>listener</code> being added, and called, multiple
+									times.</p>
+								</div>
+								<pre><code class="language-js">server.on(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;someone connected!&#x27;</span>);
+});</code></pre>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<p>By default, event listeners are invoked in the order they are added. The<code>emitter.prependListener()</code> method can be used as an alternative to add the
+								event listener to the beginning of the listeners array.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> myEE = <span class="hljs-keyword">new</span> EventEmitter();
+myEE.on(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>));
+myEE.prependListener(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;b&#x27;</span>));
+myEE.emit(<span class="hljs-string">&#x27;foo&#x27;</span>);
+<span class="hljs-comment">// Prints:</span>
+<span class="hljs-comment">//   b</span>
+<span class="hljs-comment">//   a</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.101</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The callback function</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -1332,23 +1557,53 @@
 					<a name="once" class="tsd-anchor"></a>
 					<h3>once</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#once">once</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:64</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:387</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a <strong>one-time</strong><code>listener</code> function for the event named <code>eventName</code>. The
+									next time <code>eventName</code> is triggered, this listener is removed and then invoked.</p>
+								</div>
+								<pre><code class="language-js">server.once(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Ah, we have our first user!&#x27;</span>);
+});</code></pre>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<p>By default, event listeners are invoked in the order they are added. The<code>emitter.prependOnceListener()</code> method can be used as an alternative to add the
+								event listener to the beginning of the listeners array.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> myEE = <span class="hljs-keyword">new</span> EventEmitter();
+myEE.once(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>));
+myEE.prependOnceListener(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;b&#x27;</span>));
+myEE.emit(<span class="hljs-string">&#x27;foo&#x27;</span>);
+<span class="hljs-comment">// Prints:</span>
+<span class="hljs-comment">//   b</span>
+<span class="hljs-comment">//   a</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.3.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The callback function</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -1377,23 +1632,46 @@
 					<a name="prependlistener" class="tsd-anchor"></a>
 					<h3>prepend<wbr>Listener</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">prepend<wbr>Listener<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">prepend<wbr>Listener<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#prependlistener">prependListener</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:75</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:607</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds the <code>listener</code> function to the <em>beginning</em> of the listeners array for the
+										event named <code>eventName</code>. No checks are made to see if the <code>listener</code> has
+										already been added. Multiple calls passing the same combination of <code>eventName</code>and <code>listener</code> will result in the <code>listener</code> being added, and called, multiple
+									times.</p>
+								</div>
+								<pre><code class="language-js">server.prependListener(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;someone connected!&#x27;</span>);
+});</code></pre>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v6.0.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The callback function</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -1422,23 +1700,44 @@
 					<a name="prependoncelistener" class="tsd-anchor"></a>
 					<h3>prepend<wbr>Once<wbr>Listener</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">prepend<wbr>Once<wbr>Listener<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">prepend<wbr>Once<wbr>Listener<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#prependoncelistener">prependOnceListener</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:76</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:623</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a <strong>one-time</strong><code>listener</code> function for the event named <code>eventName</code> to the_beginning_ of the listeners array. The next time <code>eventName</code> is triggered, this
+									listener is removed, and then invoked.</p>
+								</div>
+								<pre><code class="language-js">server.prependOnceListener(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Ah, we have our first user!&#x27;</span>);
+});</code></pre>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v6.0.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The callback function</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -1467,20 +1766,52 @@
 					<a name="rawlisteners" class="tsd-anchor"></a>
 					<h3>raw<wbr>Listeners</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">raw<wbr>Listeners<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">raw<wbr>Listeners<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#rawlisteners">rawListeners</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:71</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:542</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a copy of the array of listeners for the event named <code>eventName</code>,
+									including any wrappers (such as those created by <code>.once()</code>).</p>
+								</div>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> EventEmitter();
+emitter.once(<span class="hljs-string">&#x27;log&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;log once&#x27;</span>));
+
+<span class="hljs-comment">// Returns a new Array with a function `onceWrapper` which has a property</span>
+<span class="hljs-comment">// `listener` which contains the original listener bound above</span>
+<span class="hljs-keyword">const</span> listeners = emitter.rawListeners(<span class="hljs-string">&#x27;log&#x27;</span>);
+<span class="hljs-keyword">const</span> logFnWrapper = listeners[<span class="hljs-number">0</span>];
+
+<span class="hljs-comment">// Logs &quot;log once&quot; to the console and does not unbind the `once` event</span>
+logFnWrapper.listener();
+
+<span class="hljs-comment">// Logs &quot;log once&quot; to the console and removes the listener</span>
+logFnWrapper();
+
+emitter.on(<span class="hljs-string">&#x27;log&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;log persistently&#x27;</span>));
+<span class="hljs-comment">// Will return a new Array with a single function bound by `.on()` above</span>
+<span class="hljs-keyword">const</span> newListeners = emitter.rawListeners(<span class="hljs-string">&#x27;log&#x27;</span>);
+
+<span class="hljs-comment">// Logs &quot;log persistently&quot; twice</span>
+newListeners[<span class="hljs-number">0</span>]();
+emitter.emit(<span class="hljs-string">&#x27;log&#x27;</span>);</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v9.4.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -1498,9 +1829,23 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#removealllisteners">removeAllListeners</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:67</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:483</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes all listeners, or those of the specified <code>eventName</code>.</p>
+								</div>
+								<p>It is bad practice to remove listeners added elsewhere in the code,
+									particularly when the <code>EventEmitter</code> instance was created by some other
+								component or module (e.g. sockets or file streams).</p>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.26</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1515,20 +1860,91 @@
 					<a name="removelistener" class="tsd-anchor"></a>
 					<h3>remove<wbr>Listener</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Listener<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Listener<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#removelistener">removeListener</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:65</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:467</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes the specified <code>listener</code> from the listener array for the event named<code>eventName</code>.</p>
+								</div>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> callback = <span class="hljs-function">(<span class="hljs-params">stream</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;someone connected!&#x27;</span>);
+};
+server.on(<span class="hljs-string">&#x27;connection&#x27;</span>, callback);
+<span class="hljs-comment">// ...</span>
+server.removeListener(<span class="hljs-string">&#x27;connection&#x27;</span>, callback);</code></pre>
+								<p><code>removeListener()</code> will remove, at most, one instance of a listener from the
+									listener array. If any single listener has been added multiple times to the
+									listener array for the specified <code>eventName</code>, then <code>removeListener()</code> must be
+								called multiple times to remove each instance.</p>
+								<p>Once an event is emitted, all listeners attached to it at the
+									time of emitting are called in order. This implies that any<code>removeListener()</code> or <code>removeAllListeners()</code> calls <em>after</em> emitting and_before_ the last listener finishes execution will
+								not remove them from<code>emit()</code> in progress. Subsequent events behave as expected.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> myEmitter = <span class="hljs-keyword">new</span> MyEmitter();
+
+<span class="hljs-keyword">const</span> callbackA = <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;A&#x27;</span>);
+  myEmitter.removeListener(<span class="hljs-string">&#x27;event&#x27;</span>, callbackB);
+};
+
+<span class="hljs-keyword">const</span> callbackB = <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;B&#x27;</span>);
+};
+
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, callbackA);
+
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, callbackB);
+
+<span class="hljs-comment">// callbackA removes listener callbackB but it will still be called.</span>
+<span class="hljs-comment">// Internal listener array at time of emit [callbackA, callbackB]</span>
+myEmitter.emit(<span class="hljs-string">&#x27;event&#x27;</span>);
+<span class="hljs-comment">// Prints:</span>
+<span class="hljs-comment">//   A</span>
+<span class="hljs-comment">//   B</span>
+
+<span class="hljs-comment">// callbackB is now removed.</span>
+<span class="hljs-comment">// Internal listener array [callbackA]</span>
+myEmitter.emit(<span class="hljs-string">&#x27;event&#x27;</span>);
+<span class="hljs-comment">// Prints:</span>
+<span class="hljs-comment">//   A</span></code></pre>
+								<p>Because listeners are managed using an internal array, calling this will
+									change the position indices of any listener registered <em>after</em> the listener
+									being removed. This will not impact the order in which listeners are called,
+									but it means that any copies of the listener array as returned by
+								the <code>emitter.listeners()</code> method will need to be recreated.</p>
+								<p>When a single function has been added as a handler multiple times for a single
+									event (as in the example below), <code>removeListener()</code> will remove the most
+								recently added instance. In the example the <code>once(&#39;ping&#39;)</code>listener is removed:</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pong</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;pong&#x27;</span>);
+}
+
+ee.on(<span class="hljs-string">&#x27;ping&#x27;</span>, pong);
+ee.once(<span class="hljs-string">&#x27;ping&#x27;</span>, pong);
+ee.removeListener(<span class="hljs-string">&#x27;ping&#x27;</span>, pong);
+
+ee.emit(<span class="hljs-string">&#x27;ping&#x27;</span>);
+ee.emit(<span class="hljs-string">&#x27;ping&#x27;</span>);</code></pre>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.1.26</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
 								</li>
 								<li>
 									<h5>listener: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
@@ -1566,7 +1982,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L698">src/index.ts:698</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L713">src/index.ts:713</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1595,7 +2011,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L496">src/index.ts:496</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L498">src/index.ts:498</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1623,7 +2039,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L487">src/index.ts:487</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L489">src/index.ts:489</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1652,9 +2068,23 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#setmaxlisteners">setMaxListeners</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:68</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:493</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>By default <code>EventEmitter</code>s will print a warning if more than <code>10</code> listeners are
+										added for a particular event. This is a useful default that helps finding
+										memory leaks. The <code>emitter.setMaxListeners()</code> method allows the limit to be
+									modified for this specific <code>EventEmitter</code> instance. The value can be set to<code>Infinity</code> (or <code>0</code>) to indicate an unlimited number of listeners.</p>
+								</div>
+								<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.3.5</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1675,7 +2105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L710">src/index.ts:710</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L725">src/index.ts:725</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1703,7 +2133,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/00f2879/src/index.ts#L645">src/index.ts:645</a></li>
+									<li>Defined in <a href="https://github.com/Plazide/node-twitch/blob/0838ed8/src/index.ts#L660">src/index.ts:660</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1722,23 +2152,180 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="geteventlisteners" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Event<wbr>Listeners</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Event<wbr>Listeners<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DOMEventTarget</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EventEmitter</span>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#geteventlisteners">getEventListeners</a></p>
+								<ul>
+									<li>Defined in node_modules/@types/node/events.d.ts:270</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a copy of the array of listeners for the event named <code>eventName</code>.</p>
+								</div>
+								<p>For <code>EventEmitter</code>s this behaves exactly the same as calling <code>.listeners</code> on
+								the emitter.</p>
+								<p>For <code>EventTarget</code>s this is the only way to get the event listeners for the
+								event target. This is useful for debugging and diagnostic purposes.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> { getEventListeners, EventEmitter } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+
+{
+  <span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+  <span class="hljs-keyword">const</span> listener = <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Events are fun&#x27;</span>);
+  ee.on(<span class="hljs-string">&#x27;foo&#x27;</span>, listener);
+  getEventListeners(ee, <span class="hljs-string">&#x27;foo&#x27;</span>); <span class="hljs-comment">// [listener]</span>
+}
+{
+  <span class="hljs-keyword">const</span> et = <span class="hljs-keyword">new</span> EventTarget();
+  <span class="hljs-keyword">const</span> listener = <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Events are fun&#x27;</span>);
+  et.addEventListener(<span class="hljs-string">&#x27;foo&#x27;</span>, listener);
+  getEventListeners(et, <span class="hljs-string">&#x27;foo&#x27;</span>); <span class="hljs-comment">// [listener]</span>
+}</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v15.2.0, v14.17.0</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>emitter: <span class="tsd-signature-type">DOMEventTarget</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EventEmitter</span></h5>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="listenercount-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> listener<wbr>Count</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">listener<wbr>Count<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventEmitter</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">listener<wbr>Count<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventEmitter</span>, eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#listenercount-1">listenerCount</a></p>
 								<ul>
-									<li>Defined in node_modules/@types/node/events.d.ts:44</li>
+									<li>Defined in node_modules/@types/node/events.d.ts:242</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A class method that returns the number of listeners for the given <code>eventName</code>registered on the given <code>emitter</code>.</p>
+								</div>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> { EventEmitter, listenerCount } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+<span class="hljs-keyword">const</span> myEmitter = <span class="hljs-keyword">new</span> EventEmitter();
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-function">() =&gt;</span> {});
+myEmitter.on(<span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-function">() =&gt;</span> {});
+<span class="hljs-built_in">console</span>.log(listenerCount(myEmitter, <span class="hljs-string">&#x27;event&#x27;</span>));
+<span class="hljs-comment">// Prints: 2</span></code></pre>
 								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v0.9.12</p>
+									</dd>
 									<dt>deprecated</dt>
-									<dd><p>since v4.0.0</p>
+									<dd><p>Since v3.2.0 - Use <code>listenerCount</code> instead.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>emitter: <span class="tsd-signature-type">EventEmitter</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The emitter to query</p>
+									</div>
+								</li>
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event name</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="on-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> on</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventEmitter</span>, eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">StaticEventEmitterOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncIterableIterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#on-1">on</a></p>
+								<ul>
+									<li>Defined in node_modules/@types/node/events.d.ts:221</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>```js
+									const { on, EventEmitter } = require(&#39;events&#39;);</p>
+								</div>
+								<p>(async () =&gt; {
+								const ee = new EventEmitter();</p>
+								<p>  // Emit later on
+									process.nextTick(() =&gt; {
+									ee.emit(&#39;foo&#39;, &#39;bar&#39;);
+									ee.emit(&#39;foo&#39;, 42);
+								});</p>
+								<p>  for await (const event of on(ee, &#39;foo&#39;)) {
+									// The execution of this inner block is synchronous and it
+									// processes one event at a time (even with await). Do not use
+									// if concurrent execution is required.
+									console.log(event); // prints [&#39;bar&#39;] [42]
+									}
+									// Unreachable here
+								})();</p>
+								<pre><code>
+Returns an `<span class="javascript">AsyncIterator</span>` that iterates `<span class="javascript">eventName</span>` events. It will <span class="hljs-keyword">throw</span>
+<span class="hljs-keyword">if</span> the `<span class="javascript">EventEmitter</span>` emits `<span class="javascript"><span class="hljs-string">&#x27;error&#x27;</span></span>`. It removes all listeners <span class="hljs-keyword">when</span>
+exiting the <span class="hljs-keyword">loop</span>. The `<span class="javascript">value</span>` returned <span class="hljs-keyword">by</span> each iteration <span class="hljs-keyword">is</span> an array
+composed <span class="hljs-keyword">of</span> the emitted event <span class="hljs-built_in">arguments</span>.
+
+An `<span class="javascript">AbortSignal</span>` can be used to cancel waiting <span class="hljs-literal">on</span> events:
+
+```<span class="javascript">js
+<span class="hljs-keyword">const</span> { on, EventEmitter } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+<span class="hljs-keyword">const</span> ac = <span class="hljs-keyword">new</span> AbortController();
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+
+  <span class="hljs-comment">// Emit later on</span>
+  process.nextTick(<span class="hljs-function">() =&gt;</span> {
+    ee.emit(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>);
+    ee.emit(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-number">42</span>);
+  });
+
+  <span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">const</span> event <span class="hljs-keyword">of</span> on(ee, <span class="hljs-string">&#x27;foo&#x27;</span>, { <span class="hljs-attr">signal</span>: ac.signal })) {
+    <span class="hljs-comment">// The execution of this inner block is synchronous and it</span>
+    <span class="hljs-comment">// processes one event at a time (even with await). Do not use</span>
+    <span class="hljs-comment">// if concurrent execution is required.</span>
+    <span class="hljs-built_in">console</span>.log(event); <span class="hljs-comment">// prints [&#x27;bar&#x27;] [42]</span>
+  }
+  <span class="hljs-comment">// Unreachable here</span>
+})();
+
+process.nextTick(<span class="hljs-function">() =&gt;</span> ac.abort());</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v13.6.0, v12.16.0</p>
 									</dd>
 								</dl>
 							</div>
@@ -1748,10 +2335,173 @@
 									<h5>emitter: <span class="tsd-signature-type">EventEmitter</span></h5>
 								</li>
 								<li>
-									<h5>event: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event being listened for</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">StaticEventEmitterOptions</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">AsyncIterableIterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>that iterates <code>eventName</code> events emitted by the <code>emitter</code></p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+					<a name="once-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> once</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NodeEventTarget</span>, eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">StaticEventEmitterOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#once-1">once</a></p>
+								<p>Overrides <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#once-1">once</a></p>
+								<ul>
+									<li>Defined in node_modules/@types/node/events.d.ts:157</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a <code>Promise</code> that is fulfilled when the <code>EventEmitter</code> emits the given
+										event or that is rejected if the <code>EventEmitter</code> emits <code>&#39;error&#39;</code> while waiting.
+										The <code>Promise</code> will resolve with an array of all the arguments emitted to the
+									given event.</p>
+								</div>
+								<p>This method is intentionally generic and works with the web platform <a href="https://dom.spec.whatwg.org/#interface-eventtarget">EventTarget</a> interface, which has no special<code>&#39;error&#39;</code> event
+								semantics and does not listen to the <code>&#39;error&#39;</code> event.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> { once, EventEmitter } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+
+  process.nextTick(<span class="hljs-function">() =&gt;</span> {
+    ee.emit(<span class="hljs-string">&#x27;myevent&#x27;</span>, <span class="hljs-number">42</span>);
+  });
+
+  <span class="hljs-keyword">const</span> [value] = <span class="hljs-keyword">await</span> once(ee, <span class="hljs-string">&#x27;myevent&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(value);
+
+  <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;kaboom&#x27;</span>);
+  process.nextTick(<span class="hljs-function">() =&gt;</span> {
+    ee.emit(<span class="hljs-string">&#x27;error&#x27;</span>, err);
+  });
+
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> once(ee, <span class="hljs-string">&#x27;myevent&#x27;</span>);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;error happened&#x27;</span>, err);
+  }
+}
+
+run();</code></pre>
+								<p>The special handling of the <code>&#39;error&#39;</code> event is only used when <code>events.once()</code>is used to wait for another event. If <code>events.once()</code> is used to wait for the
+									&#39;<code>error&#39;</code> event itself, then it is treated as any other kind of event without
+								special handling:</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> { EventEmitter, once } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+
+<span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+
+once(ee, <span class="hljs-string">&#x27;error&#x27;</span>)
+  .then(<span class="hljs-function">(<span class="hljs-params">[err]</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;ok&#x27;</span>, err.message))
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;error&#x27;</span>, err.message));
+
+ee.emit(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;boom&#x27;</span>));
+
+<span class="hljs-comment">// Prints: ok boom</span></code></pre>
+								<p>An <code>AbortSignal</code> can be used to cancel waiting for the event:</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> { EventEmitter, once } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;events&#x27;</span>);
+
+<span class="hljs-keyword">const</span> ee = <span class="hljs-keyword">new</span> EventEmitter();
+<span class="hljs-keyword">const</span> ac = <span class="hljs-keyword">new</span> AbortController();
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">emitter, event, signal</span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> once(emitter, event, { signal });
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;event emitted!&#x27;</span>);
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">if</span> (error.name === <span class="hljs-string">&#x27;AbortError&#x27;</span>) {
+      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;Waiting for the event was canceled!&#x27;</span>);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;There was an error&#x27;</span>, error.message);
+    }
+  }
+}
+
+foo(ee, <span class="hljs-string">&#x27;foo&#x27;</span>, ac.signal);
+ac.abort(); <span class="hljs-comment">// Abort waiting for the event</span>
+ee.emit(<span class="hljs-string">&#x27;foo&#x27;</span>); <span class="hljs-comment">// Prints: Waiting for the event was canceled!</span></code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v11.13.0, v10.16.0</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>emitter: <span class="tsd-signature-type">NodeEventTarget</span></h5>
+								</li>
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">StaticEventEmitterOptions</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="setmaxlisteners-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Max<wbr>Listeners</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Max<wbr>Listeners<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>eventTargets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">DOMEventTarget</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="twitchapi.html">TwitchApi</a>.<a href="twitchapi.html#setmaxlisteners-1">setMaxListeners</a></p>
+								<ul>
+									<li>Defined in node_modules/@types/node/events.d.ts:290</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>By default <code>EventEmitter</code>s will print a warning if more than <code>10</code> listeners are
+										added for a particular event. This is a useful default that helps finding
+										memory leaks. The <code>EventEmitter.setMaxListeners()</code> method allows the default limit to be
+										modified (if eventTargets is empty) or modify the limit specified in every <code>EventTarget</code> | <code>EventEmitter</code> passed as arguments.
+									The value can be set to<code>Infinity</code> (or <code>0</code>) to indicate an unlimited number of listeners.</p>
+								</div>
+								<pre><code class="language-js">EventEmitter.setMaxListeners(<span class="hljs-number">20</span>);
+<span class="hljs-comment">// Equivalent to</span>
+EventEmitter.defaultMaxListeners = <span class="hljs-number">20</span>;
+
+<span class="hljs-keyword">const</span> eventTarget = <span class="hljs-keyword">new</span> EventTarget();
+<span class="hljs-comment">// Only way to increase limit for `EventTarget` instances</span>
+<span class="hljs-comment">// as these doesn&#x27;t expose its own `setMaxListeners` method</span>
+EventEmitter.setMaxListeners(<span class="hljs-number">20</span>, eventTarget);</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>v15.3.0, v14.17.0</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> n: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>eventTargets: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">DOMEventTarget</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1772,6 +2522,9 @@
 					<li class="current tsd-kind-class">
 						<a href="twitchapi.html" class="tsd-kind-icon">Twitch<wbr>Api</a>
 						<ul>
+							<li class=" tsd-kind-interface tsd-parent-kind-class">
+								<a href="../interfaces/twitchapi.abortable.html" class="tsd-kind-icon">Abortable</a>
+							</li>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="twitchapi.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
@@ -1801,6 +2554,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="twitchapi.html#user" class="tsd-kind-icon">user</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#capturerejectionsymbol" class="tsd-kind-icon">capture<wbr>Rejection<wbr>Symbol</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#capturerejections" class="tsd-kind-icon">capture<wbr>Rejections</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="twitchapi.html#defaultmaxlisteners" class="tsd-kind-icon">default<wbr>Max<wbr>Listeners</a>
@@ -1837,6 +2596,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="twitchapi.html#getbitsleaderboard" class="tsd-kind-icon">get<wbr>Bits<wbr>Leaderboard</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="twitchapi.html#getchannelemotes" class="tsd-kind-icon">get<wbr>Channel<wbr>Emotes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="twitchapi.html#getchannelinformation" class="tsd-kind-icon">get<wbr>Channel<wbr>Information</a>
@@ -1953,7 +2715,19 @@
 								<a href="twitchapi.html#updateuser" class="tsd-kind-icon">update<wbr>User</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#geteventlisteners" class="tsd-kind-icon">get<wbr>Event<wbr>Listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="twitchapi.html#listenercount-1" class="tsd-kind-icon">listener<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#on-1" class="tsd-kind-icon">on</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#once-1" class="tsd-kind-icon">once</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="twitchapi.html#setmaxlisteners-1" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a>
 							</li>
 						</ul>
 					</li>
