@@ -10,8 +10,7 @@
     "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode file --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
     "test": "jest",
     "build": "tsc",
-    "dev": "tsc --watch",
-    "prepublish": "yarn test && yarn build"
+    "dev": "tsc --watch"
   },
   "repository": {
     "type": "git",
