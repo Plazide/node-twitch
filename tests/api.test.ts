@@ -92,6 +92,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 		expect(result.data).toBeInstanceOf(Array);
 	});
 
+	test("`getGlobalEmotes` should return array of emotes", async () => {
+		const result = await api.getGlobalEmotes();
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
+
 	test("`getCheermotes` should return array of cheermotes", async () => {
 		const result = await api.getCheermotes();
 

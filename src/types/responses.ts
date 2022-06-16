@@ -104,7 +104,7 @@ export interface APICheermoteResponse{
 	data: Cheermote[];
 }
 
-export interface APIChannelEmotesResponse{
+export interface APIEmotesResponse{
 	data: Emote[];
 
 	/** A templated URL. Use the values from id, format, scale, and theme_mode to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.
