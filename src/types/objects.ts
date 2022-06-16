@@ -635,9 +635,9 @@ export interface Badge{
 	set_id: string;
 	versions: {
 		id: string,
-		url_1x: string,
-		url_2x: string,
-		url_4x: string
+		image_url_1x: string,
+		image_url_2x: string,
+		image_url_4x: string
 	}[]
 }
 
