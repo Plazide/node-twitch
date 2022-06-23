@@ -340,6 +340,13 @@ export interface GetModeratorsOptions{
 	after?: string;
 }
 
+export interface GetChannelChatBadges{
+	/** Provided `broadcaster_id` must match the `user_id` in the auth token.
+
+		Maximum: 1 */
+	broadcaster_id: string;
+}
+
 export interface BaseOptions{
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;

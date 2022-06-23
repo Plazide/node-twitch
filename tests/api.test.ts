@@ -86,6 +86,18 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 		expect(result.data).toBeInstanceOf(Array);
 	});
 
+	test("`getGlobalBadges` should return array of badges", async () => {
+		const result = await api.getGlobalBadges();
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
+
+	test("`getGlobalEmotes` should return array of emotes", async () => {
+		const result = await api.getGlobalEmotes();
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
+
 	test("`getCheermotes` should return array of cheermotes", async () => {
 		const result = await api.getCheermotes();
 
@@ -109,6 +121,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 		expect(typeof result.template).toBe("string");
+	});
+
+	test("Should get channel badges", async () => {
+		const result = await api.getChannelBadges(broadcasterId);
+
+		expect(result.data).toBeInstanceOf(Array);
 	});
 });
 

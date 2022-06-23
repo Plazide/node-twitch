@@ -630,4 +630,15 @@ export interface Commercial{
 	retry_after: number;
 }
 
+export interface Badge{
+	/** The ID of the badge. */
+	set_id: string;
+	versions: {
+		id: string,
+		image_url_1x: string,
+		image_url_2x: string,
+		image_url_4x: string
+	}[]
+}
+
 export type CommercialLength = 30 | 60 | 90 | 120 | 150 | 180;

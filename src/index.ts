@@ -56,7 +56,7 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIChannelEmotesResponse
+	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -462,6 +462,16 @@ export class TwitchApi extends EventEmitter{
 		return this._get<APITagResponse>(endpoint);
 	}
 
+	async getGlobalBadges(): Promise<APIBadgesResponse>{
+		const endpoint = "/chat/badges/global";
+		return this._get<APIBadgesResponse>(endpoint);
+	}
+
+	async getGlobalEmotes(): Promise<APIEmotesResponse>{
+		const endpoint = "/chat/emotes/global";
+		return this._get<APIEmotesResponse>(endpoint);
+	}
+
 	/** Fetch videos by a user id, game id, or one or more video ids. Only one of these can be specified at a time. */
 	async getVideos(options: GetVideosOptions): Promise<APIVideoResponse>{
 		let query = "?";
@@ -519,11 +529,18 @@ export class TwitchApi extends EventEmitter{
 		return this._get<APICheermoteResponse>(endpoint);
 	}
 
-	async getChannelEmotes(broadcasterId: string): Promise<APIChannelEmotesResponse>{
+	async getChannelEmotes(broadcasterId: string): Promise<APIEmotesResponse>{
 		const query = `?broadcaster_id=${broadcasterId}`;
 		const endpoint = `/chat/emotes${query}`;
 
 		return this._get(endpoint);
+	}
+
+	async getChannelBadges(broadcasterId: string): Promise<APIBadgesResponse>{
+		const query = `?broadcaster_id=${broadcasterId}`;
+		const endpoint = `/chat/badges${query}`;
+
+		return this._get<APIBadgesResponse>(endpoint);
 	}
 
 	/*********************************
