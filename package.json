@@ -3,11 +3,12 @@
   "version": "0.4.6",
   "description": "A wrapper for the Helix Twitch API in NodeJS.",
   "main": "dist/index.js",
+  "typedocMain": "src/index.ts",
   "scripts": {
     "patch": "npm test && npm run build && npm version patch",
     "minor": "npm test && npm run build && npm version minor",
     "major": "npm test && npm run build && npm version major",
-    "docs": "typedoc --out ./docs --exclude ./src/util.ts --stripInternal --mode file --excludeNotExported --excludePrivate --excludeProtected --excludeExternals ./src",
+    "docs": "typedoc --out ./docs --exclude ./src/util.ts --entryPointStrategy resolve --excludePrivate --excludeProtected --excludeExternals ./src",
     "test": "jest",
     "build": "tsc",
     "dev": "tsc --watch"
@@ -49,7 +50,7 @@
     "open": "^8.4.0",
     "ts-jest": "^27.1.4",
     "ts-node": "^8.10.2",
-    "typedoc": "^0.17.8",
+    "typedoc": "^0.22.15",
     "typescript": "^4.6.4"
   }
 }

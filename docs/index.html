@@ -1,562 +1,117 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>node-twitch</title>
-	<meta name="description" content="Documentation for node-twitch">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">node-twitch</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>node-twitch</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#node-twitch" id="node-twitch" style="color: inherit; text-decoration: none;">
-					<h1>node-twitch</h1>
-				</a>
-				<p>This package is a wrapper around the Twitch Helix API. It is written in Typescript and provides in-editor documentation for all methods and options. All methods are named after their endpoint names in the <a href="https://dev.twitch.tv/docs/api/reference">Twitch API Reference</a>.</p>
-				<blockquote>
-					<p><strong>NOTE</strong>: This package is still under development. All endpoints are not yet supported. See documentation for all supported endpoints.</p>
-				</blockquote>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
-				</a>
-				<p>To see and read about the methods provided by the package, please visit the <a href="https://plazide.github.io/node-twitch">documentation</a>.</p>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p>The package is available through NPM, which means you can choose to install it using either <code>npm</code> or <code>yarn</code></p>
-				<p>NPM:</p>
-				<pre><code class="language-sh">npm install node-twitch</code></pre>
-				<p>Yarn:</p>
-				<pre><code class="language-sh">yarn add node-twitch</code></pre>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<p>To start using the package, you need to import and initialize the API class. You need to provide it with your <code>client_id</code> and <code>client_secret</code> which you get from creating an application on the <a href="https://dev.twitch.tv/console">Twitch developers site</a>. </p>
-				<p>Using Typescript or bundler:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> TwitchApi <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;node-twitch&quot;</span>;
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>node-twitch</title><meta name="description" content="Documentation for node-twitch"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">node-twitch</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>node-twitch </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#node-twitch" id="node-twitch" style="color: inherit; text-decoration: none;">
+  <h1>node-twitch</h1>
+</a>
+<p>This package is a wrapper around the Twitch Helix API. It is written in Typescript and provides in-editor documentation for all methods and options. All methods are named after their endpoint names in the <a href="https://dev.twitch.tv/docs/api/reference">Twitch API Reference</a>.</p>
+<blockquote>
+<p><strong>NOTE</strong>: This package is still under development. All endpoints are not yet supported. See documentation for all supported endpoints.</p>
+</blockquote>
 
-<span class="hljs-keyword">const</span> twitch = <span class="hljs-keyword">new</span> TwitchApi({
-    <span class="hljs-attr">client_id</span>: <span class="hljs-string">&quot;YOUR_CLIENT_ID&quot;</span>,
-    <span class="hljs-attr">client_secret</span>: <span class="hljs-string">&quot;YOUR_CLIENT_SECRET&quot;</span>
-});</code></pre>
-				<p>Using native NodeJS:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> TwitchApi = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;node-twitch&quot;</span>).default;
+<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+  <h2>Documentation</h2>
+</a>
+<p>To see and read about the methods provided by the package, please visit the <a href="https://plazide.github.io/node-twitch">documentation</a>.</p>
 
-<span class="hljs-keyword">const</span> twitch = <span class="hljs-keyword">new</span> TwitchApi({
-    <span class="hljs-attr">client_id</span>: <span class="hljs-string">&quot;YOUR_CLIENT_ID&quot;</span>,
-    <span class="hljs-attr">client_secret</span>: <span class="hljs-string">&quot;YOUR_CLIENT_SECRET&quot;</span>
-});</code></pre>
-				<p>This is the easiest way to get started with the package. Using this configuration, an app access token will be automatically fetched for you which will allow to call all public endpoints. </p>
-				<a href="#with-an-authenticated-user" id="with-an-authenticated-user" style="color: inherit; text-decoration: none;">
-					<h3>With an authenticated user</h3>
-				</a>
-				<p>If you need to access user data, you&#39;ll will have to provide an <code>access_token</code> which grants access for a user.</p>
-				<p>To get this <code>access_token</code> you can follow one of the authentication flows on the <a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oauth">Twitch documentation site</a>.</p>
-				<blockquote>
-					<p><strong>NOTE:</strong> It is recommended that you handle the authentication yourself. This package is made for use on the server, and authentication requires you to present a link on the client where users grant your app permissions.</p>
-				</blockquote>
-				<a href="#before-initialization" id="before-initialization" style="color: inherit; text-decoration: none;">
-					<h4>Before initialization</h4>
-				</a>
-				<p>If you want, you can handle all of the authentication yourself and simply pass in an <code>access_token</code> when creating a new instance of <code>TwitchApi</code>. You should also pass in the scopes the <code>scopes</code> that are granted for the passed in <code>access_token</code>.</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> TwitchApi <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;node-twitch&quot;</span>;
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p>The package is available through NPM, which means you can choose to install it using either <code>npm</code> or <code>yarn</code></p>
+<p>NPM:</p>
+<pre><code class="language-sh"><span class="hl-0">npm install node-twitch</span>
+</code></pre>
+<p>Yarn:</p>
+<pre><code class="language-sh"><span class="hl-0">yarn add node-twitch</span>
+</code></pre>
 
-<span class="hljs-keyword">const</span> twitch = <span class="hljs-keyword">new</span> TwitchApi({
-  <span class="hljs-attr">client_id</span>: <span class="hljs-string">&quot;YOUR_CLIENT_ID&quot;</span>,
-  <span class="hljs-attr">client_secret</span>: <span class="hljs-string">&quot;YOUR_CLIENT_SECRET&quot;</span>,
-  <span class="hljs-attr">access_token</span>: <span class="hljs-string">&quot;USER_ACCESS_TOKEN&quot;</span>,
-  <span class="hljs-attr">scopes</span>: [<span class="hljs-string">&quot;YOUR_SCOPES&quot;</span>]
-});</code></pre>
-				<a href="#after-initialization" id="after-initialization" style="color: inherit; text-decoration: none;">
-					<h4>After initialization</h4>
-				</a>
-				<p>You can also get user access after creating an instance of <code>TwitchApi</code>. There are two important methods to help you with this.</p>
-				<ol>
-					<li><strong>generateAuthUrl</strong>. This method will generate the URL for your users to visit in order to grant permissions to your app. It will use the <code>client_id</code>, <code>client_secret</code>, and <code>scopes</code> passed to the constructor to generate the URL.</li>
-					<li><strong>getUserAccess</strong>. This method will fetch the refresh and access tokens using the code returned from Twitch after a user visits the auth URL. This requires you to setup proper callback URLs.</li>
-				</ol>
-				<p>Read more about authentication on the <a href="https://dev.twitch.tv/docs/authentication">official Twitch documentation</a></p>
-				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
-					<h3>Examples</h3>
-				</a>
-				<p>Here are a few examples of common use cases to get you started. The examples assume that you have created an instance of <code>TwitchApi</code> called <code>twitch</code>. See <a href="#usage">usage</a> on how to do this.</p>
-				<a href="#getting-a-single-stream" id="getting-a-single-stream" style="color: inherit; text-decoration: none;">
-					<h4>Getting a single stream</h4>
-				</a>
-				<p>To get the stream information from a single user:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStream</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-keyword">const</span> streams = <span class="hljs-keyword">await</span> twitch.getStreams({ <span class="hljs-attr">channel</span>: <span class="hljs-string">&quot;sacriel&quot;</span> });
-  <span class="hljs-built_in">console</span>.log(streams);
-}
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<p>To start using the package, you need to import and initialize the API class. You need to provide it with your <code>client_id</code> and <code>client_secret</code> which you get from creating an application on the <a href="https://dev.twitch.tv/console">Twitch developers site</a>. </p>
+<p>Using Typescript or bundler:</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">TwitchApi</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;node-twitch&quot;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">twitch</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">TwitchApi</span><span class="hl-0">({</span><br/><span class="hl-0">    </span><span class="hl-2">client_id:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_ID&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">client_secret:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_SECRET&quot;</span><br/><span class="hl-0">});</span>
+</code></pre>
+<p>Using native NodeJS:</p>
+<pre><code class="language-js"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">TwitchApi</span><span class="hl-0"> = </span><span class="hl-6">require</span><span class="hl-0">(</span><span class="hl-3">&quot;node-twitch&quot;</span><span class="hl-0">).</span><span class="hl-2">default</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">twitch</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">TwitchApi</span><span class="hl-0">({</span><br/><span class="hl-0">    </span><span class="hl-2">client_id:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_ID&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">client_secret:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_SECRET&quot;</span><br/><span class="hl-0">});</span>
+</code></pre>
+<p>This is the easiest way to get started with the package. Using this configuration, an app access token will be automatically fetched for you which will allow to call all public endpoints. </p>
 
-getStream();</code></pre>
-				<p>Provided that the stream is live, something like this will be logged:</p>
-				<pre><code class="language-js">{
-  <span class="hljs-attr">data</span>: [
-    {
-      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;39800533772&#x27;</span>,
-      <span class="hljs-attr">user_id</span>: <span class="hljs-string">&#x27;23735582&#x27;</span>,
-      <span class="hljs-attr">user_name</span>: <span class="hljs-string">&#x27;Sacriel&#x27;</span>,
-      <span class="hljs-attr">game_id</span>: <span class="hljs-string">&#x27;491931&#x27;</span>,
-      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;live&#x27;</span>,
-      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Cheeky bit of Tarky, maybe PUBG later?&#x27;</span>,
-      <span class="hljs-attr">viewer_count</span>: <span class="hljs-number">2013</span>,
-      <span class="hljs-attr">started_at</span>: <span class="hljs-string">&#x27;2020-10-28T11:40:49Z&#x27;</span>,
-      <span class="hljs-attr">language</span>: <span class="hljs-string">&#x27;en&#x27;</span>,
-      <span class="hljs-attr">thumbnail_url</span>: <span class="hljs-string">&#x27;https://static-cdn.jtvnw.net/previews-ttv/live_user_sacriel-{width}x{height}.jpg&#x27;</span>,
-      <span class="hljs-attr">tag_ids</span>: [<span class="hljs-built_in">Array</span>]
-    }
-  ],
-  <span class="hljs-attr">pagination</span>: {}
-}</code></pre>
-				<a href="#getting-multiple-streams" id="getting-multiple-streams" style="color: inherit; text-decoration: none;">
-					<h4>Getting multiple streams</h4>
-				</a>
-				<p>To get stream information of multiple channels:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStreams</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">const</span> streams = <span class="hljs-keyword">await</span> twitch.getStreams({ <span class="hljs-attr">channels</span>: [<span class="hljs-string">&quot;shroud&quot;</span>, <span class="hljs-string">&quot;summit1g&quot;</span>] });
-    <span class="hljs-built_in">console</span>.log(streams);
-}
+<a href="#with-an-authenticated-user" id="with-an-authenticated-user" style="color: inherit; text-decoration: none;">
+  <h3>With an authenticated user</h3>
+</a>
+<p>If you need to access user data, you&#39;ll will have to provide an <code>access_token</code> which grants access for a user.</p>
+<p>To get this <code>access_token</code> you can follow one of the authentication flows on the <a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oauth">Twitch documentation site</a>.</p>
+<blockquote>
+<p><strong>NOTE:</strong> It is recommended that you handle the authentication yourself. This package is made for use on the server, and authentication requires you to present a link on the client where users grant your app permissions.</p>
+</blockquote>
 
-getStreams();</code></pre>
-				<p>Provided that both streams are live, something like this would be returned:</p>
-				<pre><code class="language-js">{
-  <span class="hljs-attr">data</span>: [
-    {
-      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;40860684878&#x27;</span>,
-      <span class="hljs-attr">user_id</span>: <span class="hljs-string">&#x27;26490481&#x27;</span>,
-      <span class="hljs-attr">user_name</span>: <span class="hljs-string">&#x27;summit1g&#x27;</span>,
-      <span class="hljs-attr">game_id</span>: <span class="hljs-string">&#x27;491931&#x27;</span>,
-      <span class="hljs-attr">game_name</span>: <span class="hljs-string">&#x27;Escape From Tarkov&#x27;</span>,
-      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;live&#x27;</span>,
-      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;big gains today. [ @summit1g ]&#x27;</span>,
-      <span class="hljs-attr">viewer_count</span>: <span class="hljs-number">23923</span>,
-      <span class="hljs-attr">started_at</span>: <span class="hljs-string">&#x27;2020-12-07T22:46:40Z&#x27;</span>,
-      <span class="hljs-attr">language</span>: <span class="hljs-string">&#x27;en&#x27;</span>,
-      <span class="hljs-attr">thumbnail_url</span>: <span class="hljs-string">&#x27;https://static-cdn.jtvnw.net/previews-ttv/live_user_summit1g-{width}x{height}.jpg&#x27;</span>,
-      <span class="hljs-attr">tag_ids</span>: [<span class="hljs-built_in">Array</span>]
-    },
-    {
-      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;40860769838&#x27;</span>,
-      <span class="hljs-attr">user_id</span>: <span class="hljs-string">&#x27;37402112&#x27;</span>,
-      <span class="hljs-attr">user_name</span>: <span class="hljs-string">&#x27;shroud&#x27;</span>,
-      <span class="hljs-attr">game_id</span>: <span class="hljs-string">&#x27;65632&#x27;</span>,
-      <span class="hljs-attr">game_name</span>: <span class="hljs-string">&#x27;DayZ&#x27;</span>,
-      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;live&#x27;</span>,
-      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Namalsk. | Follow @shroud on socials&#x27;</span>,
-      <span class="hljs-attr">viewer_count</span>: <span class="hljs-number">22813</span>,
-      <span class="hljs-attr">started_at</span>: <span class="hljs-string">&#x27;2020-12-07T22:53:30Z&#x27;</span>,
-      <span class="hljs-attr">language</span>: <span class="hljs-string">&#x27;en&#x27;</span>,
-      <span class="hljs-attr">thumbnail_url</span>: <span class="hljs-string">&#x27;https://static-cdn.jtvnw.net/previews-ttv/live_user_shroud-{width}x{height}.jpg&#x27;</span>,
-      <span class="hljs-attr">tag_ids</span>: [<span class="hljs-built_in">Array</span>]
-    }
-  ],
-  <span class="hljs-attr">pagination</span>: {}
-}</code></pre>
-				<a href="#getting-thumbnail-url-from-a-stream" id="getting-thumbnail-url-from-a-stream" style="color: inherit; text-decoration: none;">
-					<h4>Getting thumbnail url from a stream</h4>
-				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getThumbnailUrl</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> twitch.getStreams({ <span class="hljs-attr">channel</span>: <span class="hljs-string">&quot;shroud&quot;</span> });
-    <span class="hljs-keyword">const</span> stream = result.data[<span class="hljs-number">0</span>];
-    <span class="hljs-built_in">console</span>.log(stream.getThumbnailUrl());
-}
+<a href="#before-initialization" id="before-initialization" style="color: inherit; text-decoration: none;">
+  <h4>Before initialization</h4>
+</a>
+<p>If you want, you can handle all of the authentication yourself and simply pass in an <code>access_token</code> when creating a new instance of <code>TwitchApi</code>. You should also pass in the scopes the <code>scopes</code> that are granted for the passed in <code>access_token</code>.</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">TwitchApi</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;node-twitch&quot;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">twitch</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">TwitchApi</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">client_id:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_ID&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">client_secret:</span><span class="hl-0"> </span><span class="hl-3">&quot;YOUR_CLIENT_SECRET&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">access_token:</span><span class="hl-0"> </span><span class="hl-3">&quot;USER_ACCESS_TOKEN&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">scopes:</span><span class="hl-0"> [</span><span class="hl-3">&quot;YOUR_SCOPES&quot;</span><span class="hl-0">]</span><br/><span class="hl-0">});</span>
+</code></pre>
 
-getThumbnailUrl();</code></pre>
-				<p>Provided that the stream is live, this would be returned:</p>
-				<pre><code>https:<span class="hljs-regexp">//</span>static-cdn.jtvnw.net<span class="hljs-regexp">/previews-ttv/</span>live_user_shroud-<span class="hljs-number">1920</span>x1080.jpg</code></pre>
-				<a href="#getting-a-user39s-id" id="getting-a-user39s-id" style="color: inherit; text-decoration: none;">
-					<h4>Getting a user&#39;s ID</h4>
-				</a>
-				<p>To get the ID of a user:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserId</span>(<span class="hljs-params">loginName</span>)</span>{
-  <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> twitch.getUsers(loginName);
-  <span class="hljs-keyword">const</span> user = users.data[<span class="hljs-number">0</span>];
-  <span class="hljs-keyword">const</span> userId = user.id;
+<a href="#after-initialization" id="after-initialization" style="color: inherit; text-decoration: none;">
+  <h4>After initialization</h4>
+</a>
+<p>You can also get user access after creating an instance of <code>TwitchApi</code>. There are two important methods to help you with this.</p>
+<ol>
+<li><strong>generateAuthUrl</strong>. This method will generate the URL for your users to visit in order to grant permissions to your app. It will use the <code>client_id</code>, <code>client_secret</code>, and <code>scopes</code> passed to the constructor to generate the URL.</li>
+<li><strong>getUserAccess</strong>. This method will fetch the refresh and access tokens using the code returned from Twitch after a user visits the auth URL. This requires you to setup proper callback URLs.</li>
+</ol>
+<p>Read more about authentication on the <a href="https://dev.twitch.tv/docs/authentication">official Twitch documentation</a></p>
 
-  <span class="hljs-built_in">console</span>.log(userId);
-}
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h3>Examples</h3>
+</a>
+<p>Here are a few examples of common use cases to get you started. The examples assume that you have created an instance of <code>TwitchApi</code> called <code>twitch</code>. See <a href="#usage">usage</a> on how to do this.</p>
 
-getUserId(<span class="hljs-string">&quot;sacriel&quot;</span>);</code></pre>
-				<p>This would log:</p>
-				<pre><code><span class="hljs-number">23735582</span></code></pre>
-				<a href="#problems-or-issues" id="problems-or-issues" style="color: inherit; text-decoration: none;">
-					<h2>Problems or issues?</h2>
-				</a>
-				<p>If you encounter any problems, bugs or other issues with the package, please create an <a href="https://github.com/Plazide/node-twitch/issues">issue in the GitHub repo</a>. </p>
-				<a href="#get-in-touch" id="get-in-touch" style="color: inherit; text-decoration: none;">
-					<h2>Get in touch</h2>
-				</a>
-				<p>If you have any questions or just want to reach me, you can get in touch with me on Twitter(<a href="https://twitter.com/chj_web">@chj_web</a>)</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/status.html" class="tsd-kind-icon">Status</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/twitchapi.html" class="tsd-kind-icon">Twitch<wbr>Api</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apiactiveuserextensionresponse.html" class="tsd-kind-icon">APIActive<wbr>User<wbr>Extension<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apibanresponse.html" class="tsd-kind-icon">APIBan<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apibaseresponse.html" class="tsd-kind-icon">APIBase<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apibitsleaderboardresponse.html" class="tsd-kind-icon">APIBits<wbr>Leaderboard<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apichanneinforesponse.html" class="tsd-kind-icon">APIChanne<wbr>Info<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apichannelemotesresponse.html" class="tsd-kind-icon">APIChannel<wbr>Emotes<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apichannelresponse.html" class="tsd-kind-icon">APIChannel<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apicheermoteresponse.html" class="tsd-kind-icon">APICheermote<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apiclipsresponse.html" class="tsd-kind-icon">APIClips<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apicodestatusresponse.html" class="tsd-kind-icon">APICode<wbr>Status<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apicommercialresponse.html" class="tsd-kind-icon">APICommercial<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apicreateclipresponse.html" class="tsd-kind-icon">APICreate<wbr>Clip<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apiextensionresponse.html" class="tsd-kind-icon">APIExtension<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apiextensiontransactionresponse.html" class="tsd-kind-icon">APIExtension<wbr>Transaction<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apifollowresponse.html" class="tsd-kind-icon">APIFollow<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apigameresponse.html" class="tsd-kind-icon">APIGame<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apigenericresponse.html" class="tsd-kind-icon">APIGeneric<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apimoderatorresponse.html" class="tsd-kind-icon">APIModerator<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apistreamkeyresponse.html" class="tsd-kind-icon">APIStream<wbr>Key<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apistreammarkerresponse.html" class="tsd-kind-icon">APIStream<wbr>Marker<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apistreamresponse.html" class="tsd-kind-icon">APIStream<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apisubresponse.html" class="tsd-kind-icon">APISub<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apitagresponse.html" class="tsd-kind-icon">APITag<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apiuserresponse.html" class="tsd-kind-icon">APIUser<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/apivideoresponse.html" class="tsd-kind-icon">APIVideo<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/activeextension.html" class="tsd-kind-icon">Active<wbr>Extension</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/activeextensionbase.html" class="tsd-kind-icon">Active<wbr>Extension<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/authevent.html" class="tsd-kind-icon">Auth<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ban.html" class="tsd-kind-icon">Ban</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/baseclipsoptions.html" class="tsd-kind-icon">Base<wbr>Clips<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/baseoptions.html" class="tsd-kind-icon">Base<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/bitsposition.html" class="tsd-kind-icon">Bits<wbr>Position</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/channel.html" class="tsd-kind-icon">Channel</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/channelinfo.html" class="tsd-kind-icon">Channel<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/cheermote.html" class="tsd-kind-icon">Cheermote</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/cheermoteimages.html" class="tsd-kind-icon">Cheermote<wbr>Images</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/cheermotetier.html" class="tsd-kind-icon">Cheermote<wbr>Tier</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/clip.html" class="tsd-kind-icon">Clip</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/clipsbroadcasteridoptions.html" class="tsd-kind-icon">Clips<wbr>Broadcaster<wbr>IdOptions</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/clipsgameidoptions.html" class="tsd-kind-icon">Clips<wbr>Game<wbr>IdOptions</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/clipsidoptions.html" class="tsd-kind-icon">Clips<wbr>IdOptions</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/codestatus.html" class="tsd-kind-icon">Code<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/commercial.html" class="tsd-kind-icon">Commercial</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/createclipoptions.html" class="tsd-kind-icon">Create<wbr>Clip<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/createuserfollowsoptions.html" class="tsd-kind-icon">Create<wbr>User<wbr>Follows<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/createdclip.html" class="tsd-kind-icon">Created<wbr>Clip</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/daterange.html" class="tsd-kind-icon">Date<wbr>Range</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/deleteuserfollowsoptions.html" class="tsd-kind-icon">Delete<wbr>User<wbr>Follows<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/emote.html" class="tsd-kind-icon">Emote</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/extension.html" class="tsd-kind-icon">Extension</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/extensioncomponent.html" class="tsd-kind-icon">Extension<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/extensiontransaction.html" class="tsd-kind-icon">Extension<wbr>Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/fparsemixedparam.html" class="tsd-kind-icon">FParse<wbr>Mixed<wbr>Param</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/follow.html" class="tsd-kind-icon">Follow</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/game.html" class="tsd-kind-icon">Game</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getallstreamtagsoptions.html" class="tsd-kind-icon">Get<wbr>All<wbr>Stream<wbr>Tags<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getbannedusersoptions.html" class="tsd-kind-icon">Get<wbr>Banned<wbr>Users<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getbitsleaderboardoptions.html" class="tsd-kind-icon">Get<wbr>Bits<wbr>Leaderboard<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getchannelinfooptions.html" class="tsd-kind-icon">Get<wbr>Channel<wbr>Info<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getcheermotesoptions.html" class="tsd-kind-icon">Get<wbr>Cheermotes<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getcodestatusoptions.html" class="tsd-kind-icon">Get<wbr>Code<wbr>Status<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getextensiontransactionsoptions.html" class="tsd-kind-icon">Get<wbr>Extension<wbr>Transactions<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getfollowsoptions.html" class="tsd-kind-icon">Get<wbr>Follows<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getmoderatorsoptions.html" class="tsd-kind-icon">Get<wbr>Moderators<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getstreamkeyoptions.html" class="tsd-kind-icon">Get<wbr>Stream<wbr>Key<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getstreammarkeruseridoptions.html" class="tsd-kind-icon">Get<wbr>Stream<wbr>Marker<wbr>User<wbr>IdOptions</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getstreammarkervideoidoptions.html" class="tsd-kind-icon">Get<wbr>Stream<wbr>Marker<wbr>Video<wbr>IdOptions</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getstreamtagsoptions.html" class="tsd-kind-icon">Get<wbr>Stream<wbr>Tags<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getstreamsoptions.html" class="tsd-kind-icon">Get<wbr>Streams<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getsubsoptions.html" class="tsd-kind-icon">Get<wbr>Subs<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getuseractiveextensionsoptions.html" class="tsd-kind-icon">Get<wbr>User<wbr>Active<wbr>Extensions<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/getvideosoptions.html" class="tsd-kind-icon">Get<wbr>Videos<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/moderator.html" class="tsd-kind-icon">Moderator</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/modifychannelinformationoptions.html" class="tsd-kind-icon">Modify<wbr>Channel<wbr>Information<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/notactive.html" class="tsd-kind-icon">Not<wbr>Active</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/replacestreamtagsoptions.html" class="tsd-kind-icon">Replace<wbr>Stream<wbr>Tags<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/searchchannelsoptions.html" class="tsd-kind-icon">Search<wbr>Channels<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/searchoptions.html" class="tsd-kind-icon">Search<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/startcommercialoptions.html" class="tsd-kind-icon">Start<wbr>Commercial<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/stream.html" class="tsd-kind-icon">Stream</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/streamkey.html" class="tsd-kind-icon">Stream<wbr>Key</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/streammarker.html" class="tsd-kind-icon">Stream<wbr>Marker</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/sub.html" class="tsd-kind-icon">Sub</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/tag.html" class="tsd-kind-icon">Tag</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/twitchapiconfig.html" class="tsd-kind-icon">Twitch<wbr>Api<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/updateuseroptions.html" class="tsd-kind-icon">Update<wbr>User<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/user.html" class="tsd-kind-icon">User</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/video.html" class="tsd-kind-icon">Video</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#commerciallength" class="tsd-kind-icon">Commercial<wbr>Length</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#scope" class="tsd-kind-icon">Scope</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#searchcategoriesoptions" class="tsd-kind-icon">Search<wbr>Categories<wbr>Options</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<a href="#getting-a-single-stream" id="getting-a-single-stream" style="color: inherit; text-decoration: none;">
+  <h4>Getting a single stream</h4>
+</a>
+<p>To get the stream information from a single user:</p>
+<pre><code class="language-js"><span class="hl-4">async</span><span class="hl-0"> </span><span class="hl-4">function</span><span class="hl-0"> </span><span class="hl-6">getStream</span><span class="hl-0">(){</span><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">streams</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">twitch</span><span class="hl-0">.</span><span class="hl-6">getStreams</span><span class="hl-0">({ </span><span class="hl-2">channel:</span><span class="hl-0"> </span><span class="hl-3">&quot;sacriel&quot;</span><span class="hl-0"> });</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">streams</span><span class="hl-0">);</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-6">getStream</span><span class="hl-0">();</span>
+</code></pre>
+<p>Provided that the stream is live, something like this will be logged:</p>
+<pre><code class="language-js"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-7">data</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-2">id:</span><span class="hl-0"> </span><span class="hl-3">&#39;39800533772&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;23735582&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_name:</span><span class="hl-0"> </span><span class="hl-3">&#39;Sacriel&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">game_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;491931&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&#39;live&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">title:</span><span class="hl-0"> </span><span class="hl-3">&#39;Cheeky bit of Tarky, maybe PUBG later?&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">viewer_count:</span><span class="hl-0"> </span><span class="hl-8">2013</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">started_at:</span><span class="hl-0"> </span><span class="hl-3">&#39;2020-10-28T11:40:49Z&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">language:</span><span class="hl-0"> </span><span class="hl-3">&#39;en&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">thumbnail_url:</span><span class="hl-0"> </span><span class="hl-3">&#39;https://static-cdn.jtvnw.net/previews-ttv/live_user_sacriel-{width}x{height}.jpg&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">tag_ids:</span><span class="hl-0"> [</span><span class="hl-9">Array</span><span class="hl-0">]</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-7">pagination</span><span class="hl-0">: {}</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#getting-multiple-streams" id="getting-multiple-streams" style="color: inherit; text-decoration: none;">
+  <h4>Getting multiple streams</h4>
+</a>
+<p>To get stream information of multiple channels:</p>
+<pre><code class="language-js"><span class="hl-4">async</span><span class="hl-0"> </span><span class="hl-4">function</span><span class="hl-0"> </span><span class="hl-6">getStreams</span><span class="hl-0">(){</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">streams</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">twitch</span><span class="hl-0">.</span><span class="hl-6">getStreams</span><span class="hl-0">({ </span><span class="hl-2">channels:</span><span class="hl-0"> [</span><span class="hl-3">&quot;shroud&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;summit1g&quot;</span><span class="hl-0">] });</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">streams</span><span class="hl-0">);</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-6">getStreams</span><span class="hl-0">();</span>
+</code></pre>
+<p>Provided that both streams are live, something like this would be returned:</p>
+<pre><code class="language-js"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-7">data</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-2">id:</span><span class="hl-0"> </span><span class="hl-3">&#39;40860684878&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;26490481&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_name:</span><span class="hl-0"> </span><span class="hl-3">&#39;summit1g&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">game_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;491931&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">game_name:</span><span class="hl-0"> </span><span class="hl-3">&#39;Escape From Tarkov&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&#39;live&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">title:</span><span class="hl-0"> </span><span class="hl-3">&#39;big gains today. [ @summit1g ]&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">viewer_count:</span><span class="hl-0"> </span><span class="hl-8">23923</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">started_at:</span><span class="hl-0"> </span><span class="hl-3">&#39;2020-12-07T22:46:40Z&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">language:</span><span class="hl-0"> </span><span class="hl-3">&#39;en&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">thumbnail_url:</span><span class="hl-0"> </span><span class="hl-3">&#39;https://static-cdn.jtvnw.net/previews-ttv/live_user_summit1g-{width}x{height}.jpg&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">tag_ids:</span><span class="hl-0"> [</span><span class="hl-9">Array</span><span class="hl-0">]</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-2">id:</span><span class="hl-0"> </span><span class="hl-3">&#39;40860769838&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;37402112&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">user_name:</span><span class="hl-0"> </span><span class="hl-3">&#39;shroud&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">game_id:</span><span class="hl-0"> </span><span class="hl-3">&#39;65632&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">game_name:</span><span class="hl-0"> </span><span class="hl-3">&#39;DayZ&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&#39;live&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">title:</span><span class="hl-0"> </span><span class="hl-3">&#39;Namalsk. | Follow @shroud on socials&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">viewer_count:</span><span class="hl-0"> </span><span class="hl-8">22813</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">started_at:</span><span class="hl-0"> </span><span class="hl-3">&#39;2020-12-07T22:53:30Z&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">language:</span><span class="hl-0"> </span><span class="hl-3">&#39;en&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">thumbnail_url:</span><span class="hl-0"> </span><span class="hl-3">&#39;https://static-cdn.jtvnw.net/previews-ttv/live_user_shroud-{width}x{height}.jpg&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">tag_ids:</span><span class="hl-0"> [</span><span class="hl-9">Array</span><span class="hl-0">]</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-7">pagination</span><span class="hl-0">: {}</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#getting-thumbnail-url-from-a-stream" id="getting-thumbnail-url-from-a-stream" style="color: inherit; text-decoration: none;">
+  <h4>Getting thumbnail url from a stream</h4>
+</a>
+<pre><code class="language-js"><span class="hl-4">async</span><span class="hl-0"> </span><span class="hl-4">function</span><span class="hl-0"> </span><span class="hl-6">getThumbnailUrl</span><span class="hl-0">(){</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">twitch</span><span class="hl-0">.</span><span class="hl-6">getStreams</span><span class="hl-0">({ </span><span class="hl-2">channel:</span><span class="hl-0"> </span><span class="hl-3">&quot;shroud&quot;</span><span class="hl-0"> });</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">stream</span><span class="hl-0"> = </span><span class="hl-2">result</span><span class="hl-0">.</span><span class="hl-2">data</span><span class="hl-0">[</span><span class="hl-8">0</span><span class="hl-0">];</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">stream</span><span class="hl-0">.</span><span class="hl-6">getThumbnailUrl</span><span class="hl-0">());</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-6">getThumbnailUrl</span><span class="hl-0">();</span>
+</code></pre>
+<p>Provided that the stream is live, this would be returned:</p>
+<pre><code><span class="hl-7">https</span><span class="hl-0">:</span><span class="hl-10">//static-cdn.jtvnw.net/previews-ttv/live_user_shroud-1920x1080.jpg</span>
+</code></pre>
+
+<a href="#getting-a-user39s-id" id="getting-a-user39s-id" style="color: inherit; text-decoration: none;">
+  <h4>Getting a user&#39;s ID</h4>
+</a>
+<p>To get the ID of a user:</p>
+<pre><code class="language-js"><span class="hl-4">async</span><span class="hl-0"> </span><span class="hl-4">function</span><span class="hl-0"> </span><span class="hl-6">getUserId</span><span class="hl-0">(</span><span class="hl-2">loginName</span><span class="hl-0">){</span><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">users</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">twitch</span><span class="hl-0">.</span><span class="hl-6">getUsers</span><span class="hl-0">(</span><span class="hl-2">loginName</span><span class="hl-0">);</span><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">user</span><span class="hl-0"> = </span><span class="hl-2">users</span><span class="hl-0">.</span><span class="hl-2">data</span><span class="hl-0">[</span><span class="hl-8">0</span><span class="hl-0">];</span><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">userId</span><span class="hl-0"> = </span><span class="hl-2">user</span><span class="hl-0">.</span><span class="hl-2">id</span><span class="hl-0">;</span><br/><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">userId</span><span class="hl-0">);</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-6">getUserId</span><span class="hl-0">(</span><span class="hl-3">&quot;sacriel&quot;</span><span class="hl-0">);</span>
+</code></pre>
+<p>This would log:</p>
+<pre><code><span class="hl-8">23735582</span>
+</code></pre>
+
+<a href="#problems-or-issues" id="problems-or-issues" style="color: inherit; text-decoration: none;">
+  <h2>Problems or issues?</h2>
+</a>
+<p>If you encounter any problems, bugs or other issues with the package, please create an <a href="https://github.com/Plazide/node-twitch/issues">issue in the GitHub repo</a>. </p>
+
+<a href="#get-in-touch" id="get-in-touch" style="color: inherit; text-decoration: none;">
+  <h2>Get in touch</h2>
+</a>
+<p>If you have any questions or just want to reach me, you can get in touch with me on Twitter(<a href="https://twitter.com/chj_web">@chj_web</a>)</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-class"><a href="classes/TwitchApi.html" class="tsd-kind-icon">Twitch<wbr/>Api</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

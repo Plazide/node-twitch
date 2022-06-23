@@ -60,7 +60,7 @@ import {
 } from "./types/responses";
 
 /** Twitch API */
-export default class TwitchApi extends EventEmitter{
+export class TwitchApi extends EventEmitter{
 	client_secret: string;
 	client_id: string;
 
@@ -732,3 +732,5 @@ export default class TwitchApi extends EventEmitter{
 		return this._post(endpoint);
 	}
 }
+
+export default TwitchApi;
