@@ -21,7 +21,7 @@ import {
 	Extension,
 	ActiveExtension,
 	CreatedClip,
-	Moderator, CodeStatus, Commercial
+	Moderator, CodeStatus, Commercial, Badge
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -104,7 +104,7 @@ export interface APICheermoteResponse{
 	data: Cheermote[];
 }
 
-export interface APIChannelEmotesResponse{
+export interface APIEmotesResponse{
 	data: Emote[];
 
 	/** A templated URL. Use the values from id, format, scale, and theme_mode to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.
@@ -137,4 +137,8 @@ export interface APIBitsLeaderboardResponse{
 
 export interface APICommercialResponse{
 	data: Commercial[];
+}
+
+export interface APIBadgesResponse{
+	data: Badge[];
 }
