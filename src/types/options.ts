@@ -340,34 +340,6 @@ export interface GetModeratorsOptions{
 	after?: string;
 }
 
-export interface GetScheduleOptions{
-	/** User ID of the broadcaster who owns the channel streaming schedule.
-
-		Maximum: 1 */
-	broadcaster_id: string;
-	
-	/** The ID of the stream segment to return.
-
-		Maximum: 100. */
-	id: string;
-	
-	/** A timestamp in RFC3339 format to start returning stream segments from. If not specified, the current date and time is used. */
-	start_time: string;
-	
-	/** A timezone offset for the requester specified in minutes. This is recommended to ensure stream segments are returned for the correct week. 
-		For example, a timezone that is +4 hours from GMT would be “240.” If not specified, “0” is used for GMT. */
-	utc_offset: string;
-	
-	/** Maximum number of stream segments to return.
-
-		Maximum: 25. Default: 20. */
-	first: integer;
-	
-	/** Cursor for forward pagination: tells the server where to start fetching the next set of results in a multi-page response.
-		The cursor value specified here is from the pagination response field of a prior query. */
-	after: string;
-}
-
 export interface GetChannelChatBadges{
 	/** Provided `broadcaster_id` must match the `user_id` in the auth token.
 
