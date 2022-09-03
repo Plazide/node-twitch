@@ -1,5 +1,19 @@
 # Changelog for node-twitch
 
+## *0.5.0 - 2022-09-03* 
+
+### Added
+
+ - `getGlobalBadges` method
+ - `getChannelBadges` method
+ - `getGlobalEmotes` method
+
+### Fixed
+
+ - Some issues
+
+---
+
 ## *0.4.5 - 2021-11-15*
 
 ### Added
@@ -10,6 +24,8 @@
 
  - Failed post requests not triggering a refresh of access token.
  - Incorrect types
+
+---
 
 ## *0.4.4 - 2021-06-01*
 
