@@ -128,6 +128,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+	
+	test("Should get channel Schedule", async () => {
+		const result = await api.getSchedule(broadcasterId);
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {

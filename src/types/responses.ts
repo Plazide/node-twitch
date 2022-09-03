@@ -21,7 +21,7 @@ import {
 	Extension,
 	ActiveExtension,
 	CreatedClip,
-	Moderator, CodeStatus, Commercial, Badge
+	Moderator, CodeStatus, Commercial, Badge, Schedule
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -141,4 +141,8 @@ export interface APICommercialResponse{
 
 export interface APIBadgesResponse{
 	data: Badge[];
+}
+
+export interface APIScheduleResponse{
+	data: Schedule[];
 }
