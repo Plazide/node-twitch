@@ -770,3 +770,4 @@ export class TwitchApi extends EventEmitter{
 }
 
 export default TwitchApi;
+export{ TwitchApiRateLimitError } from "./errors";
