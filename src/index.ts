@@ -58,6 +58,7 @@ import {
 	APICreateClipResponse,
 	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
 } from "./types/responses";
+import { TwitchApiRateLimit, TwitchApiRateLimitError } from "./errors";
 
 /** Twitch API */
 export class TwitchApi extends EventEmitter{
@@ -240,6 +241,12 @@ export class TwitchApi extends EventEmitter{
 		if(response.status === 401){
 			await this._refresh();
 			return this._get(endpoint);
+		}else if(response.status === 429) {
+			throw new TwitchApiRateLimitError({
+				limit: Number(response.headers.get("Ratelimit-Limit")),
+				remaining: Number(response.headers.get("Ratelimit-Remaining")),
+				reset: Number(response.headers.get("Ratelimit-Reset"))
+			});
 		}
 
 		const result: T = await response.json();
@@ -264,8 +271,18 @@ export class TwitchApi extends EventEmitter{
 			}
 		};
 
+		let ratelimit: TwitchApiRateLimit = {
+			limit: 0,
+			remaining: 0,
+			reset: 0
+		};
 		try{
 			const response = await fetch(url, options);
+			ratelimit = {
+				limit: Number(response.headers.get("Ratelimit-Limit")),
+				remaining: Number(response.headers.get("Ratelimit-Remaining")),
+				reset: Number(response.headers.get("Ratelimit-Reset"))
+			};
 
 			if(response.status === 200 || response.status === 202)
 				return response.json();
@@ -277,6 +294,8 @@ export class TwitchApi extends EventEmitter{
 			if(status === 401) {
 				await this._refresh();
 				return this._post(endpoint, options);
+			}else if(status === 429) {
+				throw new TwitchApiRateLimitError(ratelimit);
 			}
 
 			this._error(err as any);
