@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import fetch from "node-fetch";
 import { EventEmitter } from "events";
-import { parseMixedParam, parseOptions, isNumber, addThumbnailMethod } from "./util";
+import { parseMixedParam, parseOptions, isNumber, addThumbnailMethod, sleep } from "./util";
 import { Scope } from "./types/scopes";
 import { User } from "./types/objects";
 import { AuthEvent } from "./types/events";
@@ -58,7 +58,6 @@ import {
 	APICreateClipResponse,
 	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
 } from "./types/responses";
-import { TwitchApiRateLimit, TwitchApiRateLimitError } from "./errors";
 
 /** Twitch API */
 export class TwitchApi extends EventEmitter{
@@ -242,11 +241,14 @@ export class TwitchApi extends EventEmitter{
 			await this._refresh();
 			return this._get(endpoint);
 		}else if(response.status === 429) {
-			throw new TwitchApiRateLimitError({
+			const ratelimit = {
 				limit: Number(response.headers.get("Ratelimit-Limit")),
 				remaining: Number(response.headers.get("Ratelimit-Remaining")),
 				reset: Number(response.headers.get("Ratelimit-Reset"))
-			});
+			};
+			this.emit("ratelimit", ratelimit);
+			await sleep(ratelimit.reset * 1000 - Date.now());
+			return this._get(endpoint);
 		}
 
 		const result: T = await response.json();
@@ -271,7 +273,7 @@ export class TwitchApi extends EventEmitter{
 			}
 		};
 
-		let ratelimit: TwitchApiRateLimit = {
+		let ratelimit = {
 			limit: 0,
 			remaining: 0,
 			reset: 0
@@ -295,7 +297,9 @@ export class TwitchApi extends EventEmitter{
 				await this._refresh();
 				return this._post(endpoint, options);
 			}else if(status === 429) {
-				throw new TwitchApiRateLimitError(ratelimit);
+				this.emit("ratelimit", ratelimit);
+				await sleep(ratelimit.reset * 1000 - Date.now());
+				return this._post(endpoint, options);
 			}
 
 			this._error(err as any);
@@ -770,4 +774,3 @@ export class TwitchApi extends EventEmitter{
 }
 
 export default TwitchApi;
-export{ TwitchApiRateLimitError } from "./errors";
