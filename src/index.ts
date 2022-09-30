@@ -58,6 +58,9 @@ import {
 	APICreateClipResponse,
 	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
 } from "./types/responses";
+import { TwitchApiRateLimitError } from "./errors";
+
+export{ TwitchApiRateLimitError } from "./errors";
 
 /** Twitch API */
 export class TwitchApi extends EventEmitter{
@@ -69,6 +72,8 @@ export class TwitchApi extends EventEmitter{
 	refresh_token?: string;
 	scopes?: Scope[];
 	redirect_uri?: string;
+
+	wait_ratelimit_reset: boolean;
 
 	/** @internal */
 	base: string;
@@ -84,6 +89,7 @@ export class TwitchApi extends EventEmitter{
 		this.refresh_token = config.refresh_token;
 		this.scopes = config.scopes;
 		this.redirect_uri = config.redirect_uri;
+		this.wait_ratelimit_reset = config?.wait_ratelimit_reset ?? true;
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
 		this.ready = false;
@@ -247,8 +253,12 @@ export class TwitchApi extends EventEmitter{
 				reset: Number(response.headers.get("Ratelimit-Reset"))
 			};
 			this.emit("ratelimit", ratelimit);
-			await sleep(ratelimit.reset * 1000 - Date.now());
-			return this._get(endpoint);
+			if(this.wait_ratelimit_reset) {
+				await sleep(ratelimit.reset * 1000 - Date.now());
+				return this._get(endpoint);
+			}else{
+				throw new TwitchApiRateLimitError(ratelimit);
+			}
 		}
 
 		const result: T = await response.json();
@@ -298,8 +308,12 @@ export class TwitchApi extends EventEmitter{
 				return this._post(endpoint, options);
 			}else if(status === 429) {
 				this.emit("ratelimit", ratelimit);
-				await sleep(ratelimit.reset * 1000 - Date.now());
-				return this._post(endpoint, options);
+				if(this.wait_ratelimit_reset) {
+					await sleep(ratelimit.reset * 1000 - Date.now());
+					return this._post(endpoint, options);
+				}else{
+					throw new TwitchApiRateLimitError(ratelimit);
+				}
 			}
 
 			this._error(err as any);
