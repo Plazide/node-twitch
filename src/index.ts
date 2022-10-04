@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import fetch from "node-fetch";
 import { EventEmitter } from "events";
-import { parseMixedParam, parseOptions, isNumber, addThumbnailMethod } from "./util";
+import { parseMixedParam, parseOptions, isNumber, addThumbnailMethod, sleep } from "./util";
 import { Scope } from "./types/scopes";
 import { User } from "./types/objects";
 import { AuthEvent } from "./types/events";
@@ -58,6 +58,9 @@ import {
 	APICreateClipResponse,
 	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
 } from "./types/responses";
+import { TwitchApiRateLimitError } from "./errors";
+
+export{ TwitchApiRateLimitError } from "./errors";
 
 /** Twitch API */
 export class TwitchApi extends EventEmitter{
@@ -69,6 +72,8 @@ export class TwitchApi extends EventEmitter{
 	refresh_token?: string;
 	scopes?: Scope[];
 	redirect_uri?: string;
+
+	throw_ratelimit_errors: boolean;
 
 	/** @internal */
 	base: string;
@@ -84,6 +89,7 @@ export class TwitchApi extends EventEmitter{
 		this.refresh_token = config.refresh_token;
 		this.scopes = config.scopes;
 		this.redirect_uri = config.redirect_uri;
+		this.throw_ratelimit_errors = config?.throw_ratelimit_errors ?? false;
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
 		this.ready = false;
@@ -240,6 +246,19 @@ export class TwitchApi extends EventEmitter{
 		if(response.status === 401){
 			await this._refresh();
 			return this._get(endpoint);
+		}else if(response.status === 429) {
+			const ratelimit = {
+				limit: Number(response.headers.get("Ratelimit-Limit")),
+				remaining: Number(response.headers.get("Ratelimit-Remaining")),
+				reset: Number(response.headers.get("Ratelimit-Reset"))
+			};
+			this.emit("ratelimit", ratelimit);
+			if(this.throw_ratelimit_errors) {
+				throw new TwitchApiRateLimitError(ratelimit);
+			}else{
+				await sleep(ratelimit.reset * 1000 - Date.now());
+				return this._get(endpoint);
+			}
 		}
 
 		const result: T = await response.json();
@@ -264,8 +283,18 @@ export class TwitchApi extends EventEmitter{
 			}
 		};
 
+		let ratelimit = {
+			limit: 0,
+			remaining: 0,
+			reset: 0
+		};
 		try{
 			const response = await fetch(url, options);
+			ratelimit = {
+				limit: Number(response.headers.get("Ratelimit-Limit")),
+				remaining: Number(response.headers.get("Ratelimit-Remaining")),
+				reset: Number(response.headers.get("Ratelimit-Reset"))
+			};
 
 			if(response.status === 200 || response.status === 202)
 				return response.json();
@@ -277,6 +306,14 @@ export class TwitchApi extends EventEmitter{
 			if(status === 401) {
 				await this._refresh();
 				return this._post(endpoint, options);
+			}else if(status === 429) {
+				this.emit("ratelimit", ratelimit);
+				if(this.throw_ratelimit_errors) {
+					throw new TwitchApiRateLimitError(ratelimit);
+				}else{
+					await sleep(ratelimit.reset * 1000 - Date.now());
+					return this._post(endpoint, options);
+				}
 			}
 
 			this._error(err as any);
