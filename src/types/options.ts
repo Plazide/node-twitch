@@ -22,8 +22,8 @@ export interface TwitchApiConfig{
 	/** Your registered redirect URI. */
 	redirect_uri?: string;
 
-	/** Wait Twitch API rate limit reset. If false, throw TwitchApiRateLimitError. Default: true. */
-	wait_ratelimit_reset?: boolean;
+	/** Throw TwitchApiRateLimitError when Twitch API rate limit is exceeded. Default: false. */
+	throw_ratelimit_errors?: boolean;
 }
 
 /** The options to customize the request. */

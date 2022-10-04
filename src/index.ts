@@ -73,7 +73,7 @@ export class TwitchApi extends EventEmitter{
 	scopes?: Scope[];
 	redirect_uri?: string;
 
-	wait_ratelimit_reset: boolean;
+	throw_ratelimit_errors: boolean;
 
 	/** @internal */
 	base: string;
@@ -89,7 +89,7 @@ export class TwitchApi extends EventEmitter{
 		this.refresh_token = config.refresh_token;
 		this.scopes = config.scopes;
 		this.redirect_uri = config.redirect_uri;
-		this.wait_ratelimit_reset = config?.wait_ratelimit_reset ?? true;
+		this.throw_ratelimit_errors = config?.throw_ratelimit_errors ?? false;
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
 		this.ready = false;
@@ -253,7 +253,7 @@ export class TwitchApi extends EventEmitter{
 				reset: Number(response.headers.get("Ratelimit-Reset"))
 			};
 			this.emit("ratelimit", ratelimit);
-			if(this.wait_ratelimit_reset) {
+			if(this.throw_ratelimit_errors) {
 				await sleep(ratelimit.reset * 1000 - Date.now());
 				return this._get(endpoint);
 			}else{
@@ -308,7 +308,7 @@ export class TwitchApi extends EventEmitter{
 				return this._post(endpoint, options);
 			}else if(status === 429) {
 				this.emit("ratelimit", ratelimit);
-				if(this.wait_ratelimit_reset) {
+				if(this.throw_ratelimit_errors) {
 					await sleep(ratelimit.reset * 1000 - Date.now());
 					return this._post(endpoint, options);
 				}else{
