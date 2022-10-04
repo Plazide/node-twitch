@@ -254,10 +254,10 @@ export class TwitchApi extends EventEmitter{
 			};
 			this.emit("ratelimit", ratelimit);
 			if(this.throw_ratelimit_errors) {
+				throw new TwitchApiRateLimitError(ratelimit);
+			}else{
 				await sleep(ratelimit.reset * 1000 - Date.now());
 				return this._get(endpoint);
-			}else{
-				throw new TwitchApiRateLimitError(ratelimit);
 			}
 		}
 
@@ -309,10 +309,10 @@ export class TwitchApi extends EventEmitter{
 			}else if(status === 429) {
 				this.emit("ratelimit", ratelimit);
 				if(this.throw_ratelimit_errors) {
+					throw new TwitchApiRateLimitError(ratelimit);
+				}else{
 					await sleep(ratelimit.reset * 1000 - Date.now());
 					return this._post(endpoint, options);
-				}else{
-					throw new TwitchApiRateLimitError(ratelimit);
 				}
 			}
 
