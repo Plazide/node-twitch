@@ -1,12 +1,13 @@
 # Changelog for node-twitch
 
-## *0.5.0 - 2022-09-03* 
+## *0.5.0 - 2022-10-28* 
 
 ### Added
 
  - `getGlobalBadges` method
  - `getChannelBadges` method
  - `getGlobalEmotes` method
+ - Rate limit handling. Thanks to [@AntonioMIN](https://github.com/AntonioMIN) for implementing this with PR [#48](https://github.com/Plazide/node-twitch/pull/48).
 
 ### Fixed
 
