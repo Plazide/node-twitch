@@ -56,7 +56,8 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse
+	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIEmotesResponse, APIBadgesResponse,
+	APIIngestsResponse
 } from "./types/responses";
 import { TwitchApiRateLimitError } from "./errors";
 
@@ -77,6 +78,7 @@ export class TwitchApi extends EventEmitter{
 
 	/** @internal */
 	base: string;
+	ingestBase: string;
 	refresh_attempts: number;
 	ready: boolean;
 
@@ -90,6 +92,7 @@ export class TwitchApi extends EventEmitter{
 		this.scopes = config.scopes;
 		this.redirect_uri = config.redirect_uri;
 		this.throw_ratelimit_errors = config?.throw_ratelimit_errors ?? false;
+		this.ingestBase = "https://ingest.twitch.tv";
 		this.base = "https://api.twitch.tv/helix";
 		this.refresh_attempts = 0;
 		this.ready = false;
@@ -224,7 +227,7 @@ export class TwitchApi extends EventEmitter{
 	/** Make a get request to the twitch api
 	 * @internal
 	*/
-	private async _get<T>(endpoint: string): Promise<T>{
+	private async _get<T>(endpoint: string, type = 'helix'): Promise<T>{
 		if(!this.access_token){
 			const accessToken = await this._getAppAccessToken();
 
@@ -232,7 +235,18 @@ export class TwitchApi extends EventEmitter{
 			this.access_token = accessToken;
 		}
 
-		const url = this.base + endpoint;
+		let base;
+
+		switch (type) {
+			case 'helix':
+				base = this.base;
+			break;
+			case 'ingest':
+				base = this.ingestBase;
+			break;
+		}
+
+		const url = base + endpoint;
 		const options = {
 			method: "GET",
 			headers: {
@@ -245,7 +259,7 @@ export class TwitchApi extends EventEmitter{
 
 		if(response.status === 401){
 			await this._refresh();
-			return this._get(endpoint);
+			return this._get(type, endpoint);
 		}else if(response.status === 429) {
 			const ratelimit = {
 				limit: Number(response.headers.get("Ratelimit-Limit")),
@@ -257,7 +271,7 @@ export class TwitchApi extends EventEmitter{
 				throw new TwitchApiRateLimitError(ratelimit);
 			}else{
 				await sleep(ratelimit.reset * 1000 - Date.now());
-				return this._get(endpoint);
+				return this._get(type, endpoint);
 			}
 		}
 
@@ -784,6 +798,13 @@ export class TwitchApi extends EventEmitter{
 		const endpoint = `/channels/commercial${query}`;
 
 		return this._post(endpoint);
+	}
+
+	/** Get a list of ingest servers for broadcasting. */
+	async getIngestServers(): Promise<APIIngestsResponse> {
+		const endpoint = '/ingests';
+
+		return this._get(endpoint, 'ingest')
 	}
 }
 

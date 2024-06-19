@@ -642,3 +642,12 @@ export interface Badge{
 }
 
 export type CommercialLength = 30 | 60 | 90 | 120 | 150 | 180;
+
+export interface Ingest {
+	_id: number,
+	availability: number,
+	default: boolean,
+	name: string,
+	url_template: string,
+	priority: number
+}
