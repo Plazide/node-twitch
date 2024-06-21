@@ -259,7 +259,7 @@ export class TwitchApi extends EventEmitter{
 
 		if(response.status === 401){
 			await this._refresh();
-			return this._get(type, endpoint);
+			return this._get(endpoint, type);
 		}else if(response.status === 429) {
 			const ratelimit = {
 				limit: Number(response.headers.get("Ratelimit-Limit")),
@@ -271,7 +271,7 @@ export class TwitchApi extends EventEmitter{
 				throw new TwitchApiRateLimitError(ratelimit);
 			}else{
 				await sleep(ratelimit.reset * 1000 - Date.now());
-				return this._get(type, endpoint);
+				return this._get(endpoint, type);
 			}
 		}
 
