@@ -128,6 +128,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 
 		expect(result.data).toBeInstanceOf(Array);
 	});
+
+	test("Should get ingest servers endpoints", async () => {
+		const result = await api.getIngestServers();
+
+		expect(result.ingests).toBeInstanceOf(Array);
+	})
 });
 
 describe("unit tests for endpoints requiring user authentication.", () => {
