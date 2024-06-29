@@ -29,7 +29,7 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 	test("`getFollows` should return array of follows", async () => {
 		const result = await api.getFollows({ to_id: 48504279 });
 
-		expect(result.data.length).toBeGreaterThan(1);
+		expect(result.status).toEqual(410);
 	});
 
 	test("`getStreams` should get array of streams", async () => {
@@ -59,13 +59,13 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 	test("`getAllStreamTags` should return array of tags", async () => {
 		const result = await api.getAllStreamTags({ first: 5 });
 
-		expect(result.data).toBeInstanceOf(Array);
+		expect(result.status).toEqual(410);
 	});
 
 	test("`getStreamTags` should return array of tags", async () => {
 		const result = await api.getStreamTags({ broadcaster_id: broadcasterId });
 
-		expect(result.data).toBeInstanceOf(Array);
+		expect(result.status).toEqual(410);
 	});
 
 	test("`getChannelInformation` should return array with channel info", async () => {

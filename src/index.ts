@@ -442,7 +442,9 @@ export class TwitchApi extends EventEmitter{
 		return this._get<APIUserResponse>(endpoint);
 	}
 
-	/** Get follows to or from a channel. Must provide either from_id or to_id. */
+	/** Get follows to or from a channel. Must provide either from_id or to_id.
+	 * @deprecated Twitch has remove this endpoint.
+	*/
 	async getFollows(options?: GetFollowsOptions): Promise<APIFollowResponse>{
 		let query = "?";
 
@@ -483,7 +485,10 @@ export class TwitchApi extends EventEmitter{
 		return response;
 	}
 
-	/** Gets the list of all stream tags defined by Twitch, optionally filtered by tag ID(s). */
+	/**
+	 * Gets the list of all stream tags defined by Twitch, optionally filtered by tag ID(s).
+	 * @deprecated Twitch has removed this endpoint.
+	 */
 	async getAllStreamTags(options?: GetAllStreamTagsOptions): Promise<APITagResponse>{
 		const query = options ? `?${parseOptions(options)}` : "";
 		const endpoint = `/tags/streams${query}`;
@@ -491,7 +496,10 @@ export class TwitchApi extends EventEmitter{
 		return this._get<APITagResponse>(endpoint);
 	}
 
-	/** Gets the list of tags for a specified stream (channel). */
+	/**
+	 * Gets the list of tags for a specified stream (channel).
+	 * @deprecated Twitch has removed this endpoint.
+	*/
 	async getStreamTags(options: GetStreamTagsOptions): Promise<APITagResponse>{
 		const query = "?" + parseOptions(options);
 		const endpoint = `/streams/tags${query}`;
