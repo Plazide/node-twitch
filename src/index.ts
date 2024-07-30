@@ -11,7 +11,7 @@ import {
 	BaseOptions,
 	GetAllStreamTagsOptions,
 	GetBitsLeaderboardOptions,
-	GetFollowsOptions,
+	GetFollowersOptions,
 	GetStreamsOptions,
 	GetVideosOptions,
 	GetSubsOptions,
@@ -456,27 +456,15 @@ export class TwitchApi extends EventEmitter{
 		return this._get<APIUserResponse>(endpoint);
 	}
 
-	/** Get follows to or from a channel. Must provide either from_id or to_id.
-	 * @deprecated Twitch has remove this endpoint.
-	*/
-	async getFollows(options?: GetFollowsOptions): Promise<APIFollowResponse>{
+	/** Get followers of a channel */
+	async getFollowers(options?: GetFollowersOptions): Promise<APIFollowResponse>{
 		let query = "?";
-		let endpoint = "/channels/";
 
 		if(options){
-			query += parseOptions<GetFollowsOptions>(options);
-
-			if(options.to_id)
-			{
-				endpoint += "followers";
-				
-			}else if(options.from_id)
-			{
-				endpoint += "followed";
-			}
+			query += parseOptions<GetFollowersOptions>(options);
 		}
 
-		 endpoint = endpoint + query;
+		const endpoint = `/channels/followers${query}`;
 
 		return this._get<APIFollowResponse>(endpoint);
 	}
