@@ -461,11 +461,22 @@ export class TwitchApi extends EventEmitter{
 	*/
 	async getFollows(options?: GetFollowsOptions): Promise<APIFollowResponse>{
 		let query = "?";
+		let endpoint = "/channels/";
 
-		if(options)
+		if(options){
 			query += parseOptions<GetFollowsOptions>(options);
 
-		const endpoint = `/users/follows${query}`;
+			if(options.to_id)
+			{
+				endpoint += "followers";
+				
+			}else if(options.from_id)
+			{
+				endpoint += "followed";
+			}
+		}
+
+		 endpoint = endpoint + query;
 
 		return this._get<APIFollowResponse>(endpoint);
 	}
