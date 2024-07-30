@@ -27,18 +27,18 @@ export interface TwitchApiConfig{
 }
 
 /** The options to customize the request. */
-export interface GetFollowsOptions{
+export interface GetFollowersOptions{
 	/** Cursor for forward pagination: tells the server where to start fetching the next set of results, in a multi-page response. The cursor value specified here is from the pagination response field of a prior query. */
 	after?: string;
 
 	/** Maximum number of objects to return. Maximum: 100. Default: 20. */
 	first?: number;
 
-	/** User ID. Return list of channels that the supplied user is following. */
-	from_id?: string | number;
+	/** The broadcaster’s ID. Returns the list of users that follow this broadcaster. */
+	broadcaster_id?: string | number;
 
-	/** User ID. Return list of users who are following the supplied channel. */
-	to_id?: string | number;
+	/** Use this parameter to see whether the user follows this broadcaster. If specified, the response contains this user if they follow the broadcaster. If not specified, the response contains all users that follow the broadcaster. */
+	user_id?: string | number;
 }
 
 /** An options object used to create the request. */
